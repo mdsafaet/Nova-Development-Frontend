@@ -9178,3 +9178,24 @@ span.reveal {
     height: 35px;
   }
 }
+@keyframes nova-region-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nova-region-enter {
+  animation: nova-region-enter 220ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-region-enter {
+    animation: none;
+  }
+}

@@ -4,6 +4,7 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import ChatWidget from "@/components/common/ChatWidget";
 import useScrollReveal from "@/hooks/useScrollReveal";
+import RegionBanner from "@/components/common/RegionBanner";
 
 export default function MainLayouts() {
   const { pathname } = useLocation();
@@ -19,6 +20,7 @@ export default function MainLayouts() {
       </main>
       <Footer />
       <ChatWidget />
+      <RegionBanner />
     </>
   );
 }
