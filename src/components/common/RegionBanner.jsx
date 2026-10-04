@@ -7,19 +7,19 @@ const REGIONS = {
     country: "Bangladesh",
     name: "Nova Bangladesh",
     city: "Dhaka",
-    url: "https://bd.novadevelopment.com/",
+    url: "/coming-soon",
   },
   GB: {
     country: "the United Kingdom",
     name: "Nova UK",
     city: "London",
-    url: "https://uk.novadevelopment.com",
+    url: "/coming-soon",
   },
   US: {
     country: "the United States",
     name: "Nova USA",
     city: "New York",
-    url: "https://us.novadevelopment.com",
+    url: "/coming-soon",
   },
 };
 
@@ -108,9 +108,9 @@ return (
     aria-modal="false"
     aria-label="Regional site suggestion"
     aria-describedby="nova-region-description"
-    className="nova-region-enter rb:fixed rb:bottom-4 rb:left-4 rb:z-[9999] rb:box-border rb:w-[calc(100%-2rem)] rb:max-w-md rb:rounded-3xl rb:border rb:border-solid rb:border-[#292d39] rb:bg-[#10131c] rb:p-5 rb:text-white rb:shadow-xl"
+    className="nova-region-enter rb:fixed rb:bottom-4 rb:left-4 rb:z-[9999] rb:box-border rb:w-[calc(100%-2rem)] rb:max-w-md rb:rounded-2xl rb:border rb:border-solid rb:border-[#C9A96E]/40 rb:bg-[#0D1833] rb:p-5 rb:text-white rb:shadow-xl"
   >
-    <div className="rb:mb-3 rb:flex rb:items-center rb:gap-2 rb:text-xs rb:font-bold rb:tracking-[0.16em] rb:text-[#b9c2ed] rb:uppercase">
+    <div className="rb:mb-3 rb:flex rb:items-center rb:gap-2 rb:text-xs rb:font-bold rb:tracking-[0.16em] rb:text-[#C9A96E] rb:uppercase">
       <svg
         viewBox="0 0 24 24"
         fill="none"
@@ -129,24 +129,34 @@ return (
 
     <p
       id="nova-region-description"
-      className="rb:m-0 rb:text-sm rb:leading-6 rb:text-[#d0d1d7]"
+      className="rb:m-0 rb:text-sm rb:leading-6 rb:text-[#E2E6EF]"
     >
       It looks like you're browsing from {region.country}. Our{" "}
       {region.city} team has local projects, prices and advisors.
     </p>
 
     <div className="rb:mt-4 rb:flex rb:flex-wrap rb:items-center rb:gap-3">
-      <a
-        href={region.url}
-        className="rb:inline-flex rb:items-center rb:justify-center rb:rounded-full rb:bg-[#112899] rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-white rb:no-underline rb:transition-colors rb:hover:bg-[#1936bd] rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-white"
-      >
-        Visit {region.name}
-      </a>
+      {region.disabled ? (
+        <button
+          type="button"
+          disabled
+          className="rb:inline-flex rb:cursor-not-allowed rb:items-center rb:justify-center rb:rounded-full rb:border rb:border-solid rb:border-[#C9A96E]/30 rb:bg-[#C9A96E]/15 rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#D2C4AA]"
+        >
+          {region.name} — Coming soon
+        </button>
+      ) : (
+        <a
+          href={region.url}
+          className="rb:inline-flex rb:items-center rb:justify-center rb:rounded-full rb:bg-[#C9A96E] rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#0D1833] rb:no-underline rb:transition-colors rb:hover:bg-[#DEC393] rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-[#C9A96E]"
+        >
+          Visit {region.name}
+        </a>
+      )}
 
       <button
         type="button"
         onClick={dismiss}
-        className="rb:inline-flex rb:cursor-pointer rb:items-center rb:justify-center rb:rounded-full rb:border-0 rb:bg-transparent rb:px-3 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#c4c5cd] rb:transition-colors rb:hover:text-white rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-white"
+        className="rb:inline-flex rb:cursor-pointer rb:items-center rb:justify-center rb:rounded-full rb:border-0 rb:bg-transparent rb:px-3 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#E2E6EF] rb:transition-colors rb:hover:text-[#C9A96E] rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-[#C9A96E]"
       >
         Stay here
       </button>

@@ -4,3 +4,5 @@
 @import "tailwindcss/utilities.css" layer(utilities) source(none) prefix(rb) important;
 
 @source "../components/common/RegionBanner.jsx";
+
+@source "../pages/ComingSoon.jsx";
