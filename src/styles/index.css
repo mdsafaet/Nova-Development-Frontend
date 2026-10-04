@@ -9163,3 +9163,18 @@ span.reveal {
         transform: translate3d(0, 0, 0);
     }
 }
+
+.fab-wrap .chat-toggle {
+  position: static;
+  flex-shrink: 0;
+  margin: 0;
+  width: 45px;
+  height: 45px;
+}
+
+@media (max-width: 600px) {
+  .fab-wrap .chat-toggle {
+    width: 35px;
+    height: 35px;
+  }
+}
