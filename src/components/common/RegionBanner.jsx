@@ -102,38 +102,55 @@ export default function RegionBanner() {
 
   if (!region) return null;
 
-  return (
-    <aside
-      role="dialog"
-      aria-modal="false"
-      aria-label="Regional site suggestion"
-      aria-describedby="nova-region-description"
-      className="nova-region-enter fixed bottom-4 left-4 z-50 box-border w-[calc(100%-2rem)] max-w-md rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 shadow-xl"
-    >
-      <p
-        id="nova-region-description"
-        className="m-0 text-sm leading-6"
+return (
+  <aside
+    role="dialog"
+    aria-modal="false"
+    aria-label="Regional site suggestion"
+    aria-describedby="nova-region-description"
+    className="nova-region-enter rb:fixed rb:bottom-4 rb:left-4 rb:z-[9999] rb:box-border rb:w-[calc(100%-2rem)] rb:max-w-md rb:rounded-3xl rb:border rb:border-solid rb:border-[#292d39] rb:bg-[#10131c] rb:p-5 rb:text-white rb:shadow-xl"
+  >
+    <div className="rb:mb-3 rb:flex rb:items-center rb:gap-2 rb:text-xs rb:font-bold rb:tracking-[0.16em] rb:text-[#b9c2ed] rb:uppercase">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        className="rb:h-4 rb:w-4 rb:shrink-0"
+        aria-hidden="true"
       >
-        It looks like you're browsing from {region.country}. Our{" "}
-        {region.city} team has local projects, prices and advisors.
-      </p>
+        <circle cx="12" cy="12" r="9" />
+        <ellipse cx="12" cy="12" rx="4" ry="9" />
+        <path d="M3 12h18M5 7h14M5 17h14" />
+      </svg>
 
-      <div className="mt-4 flex flex-wrap items-center gap-3">
-        <a
-          href={region.url}
-          className="inline-flex items-center justify-center rounded-lg bg-[#112899] px-4 py-2.5 text-sm font-semibold text-white no-underline transition-colors hover:bg-[#0d207a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#112899]"
-        >
-          Visit {region.name}
-        </a>
+      <span>{region.name}</span>
+    </div>
 
-        <button
-          type="button"
-          onClick={dismiss}
-          className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#112899]"
-        >
-          Stay here
-        </button>
-      </div>
-    </aside>
-  );
+    <p
+      id="nova-region-description"
+      className="rb:m-0 rb:text-sm rb:leading-6 rb:text-[#d0d1d7]"
+    >
+      It looks like you're browsing from {region.country}. Our{" "}
+      {region.city} team has local projects, prices and advisors.
+    </p>
+
+    <div className="rb:mt-4 rb:flex rb:flex-wrap rb:items-center rb:gap-3">
+      <a
+        href={region.url}
+        className="rb:inline-flex rb:items-center rb:justify-center rb:rounded-full rb:bg-[#112899] rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-white rb:no-underline rb:transition-colors rb:hover:bg-[#1936bd] rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-white"
+      >
+        Visit {region.name}
+      </a>
+
+      <button
+        type="button"
+        onClick={dismiss}
+        className="rb:inline-flex rb:cursor-pointer rb:items-center rb:justify-center rb:rounded-full rb:border-0 rb:bg-transparent rb:px-3 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#c4c5cd] rb:transition-colors rb:hover:text-white rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-white"
+      >
+        Stay here
+      </button>
+    </div>
+  </aside>
+);
 }

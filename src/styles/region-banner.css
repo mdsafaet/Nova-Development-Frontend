@@ -1,0 +1,6 @@
+/* Only generate utilities used by the regional banner.
+   No Tailwind global reset, so existing page styles stay intact. */
+@import "tailwindcss/theme.css" layer(theme) prefix(rb);
+@import "tailwindcss/utilities.css" layer(utilities) source(none) prefix(rb) important;
+
+@source "../components/common/RegionBanner.jsx";
