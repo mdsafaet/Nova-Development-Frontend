@@ -102,65 +102,65 @@ export default function RegionBanner() {
 
   if (!region) return null;
 
-return (
-  <aside
-    role="dialog"
-    aria-modal="false"
-    aria-label="Regional site suggestion"
-    aria-describedby="nova-region-description"
-    className="nova-region-enter rb:fixed rb:bottom-4 rb:left-4 rb:z-[9999] rb:box-border rb:w-[calc(100%-2rem)] rb:max-w-md rb:rounded-2xl rb:border rb:border-solid rb:border-[#C9A96E]/40 rb:bg-[#0D1833] rb:p-5 rb:text-white rb:shadow-xl"
-  >
-    <div className="rb:mb-3 rb:flex rb:items-center rb:gap-2 rb:text-xs rb:font-bold rb:tracking-[0.16em] rb:text-[#C9A96E] rb:uppercase">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        className="rb:h-4 rb:w-4 rb:shrink-0"
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="9" />
-        <ellipse cx="12" cy="12" rx="4" ry="9" />
-        <path d="M3 12h18M5 7h14M5 17h14" />
-      </svg>
-
-      <span>{region.name}</span>
-    </div>
-
-    <p
-      id="nova-region-description"
-      className="rb:m-0 rb:text-sm rb:leading-6 rb:text-[#E2E6EF]"
+  return (
+    <aside
+      role="dialog"
+      aria-modal="false"
+      aria-label="Regional site suggestion"
+      aria-describedby="nova-region-description"
+      className="nova-region-enter rb:fixed rb:bottom-4 rb:left-4 rb:z-[9999] rb:box-border rb:w-[calc(100%-2rem)] rb:max-w-md rb:rounded-2xl rb:border rb:border-solid rb:border-[rgb(22,29,64)]/15 rb:bg-[rgb(245,243,237)] rb:p-5 rb:text-[rgb(22,29,64)] rb:shadow-xl"
     >
-      It looks like you're browsing from {region.country}. Our{" "}
-      {region.city} team has local projects, prices and advisors.
-    </p>
+      <div className="rb:mb-3 rb:flex rb:items-center rb:gap-2 rb:text-xs rb:font-bold rb:tracking-[0.16em] rb:text-[rgb(22,29,64)] rb:uppercase">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          className="rb:h-4 rb:w-4 rb:shrink-0"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="9" />
+          <ellipse cx="12" cy="12" rx="4" ry="9" />
+          <path d="M3 12h18M5 7h14M5 17h14" />
+        </svg>
 
-    <div className="rb:mt-4 rb:flex rb:flex-wrap rb:items-center rb:gap-3">
-      {region.disabled ? (
+        <span>{region.name}</span>
+      </div>
+
+      <p
+        id="nova-region-description"
+        className="rb:m-0 rb:text-sm rb:leading-6 rb:text-[rgb(22,29,64)]/80"
+      >
+        It looks like you're browsing from {region.country}. Our{" "}
+        {region.city} team has local projects, prices and advisors.
+      </p>
+
+      <div className="rb:mt-4 rb:flex rb:flex-wrap rb:items-center rb:gap-3">
+        {region.disabled ? (
+          <button
+            type="button"
+            disabled
+            className="rb:inline-flex rb:cursor-not-allowed rb:items-center rb:justify-center rb:rounded-full rb:border-0 rb:bg-[rgb(22,29,64)] rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-white rb:opacity-50"
+          >
+            {region.name} — Coming soon
+          </button>
+        ) : (
+          <a
+            href={region.url}
+            className="rb:inline-flex rb:items-center rb:justify-center rb:rounded-full rb:bg-[rgb(22,29,64)] rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-white rb:no-underline rb:transition-colors rb:hover:bg-[rgb(22,29,64)]/90 rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-[rgb(22,29,64)]"
+          >
+            Visit {region.name}
+          </a>
+        )}
+
         <button
           type="button"
-          disabled
-          className="rb:inline-flex rb:cursor-not-allowed rb:items-center rb:justify-center rb:rounded-full rb:border rb:border-solid rb:border-[#C9A96E]/30 rb:bg-[#C9A96E]/15 rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#D2C4AA]"
+          onClick={dismiss}
+          className="rb:inline-flex rb:cursor-pointer rb:items-center rb:justify-center rb:rounded-full rb:border-0 rb:bg-transparent rb:px-3 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[rgb(22,29,64)] rb:transition-colors rb:hover:bg-[rgb(22,29,64)]/10 rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-[rgb(22,29,64)]"
         >
-          {region.name} — Coming soon
+          Stay here
         </button>
-      ) : (
-        <a
-          href={region.url}
-          className="rb:inline-flex rb:items-center rb:justify-center rb:rounded-full rb:bg-[#C9A96E] rb:px-4 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#0D1833] rb:no-underline rb:transition-colors rb:hover:bg-[#DEC393] rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-[#C9A96E]"
-        >
-          Visit {region.name}
-        </a>
-      )}
-
-      <button
-        type="button"
-        onClick={dismiss}
-        className="rb:inline-flex rb:cursor-pointer rb:items-center rb:justify-center rb:rounded-full rb:border-0 rb:bg-transparent rb:px-3 rb:py-2.5 rb:text-sm rb:font-semibold rb:text-[#E2E6EF] rb:transition-colors rb:hover:text-[#C9A96E] rb:focus-visible:outline-2 rb:focus-visible:outline-offset-2 rb:focus-visible:outline-[#C9A96E]"
-      >
-        Stay here
-      </button>
-    </div>
-  </aside>
-);
+      </div>
+    </aside>
+  );
 }

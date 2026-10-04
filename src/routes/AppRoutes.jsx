@@ -12,7 +12,8 @@ import NewsSingle from "../pages/NewsSingle";
 import Portfolio from "../pages/Portfolio";
 import PortfolioSingle from "../pages/PortfolioSingle";
 import VisionMission from "../pages/VisionMission";
-import ComingSoon from "../pages/ComingSoon";
+import ComingSoon from "@/pages/ComingSoon";
+
 
 const AppRoutes = createBrowserRouter([
   {
