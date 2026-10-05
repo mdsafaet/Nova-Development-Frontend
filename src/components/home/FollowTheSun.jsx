@@ -184,65 +184,59 @@ export default function FollowTheSun() {
   const [now, setNow] = useState(null);
   const tabs = useRef([]);
   const sectionRef = useRef(null);
-  const zoomRef = useRef(1.4);
-  const indexRef = useRef(0);
-  const switchTimer = useRef(null);
-  const lockUntil = useRef(0);
-  const [zooms, setZooms] = useState(() => sunCities.map(() => 1.4));
+  const trackRef = useRef(null);
+  const [zooms, setZooms] = useState(() => sunCities.map(() => 1));
+  const pinQuery = "(min-width: 768px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)";
 
   function selectCity(index) {
-    clearTimeout(switchTimer.current);
-    switchTimer.current = null;
-    indexRef.current = index;
-    zoomRef.current = 1.4;
-    setZooms(values => values.map((value, i) => i === index ? 1.4 : value));
+    const track = trackRef.current;
+    const section = sectionRef.current;
+    if (track && section && window.matchMedia(pinQuery).matches) {
+      const distance = track.offsetHeight - section.offsetHeight;
+      const start = track.getBoundingClientRect().top + window.scrollY;
+      // A point just inside the selected city's scroll interval.
+      window.scrollTo({ top: start + distance * ((index + 0.02) / sunCities.length), behavior: "instant" });
+    }
     setActiveIndex(index);
-    lockUntil.current = performance.now() + 1000;
   }
 
   useEffect(() => {
+    const track = trackRef.current;
     const section = sectionRef.current;
-    if (!section) return;
-
-    function handleWheel(event) {
-      if (event.ctrlKey || event.metaKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.cancelable) return;
-      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? section.clientHeight : 1;
-      const delta = event.deltaY * unit;
-      if (!Number.isFinite(delta) || delta === 0) return;
-      const direction = delta > 0 ? 1 : -1;
-      const index = indexRef.current;
-      const nextIndex = index + direction;
-      const canSwitch = nextIndex >= 0 && nextIndex < sunCities.length;
-      const atLimit = direction > 0 ? zoomRef.current >= 1.8 : zoomRef.current <= 1;
-
-      // Exit the section normally at the first/last city's outer limit.
-      if (!canSwitch && atLimit && switchTimer.current === null) return;
-      event.preventDefault();
-      // Wait for the image transition and reject trackpad momentum.
-      if (switchTimer.current !== null || performance.now() < lockUntil.current) return;
-
-      const zoom = Math.max(1, Math.min(1.8, zoomRef.current + delta * 0.001));
-      zoomRef.current = zoom;
-      setZooms(values => values.map((value, i) => i === index ? zoom : value));
-      const reachedLimit = direction > 0 ? zoom >= 1.8 : zoom <= 1;
-      if (!reachedLimit || !canSwitch) return;
-
-      // Let the image reach its scale before crossfading to the new city.
-      switchTimer.current = setTimeout(() => {
-        switchTimer.current = null;
-        indexRef.current = nextIndex;
-        zoomRef.current = 1.4;
-        setZooms(values => values.map((value, i) => i === nextIndex ? 1.4 : value));
-        setActiveIndex(nextIndex);
-        lockUntil.current = performance.now() + 1000;
-      }, 220);
+    if (!track || !section) return;
+    const query = window.matchMedia(pinQuery);
+    let frame = null;
+    function update() {
+      frame = null;
+      if (!query.matches) {
+        setZooms(sunCities.map(() => 1));
+        return;
+      }
+      const distance = track.offsetHeight - section.offsetHeight;
+      if (distance <= 0) return;
+      const progress = Math.max(0, Math.min(1, -track.getBoundingClientRect().top / distance));
+      const position = progress * sunCities.length;
+      const index = Math.min(sunCities.length - 1, Math.floor(position));
+      setActiveIndex(index);
+      // Each image grows through its own interval and reverses on upward scroll.
+      setZooms(sunCities.map((_, i) => 1 + 0.8 * Math.max(0, Math.min(1, position - i))));
     }
-
-    section.addEventListener("wheel", handleWheel, { passive: false });
+    function schedule() {
+      if (frame === null) frame = requestAnimationFrame(update);
+    }
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    query.addEventListener("change", schedule);
+    const observer = typeof ResizeObserver !== "undefined" ? new ResizeObserver(schedule) : null;
+    observer?.observe(track);
+    observer?.observe(section);
+    schedule();
     return () => {
-      section.removeEventListener("wheel", handleWheel);
-      clearTimeout(switchTimer.current);
-      switchTimer.current = null;
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      query.removeEventListener("change", schedule);
+      observer?.disconnect();
+      if (frame !== null) cancelAnimationFrame(frame);
     };
   }, []);
   const id = useId();
@@ -278,10 +272,11 @@ export default function FollowTheSun() {
     else return;
     event.preventDefault();
     selectCity(next);
-    tabs.current[next]?.focus();
+    tabs.current[next]?.focus({ preventScroll: true });
   }
 
   return (
+    <div ref={trackRef} className="follow-sun-track" style={{ "--sun-scroll-height": (sunCities.length + 1) * 100 + "svh" }}>
     <section ref={sectionRef} className="follow-sun" aria-labelledby={id + "-title"}>
       {cities.map((city, index) => (
         <div key={city.id} aria-hidden="true" className={"follow-sun__bg" + (index === activeIndex ? " active" : "")}>
@@ -335,5 +330,6 @@ export default function FollowTheSun() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

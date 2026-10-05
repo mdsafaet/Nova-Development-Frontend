@@ -12,6 +12,7 @@ import Newsletter from "@/components/home/Newsletter";
 import NovaOne from "@/components/home/NovaOne";
 import Destinations from "@/components/home/Destinations";
 import FollowTheSun from "@/components/home/FollowTheSun";
+import FourPillars from "@/components/home/FourPillars";
 
 export default function Home() {
   return (
@@ -29,7 +30,9 @@ export default function Home() {
       <Portfolio />
       <Destinations />
       <Investors />
+      
       <BrandStory />
+       <FourPillars />
       <Journal />
       <Responsibility />
       <Contact />

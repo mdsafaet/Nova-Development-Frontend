@@ -63,3 +63,20 @@
     cursor: var(--follow-sun-cursor);
   }
 }
+
+/* Desktop: keep the entire section visible for the city scroll sequence. */
+.follow-sun-track { position:relative; width:100%; }
+@media (min-width:768px) and (min-height:600px) and (prefers-reduced-motion:no-preference) {
+  .follow-sun-track { height:var(--sun-scroll-height,500svh); }
+  .follow-sun-track > .follow-sun {
+    position:sticky; top:0; height:100svh; min-height:0;
+  }
+  .follow-sun-track .follow-sun__inner {
+    height:100%; min-height:0; padding:clamp(28px,7vh,80px) 0 clamp(24px,5vh,52px);
+  }
+  .follow-sun-track .follow-sun__stage { min-height:0; padding:24px 0; }
+  .follow-sun-track .follow-sun__time { font-size:clamp(80px,17vh,180px); }
+  .follow-sun-track .follow-sun__heading { font-size:clamp(32px,5.5vh,54px); }
+  .follow-sun-track .follow-sun__bg { transition:opacity 450ms ease; }
+  .follow-sun-track .follow-sun__image { transition:filter 1200ms ease; }
+}

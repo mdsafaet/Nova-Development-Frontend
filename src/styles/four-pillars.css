@@ -1,0 +1,877 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&display=swap");
+
+.pillars-section {
+  position: relative;
+
+  padding:
+    clamp(6rem, 10vw, 10rem)
+    0;
+
+  background: #ffffff;
+
+  color: #111827;
+
+  font-family:
+    "Jost",
+    var(--font-sans),
+    sans-serif;
+
+  overflow: visible;
+}
+
+.pillars-container {
+  width:
+    min(
+      1720px,
+      calc(100% - 80px)
+    );
+
+  margin:
+    0 auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.pillars-header {
+  display: flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  gap: 60px;
+
+  margin-bottom:
+    80px;
+}
+
+.pillars-eyebrow {
+  display: flex;
+
+  align-items:
+    center;
+
+  gap: 12px;
+
+  margin:
+    0 0 28px;
+
+  font-size:
+    11px;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.16em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    #202634;
+}
+
+.pillars-level {
+  padding:
+    4px 8px;
+
+  border:
+    1px solid
+    rgba(
+      17,
+      24,
+      39,
+      0.2
+    );
+
+  border-radius:
+    999px;
+}
+
+.pillars-eyebrow-line {
+  width:
+    32px;
+
+  height:
+    1px;
+
+  background:
+    rgba(
+      17,
+      24,
+      39,
+      0.3
+    );
+}
+
+.pillars-heading {
+  max-width:
+    12ch;
+
+  margin:
+    0;
+
+  font-family:
+    "Instrument Serif",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      4rem,
+      7vw,
+      8.2rem
+    );
+
+  line-height:
+    0.92;
+
+  letter-spacing:
+    -0.045em;
+
+  font-weight:
+    400;
+
+  color:
+    #111827;
+}
+
+.pillars-heading em {
+  font-weight:
+    400;
+
+  font-style:
+    italic;
+}
+
+.pillars-intro {
+  max-width:
+    390px;
+
+  margin:
+    0 0 10px;
+
+  font-size:
+    16px;
+
+  line-height:
+    1.65;
+
+  color:
+    #717782;
+}
+
+/* =========================
+   STACK
+========================= */
+
+.pillars-stack {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    6svh;
+}
+
+.pillar-card {
+  position:
+    relative;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.pillar-card__inner {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr);
+
+  gap:
+    42px;
+
+  min-height:
+    min(
+      76svh,
+      680px
+    );
+
+  padding:
+    52px;
+
+  border-radius:
+    30px;
+
+  overflow:
+    hidden;
+
+  transform-origin:
+    top center;
+
+  will-change:
+    transform;
+}
+
+/* =========================
+   CARD COLORS
+========================= */
+
+.pillar-card__inner--cobalt {
+  background:
+    #112899;
+
+  color:
+    #ffffff;
+}
+
+.pillar-card__inner--indigo {
+  background:
+    #252c67;
+
+  color:
+    #ffffff;
+}
+
+.pillar-card__inner--green {
+  background:
+    #285d56;
+
+  color:
+    #ffffff;
+}
+
+.pillar-card__inner--mist {
+  background:
+    #dfe4f4;
+
+  color:
+    #172033;
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.pillar-card__left {
+  position:
+    relative;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    space-between;
+
+  min-width:
+    0;
+
+  padding-right:
+    12px;
+}
+
+/* =========================
+   BIG NUMBER
+========================= */
+
+.pillar-card__number {
+  font-family:
+    "Instrument Serif",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      7rem,
+      10vw,
+      10.5rem
+    );
+
+  line-height:
+    0.72;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.04em;
+
+  color:
+    inherit;
+}
+
+/* =========================
+   PILLAR LABEL
+========================= */
+
+.pillar-card__label {
+  position:
+    absolute;
+
+  top:
+    53px;
+
+  left:
+    44%;
+
+  transform:
+    translateX(-50%);
+
+  z-index:
+    4;
+
+  font-family:
+    "Jost",
+    sans-serif;
+
+  font-size:
+    10px;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.22em;
+
+  white-space:
+    nowrap;
+
+  opacity:
+    0.65;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.pillar-card__content {
+  max-width:
+    100%;
+
+  padding-bottom:
+    2px;
+}
+
+.pillar-card__title {
+  margin:
+    0;
+
+  font-family:
+    "Instrument Serif",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      3.2rem,
+      4.4vw,
+      5.5rem
+    );
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.035em;
+
+  font-weight:
+    400;
+
+  color:
+    inherit;
+}
+
+.pillar-card__description {
+  max-width:
+    620px;
+
+  margin:
+    26px 0
+    0;
+
+  font-size:
+    16px;
+
+  line-height:
+    1.75;
+
+  color:
+    inherit;
+
+  opacity:
+    0.78;
+}
+
+/* =========================
+   CHECKLIST
+========================= */
+
+.pillar-card__list {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  margin:
+    28px 0
+    0;
+
+  padding:
+    0;
+
+  list-style:
+    none;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+}
+
+.pillar-card__inner--mist
+.pillar-card__list {
+  border-color:
+    rgba(
+      23,
+      32,
+      51,
+      0.18
+    );
+}
+
+.pillar-card__list li {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+
+  min-height:
+    46px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  font-size:
+    14px;
+
+  line-height:
+    1.4;
+
+  color:
+    inherit;
+}
+
+.pillar-card__inner--mist
+.pillar-card__list li {
+  border-color:
+    rgba(
+      23,
+      32,
+      51,
+      0.18
+    );
+}
+
+.pillar-check {
+  width:
+    16px;
+
+  height:
+    16px;
+
+  flex:
+    0 0 16px;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.pillar-card__media {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  min-height:
+    560px;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    26px;
+
+  background:
+    #0f131f;
+}
+
+.pillar-card__media img {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  transform:
+    scale(1.01);
+
+  transition:
+    transform
+    1.4s
+    cubic-bezier(
+      0.16,
+      1,
+      0.3,
+      1
+    );
+}
+
+.pillar-card:hover
+.pillar-card__media img {
+  transform:
+    scale(1.055);
+}
+
+/* =========================
+   STICKY DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+
+  .pillar-card {
+    position:
+      sticky;
+
+    top:
+      calc(
+        var(
+          --header-h,
+          72px
+        )
+        +
+        (
+          var(
+            --pillar-index
+          )
+          *
+          1.15rem
+        )
+      );
+  }
+
+}
+
+/* =========================
+   LARGE SCREEN
+========================= */
+
+@media (min-width: 1500px) {
+
+  .pillar-card__inner {
+    padding:
+      52px;
+
+    grid-template-columns:
+      1.08fr
+      0.92fr;
+
+    gap:
+      44px;
+  }
+
+  .pillar-card__media {
+    min-height:
+      570px;
+  }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+  .pillars-container {
+    width:
+      calc(
+        100% - 40px
+      );
+  }
+
+  .pillars-header {
+    gap:
+      40px;
+  }
+
+  .pillar-card__inner {
+    padding:
+      36px;
+
+    gap:
+      30px;
+
+    min-height:
+      620px;
+  }
+
+  .pillar-card__label {
+    top:
+      38px;
+
+    left:
+      43%;
+  }
+
+  .pillar-card__media {
+    min-height:
+      500px;
+  }
+
+}
+
+/* =========================
+   MOBILE / TABLET STACK
+========================= */
+
+@media (max-width: 900px) {
+
+  .pillars-section {
+    padding:
+      90px
+      0;
+  }
+
+  .pillars-header {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    margin-bottom:
+      55px;
+  }
+
+  .pillar-card__inner {
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    min-height:
+      auto;
+
+    padding:
+      30px;
+
+    border-radius:
+      24px;
+  }
+
+  .pillar-card__left {
+    gap:
+      60px;
+  }
+
+  .pillar-card__label {
+    top:
+      36px;
+
+    right:
+      32px;
+
+    left:
+      auto;
+
+    transform:
+      none;
+  }
+
+  .pillar-card__media {
+    min-height:
+      420px;
+
+    margin-top:
+      14px;
+
+    border-radius:
+      20px;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 560px) {
+
+  .pillars-container {
+    width:
+      calc(
+        100% - 24px
+      );
+  }
+
+  .pillars-heading {
+    font-size:
+      clamp(
+        3.3rem,
+        16vw,
+        5rem
+      );
+  }
+
+  .pillars-intro {
+    font-size:
+      14px;
+  }
+
+  .pillars-stack {
+    gap:
+      28px;
+  }
+
+  .pillar-card__inner {
+    padding:
+      22px;
+
+    border-radius:
+      20px;
+  }
+
+  .pillar-card__number {
+    font-size:
+      5.5rem;
+  }
+
+  .pillar-card__label {
+    top:
+      28px;
+
+    right:
+      22px;
+
+    font-size:
+      8px;
+  }
+
+  .pillar-card__left {
+    gap:
+      46px;
+  }
+
+  .pillar-card__title {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4rem
+      );
+  }
+
+  .pillar-card__description {
+    margin-top:
+      18px;
+
+    font-size:
+      14px;
+
+    line-height:
+      1.65;
+  }
+
+  .pillar-card__list {
+    margin-top:
+      22px;
+  }
+
+  .pillar-card__list li {
+    min-height:
+      44px;
+
+    font-size:
+      12px;
+  }
+
+  .pillar-card__media {
+    min-height:
+      320px;
+
+    border-radius:
+      16px;
+  }
+
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .pillar-card__media img {
+    transition:
+      none;
+  }
+
+  .pillar-card:hover
+  .pillar-card__media img {
+    transform:
+      scale(1.01);
+  }
+
+}
