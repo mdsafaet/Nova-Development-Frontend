@@ -11,6 +11,7 @@ import Contact from "@/components/home/Contact";
 import Newsletter from "@/components/home/Newsletter";
 import NovaOne from "@/components/home/NovaOne";
 import Destinations from "@/components/home/Destinations";
+import FollowTheSun from "@/components/home/FollowTheSun";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         content="Nova Development develops land estates, residences and commercial assets in Dubai, Bangladesh, USA and UK. 45+ projects, 3,200 acres, 17 years."
       />
       <Hero />
+      <FollowTheSun />
       <Intro />
       <Chairman />
       <VisionMission />
