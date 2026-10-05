@@ -1,5 +1,5 @@
 import chairmanBg from "./chairman-bg.jpg";
-import chairmen from "./chairmen.jpeg";
+// import chairmen from "./chairmen.jpeg";
 import community from "./community.jpeg";
 import contactHero from "./contact-hero.jpg";
 import investor from "./investor.png";
@@ -32,7 +32,7 @@ const video = `${import.meta.env.BASE_URL}videos/video.mp4`;
 
 export const img = {
   chairmanBg,
-  chairmen,
+  // chairmen,
   community,
   contactHero,
   investor,
