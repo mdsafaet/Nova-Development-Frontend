@@ -51,7 +51,7 @@ export default function Header() {
               href="tel:+096064707707"
               className="d-inline-flex align-items-center gap-2  text-decoration-none small-tracking"
             >
-              <i className="fa-solid fa-phone text-gold"></i> +0960 4 707 707
+              <i className="fa-solid fa-phone text-gold"></i> +0960 6 707 707
             </a>
           </div>
           <Link to="/contact" className="btn btn-outline-gold btn-sm text-uppercase enquire-btn">
