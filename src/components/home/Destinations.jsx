@@ -85,7 +85,6 @@ function Connections() {
         if (!end) return null;
 
         const [endX, endY] = end;
-
         const controlX = (startX + endX) / 2;
         const controlY =
           Math.min(startY, endY) -
@@ -118,7 +117,7 @@ function LocationCard({ city }) {
 
   const [pinX, pinY] = point;
 
-  // Display to the left of the marker while staying inside the map.
+  // Place the card left of the marker and keep it inside the map.
   const cardX = Math.max(8, Math.min(pinX - 226, 780));
   const cardY = Math.max(8, Math.min(pinY + 16, 252));
 
@@ -180,12 +179,10 @@ export default function Destinations() {
   const activePatternId = `nova-active-dots-${uniqueId}`;
 
   const previewId = hoveredId ?? focusedId ?? selectedId;
-
   const previewCity = CITIES.find(
     (city) => city.id === previewId
   );
 
-  // Load the geographic data.
   useEffect(() => {
     const controller = new AbortController();
 
@@ -200,6 +197,10 @@ export default function Destinations() {
         }
 
         const data = await response.json();
+
+        if (data.type !== "Topology" || !data.objects) {
+          throw new Error("Invalid map data");
+        }
 
         if (!controller.signal.aborted) {
           setGeography(data);
@@ -216,7 +217,6 @@ export default function Destinations() {
     return () => controller.abort();
   }, []);
 
-  // Reveal when the section enters the viewport.
   useEffect(() => {
     if (!geography) return;
 
@@ -243,11 +243,11 @@ export default function Destinations() {
   }, [geography]);
 
   function closePreview(event) {
-    if (event.key !== "Escape") return;
-
-    setSelectedId(null);
-    setHoveredId(null);
-    setFocusedId(null);
+    if (event.key === "Escape") {
+      setSelectedId(null);
+      setHoveredId(null);
+      setFocusedId(null);
+    }
   }
 
   return (
@@ -308,6 +308,7 @@ export default function Destinations() {
                   className="nova-dotted-map"
                 >
                   <defs>
+                    {/* Dots for ordinary countries */}
                     <pattern
                       id={basePatternId}
                       width="5.5"
@@ -322,6 +323,7 @@ export default function Destinations() {
                       />
                     </pattern>
 
+                    {/* Dots for Nova countries */}
                     <pattern
                       id={activePatternId}
                       width="5.5"
@@ -342,7 +344,7 @@ export default function Destinations() {
                       geographies
                         .filter(
                           (geo) =>
-                            geo.properties.name !== "Antarctica"
+                            String(geo.id).padStart(3, "0") !== "010"
                         )
                         .map((geo) => {
                           const countryId = String(geo.id).padStart(
@@ -350,20 +352,11 @@ export default function Destinations() {
                             "0"
                           );
 
-                          const isNovaCountry =
-                            NOVA_COUNTRIES.has(countryId);
-
-                          const fill = `url(#${
-                            isNovaCountry
-                              ? activePatternId
-                              : basePatternId
-                          })`;
-
-                          const countryStyle = {
-                            fill,
-                            stroke: "none",
-                            outline: "none",
-                          };
+                          const patternId = NOVA_COUNTRIES.has(
+                            countryId
+                          )
+                            ? activePatternId
+                            : basePatternId;
 
                           return (
                             <Geography
@@ -372,9 +365,9 @@ export default function Destinations() {
                               tabIndex={-1}
                               aria-hidden="true"
                               style={{
-                                default: countryStyle,
-                                hover: countryStyle,
-                                pressed: countryStyle,
+                                fill: `url(#${patternId})`,
+                                stroke: "none",
+                                outline: "none",
                               }}
                             />
                           );
