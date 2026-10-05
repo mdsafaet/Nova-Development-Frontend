@@ -1,5 +1,5 @@
 import chairmanBg from "./chairman-bg.jpg";
-import chairmen from "./chairmen.jpg";
+import chairmen from "./chairmen.jpeg";
 import community from "./community.jpeg";
 import contactHero from "./contact-hero.jpg";
 import investor from "./investor.png";
