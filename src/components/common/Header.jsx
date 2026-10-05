@@ -48,7 +48,7 @@ export default function Header() {
               <i className="fa-solid fa-envelope text-gold"></i> info@novadevelopmentglobal.com
             </a>
             <a
-              href="tel:+096064707707"
+              href="tel:+09606707707"
               className="d-inline-flex align-items-center gap-2  text-decoration-none small-tracking"
             >
               <i className="fa-solid fa-phone text-gold"></i> +0960 6 707 707
