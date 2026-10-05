@@ -1,3 +1,9 @@
+/* @import "tailwindcss"; */
+@import "tailwindcss/theme.css" layer(theme) prefix(rb);
+@import "tailwindcss/utilities.css" layer(utilities) source("../") prefix(rb) important;
+
+
+
 :root {
     /* =====================================================
        NOVA COLOR SYSTEM

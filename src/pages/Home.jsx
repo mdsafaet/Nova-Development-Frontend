@@ -10,6 +10,7 @@ import Responsibility from "@/components/home/Responsibility";
 import Contact from "@/components/home/Contact";
 import Newsletter from "@/components/home/Newsletter";
 import NovaOne from "@/components/home/NovaOne";
+import Destinations from "@/components/home/Destinations";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Chairman />
       <VisionMission />
       <Portfolio />
+      <Destinations />
       <Investors />
       <BrandStory />
       <Journal />
