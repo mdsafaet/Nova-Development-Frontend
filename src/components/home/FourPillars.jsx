@@ -40,7 +40,7 @@ const pillars = [
       "Rooftop solar & low-E glazing",
     ],
     image: "/images/infinity-dusk.jpg",
-    alt: "An infinity pool overlooking the city at dusk",
+    alt: "Infinity pool overlooking the city at dusk",
     theme: "green",
   },
   {
