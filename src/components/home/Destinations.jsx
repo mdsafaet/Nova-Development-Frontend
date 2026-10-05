@@ -351,12 +351,11 @@ export default function Destinations() {
                             3,
                             "0"
                           );
-
-                          const patternId = NOVA_COUNTRIES.has(
-                            countryId
-                          )
-                            ? activePatternId
-                            : basePatternId;
+const patternId = NOVA_COUNTRIES.has(
+  countryId
+)
+  ? activePatternId
+  : basePatternId;
 
                           return (
                             <Geography
