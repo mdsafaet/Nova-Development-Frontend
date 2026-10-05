@@ -8,7 +8,7 @@ import BrandStory from "@/components/home/BrandStory";
 import Journal from "@/components/home/Journal";
 import Responsibility from "@/components/home/Responsibility";
 import Contact from "@/components/home/Contact";
-import Newsletter from "@/components/home/Newsletter";
+// import Newsletter from "@/components/home/Newsletter";
 import NovaOne from "@/components/home/NovaOne";
 import Destinations from "@/components/home/Destinations";
 import FollowTheSun from "@/components/home/FollowTheSun";
@@ -36,7 +36,7 @@ export default function Home() {
       <Journal />
       <Responsibility />
       <Contact />
-      <Newsletter />
+      {/* <Newsletter /> */}
       <NovaOne />
     </>
   );
