@@ -6,9 +6,9 @@ export const sunCities = [
     "timezone": "Asia/Dhaka",
     "lat": 23.8103,
     "lng": 90.4125,
-    "area": "Gulshan",
-    "office": "Head office and sales gallery",
-   "image": "/cities/dhaka.jpg",
+     "area": "Bashundhara Residential Area",
+    "office": "Bangladesh Office: Rupayan Shopping Square, 10th Floor, Unit-A & B, Plot No. C-2, Block-G, Sayem Sobhan Anvir Road",
+    "postalCode": "1229",
     "imagePosition": "center",
     "contactTo": "/contact"
   },
