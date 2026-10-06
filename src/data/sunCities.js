@@ -9,6 +9,7 @@ export const sunCities = [
      "area": "Bashundhara Residential Area",
     "office": "Bangladesh Office: Rupayan Shopping Square, 10th Floor, Unit-A & B, Plot No. C-2, Block-G, Sayem Sobhan Anvir Road",
     "postalCode": "1229",
+    "image": "/cities/dhaka.jpg",
     "imagePosition": "center",
     "contactTo": "/contact"
   },

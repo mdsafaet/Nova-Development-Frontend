@@ -25,14 +25,15 @@ export default function Home() {
       <Hero />
       <FollowTheSun />
       <Intro />
+          <VisionMission />
       <Chairman />
-      <VisionMission />
+  <Destinations />
       <Portfolio />
-      <Destinations />
+      
       <Investors />
       
       <BrandStory />
-       <FourPillars />
+       {/* <FourPillars /> */}
       <Journal />
       <Responsibility />
       <Contact />
