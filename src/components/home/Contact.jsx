@@ -33,12 +33,12 @@ export default function Contact() {
             </div>
             <span className="eyebrow text-gold">Bangladesh OFFICE</span>
             <h3>Dhaka</h3>
-            <address>
-              Nova Land Tower
-              <br /> Gulshan Avenue
-              <br /> Gulshan 2, Dhaka 1212
-              <br /> Bangladesh
-            </address>
+<address>
+  Rupayan Shopping Square, 10th Floor, Unit-A & B
+  <br /> Plot No. C-2, Block-G, Sayem Sobhan Anvir Road
+  <br /> Bashundhara Residential Area, Dhaka-1229[cite: 1]
+  <br /> Bangladesh
+</address>
             <a href="tel:+880255661200">+880 2 5566 1200</a>
           </div>
           <div className="nova-office">
