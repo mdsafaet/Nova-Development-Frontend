@@ -35,8 +35,9 @@ export default function Home() {
       <BrandStory />
        {/* <FourPillars /> */}
       <Journal />
+       <Contact />
       <Responsibility />
-      <Contact />
+      {/* <Contact /> */}
       {/* <Newsletter /> */}
       <NovaOne />
     </>

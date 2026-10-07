@@ -1,127 +1,290 @@
 import { Link, useNavigate } from "react-router-dom";
+import {
+  ArrowUpRight,
+  CalendarDays,
+} from "lucide-react";
+
 import { img } from "@/assets/images";
+import "@/styles/journal.css";
+
+const stories = [
+  {
+    id: 1,
+    image: img.news2,
+    date: "28 JUN 2026",
+    market: "UK",
+    title:
+      "Nova completes 180-acre land assembly in London.",
+  },
+  {
+    id: 2,
+    image: img.news3,
+    date: "05 MAY 2026",
+    market: "USA",
+    title:
+      "Nova Capital signs North American co-investment mandate.",
+  },
+  {
+    id: 3,
+    image: img.news4,
+    date: "18 MAR 2026",
+    market: "BANGLADESH",
+    title:
+      "Nova announces new master-planned community in Dhaka.",
+  },
+  {
+    id: 4,
+    image: img.news5,
+    date: "09 JAN 2026",
+    market: "GROUP",
+    title:
+      "Nova Development publishes 2025 sustainability report.",
+  },
+];
 
 export default function Journal() {
   const navigate = useNavigate();
+
+  const openStory = () => {
+    navigate("/news-single");
+  };
+
+  const handleKeyboard = (event) => {
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+      event.preventDefault();
+      openStory();
+    }
+  };
+
   return (
-    <section id="news-media" className="nova-news-section">
-      <div className="container">
-        <div className="nova-news-heading">
+    <section
+      id="news-media"
+      className="journal-section"
+    >
+      <div
+        className="journal-bg"
+        aria-hidden="true"
+      >
+        <span className="journal-orb journal-orb--1" />
+        <span className="journal-orb journal-orb--2" />
+      </div>
+
+      <div className="journal-container">
+
+        {/* HEADER */}
+        <header className="journal-header">
           <div>
-            <div className="nova-section-label reveal">
-              <span>News &amp; Media</span>
+            <div className="journal-eyebrow">
+              <span />
+
+              News &amp; Media
             </div>
-            <h2 className="nova-display-title reveal" style={{ "--d": ".1s" }}>
-              The Latest <span>From Nova.</span>
+
+            <h2>
+              The latest
+              <span>
+                {" "}
+                from Nova.
+              </span>
             </h2>
           </div>
-          <Link to="/news-single" className="nova-text-link reveal" style={{ "--d": ".2s" }}>
-            View newsroom <span>↗</span>
-          </Link>
-        </div>
-        <div className="nova-news-layout">
-          <article
-            className="nova-news-featured reveal"
-            onClick={() => navigate("/news-single")}
-            style={{ "--d": ".3s", cursor: "pointer" }}
-            role="link"
-            tabIndex="0"
-            onKeyDown={(e) => e.key === "Enter" && navigate("/news-single")}
+
+          <Link
+            to="/news-single"
+            className="journal-header-link"
           >
-            <div className="nova-news-featured-image mb-4">
-              <img src={img.news1} alt="Nova Development waterfront residences" /> <span>FEATURED</span>
+            <span>
+              View newsroom
+            </span>
+
+            <ArrowUpRight
+              size={17}
+              strokeWidth={1.6}
+            />
+          </Link>
+        </header>
+
+        {/* MAIN LAYOUT */}
+        <div className="journal-layout">
+
+          {/* FEATURED */}
+          <article
+            className="journal-featured"
+            onClick={openStory}
+            role="link"
+            tabIndex={0}
+            onKeyDown={handleKeyboard}
+          >
+            <div className="journal-featured__media">
+              <img
+                src={img.news1}
+                alt="Nova Development waterfront residences"
+              />
+
+              <div className="journal-featured__overlay" />
+
+              <div className="journal-featured__top">
+                <span className="journal-featured__badge">
+                  Featured
+                </span>
+
+                <span className="journal-featured__index">
+                  01
+                </span>
+              </div>
+
+              <div className="journal-featured__bottom">
+                <span>
+                  Dubai
+                </span>
+
+                <span>
+                  12 Aug 2026
+                </span>
+              </div>
             </div>
-            <div className="nova-news-featured-content">
-              <span className="eyebrow text-gold">DUBAI · 12 AUG 2026</span>
-              <h3>Nova announces new waterfront residences in Dubai Harbour</h3>
-              <p className="mb-4">
-                The group announces its latest luxury residential development as part of its expanding Gulf
-                platform.
+
+            <div className="journal-featured__content">
+
+              <div className="journal-featured__meta">
+                <CalendarDays
+                  size={14}
+                  strokeWidth={1.6}
+                />
+
+                <span>
+                  Dubai · 12 Aug 2026
+                </span>
+              </div>
+
+              <h3>
+                Nova announces new
+                waterfront residences
+                in Dubai Harbour
+              </h3>
+
+              <p>
+                The group announces its
+                latest luxury residential
+                development as part of its
+                expanding Gulf platform.
               </p>
-              <Link to="/news-single" className="nova-text-link">
-                Read story <span>↗</span>
-              </Link>
+
+              <div className="journal-featured__action">
+                <span>
+                  Read story
+                </span>
+
+                <span className="journal-featured__arrow">
+                  <ArrowUpRight
+                    size={18}
+                    strokeWidth={1.6}
+                  />
+                </span>
+              </div>
+
             </div>
           </article>
-          <div className="nova-news-list reveal" style={{ "--d": ".4s" }}>
-            <article
-              className="nova-news-item"
-              onClick={() => navigate("/news-single")}
-              style={{ cursor: "pointer" }}
-              role="link"
-              tabIndex="0"
-              onKeyDown={(e) => e.key === "Enter" && navigate("/news-single")}
-            >
-              <div className="nova-news-item-image">
-                <img src={img.news2} alt="Nova Development UK" />
-              </div>
-              <div className="nova-news-item-content">
-                <span>28 JUN 2026</span> <small>UK</small>
-                <h3>Nova completes 180-acre land assembly in London.</h3>
-                <Link to="/news-single" className="nova-news-item-link">
-                  Read story <span>↗</span>
-                </Link>
-              </div>
-            </article>
-            <article
-              className="nova-news-item"
-              onClick={() => navigate("/news-single")}
-              style={{ cursor: "pointer" }}
-              role="link"
-              tabIndex="0"
-              onKeyDown={(e) => e.key === "Enter" && navigate("/news-single")}
-            >
-              <div className="nova-news-item-image">
-                <img src={img.news3} alt="Nova Development USA" />
-              </div>
-              <div className="nova-news-item-content">
-                <span>05 MAY 2026</span> <small>USA</small>
-                <h3>Nova Capital signs North American co-investment mandate.</h3>
-                <Link to="/news-single" className="nova-news-item-link">
-                  Read story <span>↗</span>
-                </Link>
-              </div>
-            </article>
-            <article
-              className="nova-news-item"
-              onClick={() => navigate("/news-single")}
-              style={{ cursor: "pointer" }}
-              role="link"
-              tabIndex="0"
-              onKeyDown={(e) => e.key === "Enter" && navigate("/news-single")}
-            >
-              <div className="nova-news-item-image">
-                <img src={img.news4} alt="Nova Development Bangladesh" />
-              </div>
-              <div className="nova-news-item-content">
-                <span>18 MAR 2026</span> <small>BANGLADESH</small>
-                <h3>Nova announces new master-planned community in Dhaka.</h3>
-                <Link to="/news-single" className="nova-news-item-link">
-                  Read story <span>↗</span>
-                </Link>
-              </div>
-            </article>
-            <article
-              className="nova-news-item"
-              onClick={() => navigate("/news-single")}
-              style={{ cursor: "pointer" }}
-              role="link"
-              tabIndex="0"
-              onKeyDown={(e) => e.key === "Enter" && navigate("/news-single")}
-            >
-              <div className="nova-news-item-image">
-                <img src={img.news5} alt="Nova Development sustainability report" />
-              </div>
-              <div className="nova-news-item-content">
-                <span>09 JAN 2026</span> <small>GROUP</small>
-                <h3>Nova Development publishes 2025 sustainability report.</h3>
-                <Link to="/news-single" className="nova-news-item-link">
-                  Read story <span>↗</span>
-                </Link>
-              </div>
-            </article>
+
+          {/* SIDE STORIES */}
+          <div className="journal-list">
+
+            <div className="journal-list__heading">
+              <span>
+                Latest stories
+              </span>
+
+              <span>
+                2026
+              </span>
+            </div>
+
+            {stories.map(
+              (
+                story,
+                index
+              ) => (
+                <article
+                  key={story.id}
+                  className="journal-story"
+                  onClick={openStory}
+                  role="link"
+                  tabIndex={0}
+                  onKeyDown={
+                    handleKeyboard
+                  }
+                >
+                  <div className="journal-story__number">
+                    {String(
+                      index + 2
+                    ).padStart(
+                      2,
+                      "0"
+                    )}
+                  </div>
+
+                  <div className="journal-story__image">
+                    <img
+                      src={
+                        story.image
+                      }
+                      alt={
+                        story.title
+                      }
+                    />
+                  </div>
+
+                  <div className="journal-story__content">
+
+                    <div className="journal-story__meta">
+                      <span>
+                        {story.date}
+                      </span>
+
+                      <small>
+                        {story.market}
+                      </small>
+                    </div>
+
+                    <h3>
+                      {story.title}
+                    </h3>
+
+                    <div className="journal-story__link">
+                      Read story
+
+                      <ArrowUpRight
+                        size={15}
+                        strokeWidth={
+                          1.6
+                        }
+                      />
+                    </div>
+
+                  </div>
+                </article>
+              )
+            )}
+
           </div>
         </div>
+
+        {/* FOOTER */}
+        <div className="journal-footer">
+          <span>
+            Nova Development
+            Journal
+          </span>
+
+          <span>
+            Development · Investment ·
+            Markets · Sustainability
+          </span>
+        </div>
+
       </div>
     </section>
   );
