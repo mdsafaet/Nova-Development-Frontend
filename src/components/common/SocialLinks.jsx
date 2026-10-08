@@ -11,7 +11,9 @@ export default function SocialLinks() {
   return (
     <div className="social-curve-wrap">
       <a
-        href="/https://www.youtube.com/@NovaDevelopmentofficial"
+        href="https://www.youtube.com/@NovaDevelopmentofficial"
+        target="_blank"
+        rel="noopener noreferrer"
         className="social-curve-icon social-curve-icon--youtube"
         aria-label="YouTube"
       >
@@ -19,7 +21,9 @@ export default function SocialLinks() {
       </a>
 
       <a
-        href="/https://www.instagram.com/novadevelopmentbd/"
+        href="https://www.instagram.com/novadevelopmentbd/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="social-curve-icon social-curve-icon--instagram"
         aria-label="Instagram"
       >
@@ -27,7 +31,9 @@ export default function SocialLinks() {
       </a>
 
       <a
-        href="#"
+        href="https://x.com/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="social-curve-icon social-curve-icon--x"
         aria-label="X"
       >
@@ -35,14 +41,14 @@ export default function SocialLinks() {
       </a>
 
       <a
-        href="/https://www.facebook.com/novadevelopmentbd"
+        href="https://www.facebook.com/novadevelopmentbd"
+        target="_blank"
+        rel="noopener noreferrer"
         className="social-curve-icon social-curve-icon--facebook"
         aria-label="Facebook"
       >
         <FaFacebookF />
       </a>
-
-     
     </div>
   );
 }
