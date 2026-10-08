@@ -1,29 +1,48 @@
-export default function SocialLinks({children}) {
+import {
+  FaYoutube,
+  FaInstagram,
+  FaFacebookF,
+  FaXTwitter,
+} from "react-icons/fa6";
+
+import "@/styles/social-links.css";
+
+export default function SocialLinks() {
   return (
-    <div className="fab-wrap" id="fabWrap">
-      <a href="#" className="social-icon icon-yt" aria-label="YouTube">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C17.3 2.5 12 2.5 12 2.5h0s-5.3 0-8.3.4c-.4 0-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.2 8.1.2 10v1.9c0 1.9.3 3.8.3 3.8s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s5.3 0 8.3-.4c.4 0 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.6V7.9l6.4 3.4-6.4 3.3z" />
-        </svg>
-      </a>{" "}
-      <a href="#" className="social-icon icon-ig" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.3-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1.1-.4-2.3-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.3 2.3-.4 1.3-.1 1.7-.1 4.9-.1M12 0C8.7 0 8.3 0 7 .1 5.7.1 4.8.3 4 .6c-.8.3-1.5.7-2.2 1.4C1.1 2.7.7 3.4.4 4.2.1 5 0 5.9 0 7.2 0 8.5 0 8.9 0 12s0 3.5.1 4.8c.1 1.3.2 2.2.5 3 .3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.7.5 3 .5 1.3.1 1.7.1 4.9.1s3.5 0 4.8-.1c1.3-.1 2.2-.2 3-.5.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.7.5-3 .1-1.3.1-1.7.1-4.9s0-3.5-.1-4.8c-.1-1.3-.2-2.2-.5-3-.3-.8-.7-1.5-1.4-2.2C21.3 1.1 20.6.7 19.8.4 19 .1 18.1 0 16.8 0 15.5 0 15.1 0 12 0z" />{" "}
-          <path d="M12 5.8A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4z" />{" "}
-          <circle cx="18.4" cy="5.6" r="1.4" />
-        </svg>
-      </a>{" "}
-      <a href="#" className="social-icon icon-tw" aria-label="Twitter">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23.6 4.6c-.8.4-1.7.7-2.6.8.9-.6 1.6-1.5 2-2.5-.9.5-1.9.9-2.9 1.1A4.5 4.5 0 0 0 12.4 8c0 .4 0 .7.1 1A12.8 12.8 0 0 1 3 4.3a4.5 4.5 0 0 0 1.4 6c-.7 0-1.4-.2-2-.6v.1c0 2.2 1.5 4 3.6 4.4-.4.1-.8.2-1.2.2-.3 0-.6 0-.8-.1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.5 12.8 12.8 0 0 0 8 21.5c8.3 0 12.9-6.9 12.9-12.9v-.6c.9-.6 1.6-1.4 2.2-2.3z" />
-        </svg>
-      </a>{" "}
-      <a href="#" className="social-icon icon-fb" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" />
-        </svg>
+    <div className="social-curve-wrap">
+      <a
+        href="#"
+        className="social-curve-icon social-curve-icon--youtube"
+        aria-label="YouTube"
+      >
+        <FaYoutube />
       </a>
-      {children}
+
+      <a
+        href="#"
+        className="social-curve-icon social-curve-icon--instagram"
+        aria-label="Instagram"
+      >
+        <FaInstagram />
+      </a>
+
+      <a
+        href="#"
+        className="social-curve-icon social-curve-icon--x"
+        aria-label="X"
+      >
+        <FaXTwitter />
+      </a>
+
+      <a
+        href="#"
+        className="social-curve-icon social-curve-icon--facebook"
+        aria-label="Facebook"
+      >
+        <FaFacebookF />
+      </a>
+
+     
     </div>
   );
 }

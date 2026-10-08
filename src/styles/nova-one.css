@@ -1633,190 +1633,504 @@
       translateY(-9px);
   }
 }
+/* =========================================================
+   RESPONSIVE — LARGE DESKTOP
+   1400px+
+========================================================= */
+
+@media (min-width: 1400px) {
+  .nova-one-container {
+    max-width: 1500px;
+  }
+
+  .nova-one-layout {
+    grid-template-columns:
+      minmax(0, 1.05fr)
+      minmax(480px, 0.85fr);
+
+    gap: clamp(90px, 9vw, 160px);
+  }
+
+  .nova-one-content h2 {
+    font-size: clamp(64px, 5.5vw, 88px);
+  }
+
+  .nova-one-visual {
+    min-height: 680px;
+  }
+
+  .nova-phone-frame {
+    width: 330px;
+  }
+
+  .nova-phone-screen {
+    min-height: 620px;
+  }
+}
+
+/* =========================================================
+   NOVA ONE — RESPONSIVE
+========================================================= */
+
 
 /* =========================================================
    LAPTOP
+   992px - 1399px
 ========================================================= */
 
-@media (
-  max-width: 1200px
-) {
+@media (max-width: 1399px) {
+
   .nova-one-container {
-    width:
-      calc(
-        100% - 48px
-      );
+    width: calc(100% - 48px);
   }
 
   .nova-one-layout {
     grid-template-columns:
       minmax(0, 1fr)
-      400px;
+      minmax(360px, 0.8fr);
 
-    gap: 70px;
+    gap: 55px;
+  }
+
+  .nova-one-content h2 {
+    font-size: clamp(48px, 5vw, 68px);
+  }
+
+  .nova-one-description {
+    max-width: 540px;
   }
 
   .nova-one-visual {
     min-height: 620px;
   }
 
+  .nova-phone-frame {
+    width: 300px;
+  }
+
+  .nova-phone-screen {
+    min-height: 575px;
+  }
+
+  /* Keep floating cards inside screen */
+
   .nova-floating-card--payments {
-    left: -9%;
+    left: 0;
   }
 
   .nova-floating-card--service {
-    right: -7%;
+    right: 0;
   }
 
   .nova-floating-card--property {
-    left: -4%;
+    left: 2%;
   }
 }
+
 
 /* =========================================================
    TABLET
+   768px - 991px
 ========================================================= */
 
-@media (
-  max-width: 900px
-) {
-  .nova-one-layout {
-    grid-template-columns:
-      1fr;
+@media (max-width: 991px) {
 
-    gap: 55px;
-  }
-
-  .nova-one-content {
-    max-width: 760px;
-  }
-
-  .nova-one-visual {
-    min-height: 640px;
-  }
-
-  .nova-floating-card--payments {
-    left:
-      calc(
-        50% - 300px
-      );
-  }
-
-  .nova-floating-card--service {
-    right:
-      calc(
-        50% - 310px
-      );
-  }
-
-  .nova-floating-card--property {
-    left:
-      calc(
-        50% - 270px
-      );
-  }
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (
-  max-width: 620px
-) {
   .nova-one-section {
-    padding:
-      65px
-      0;
+    padding: 75px 0;
   }
 
   .nova-one-container {
-    width:
-      calc(
-        100% - 28px
-      );
+    width: calc(100% - 40px);
+  }
+
+  .nova-one-layout {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  /* Content */
+
+  .nova-one-content {
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+  .nova-one-eyebrow {
+    justify-content: center;
   }
 
   .nova-one-content h2 {
-    font-size:
-      clamp(
-        42px,
-        13vw,
-        58px
-      );
+    max-width: 700px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: clamp(46px, 7vw, 64px);
   }
 
   .nova-one-description {
-    font-size: 13px;
+    max-width: 600px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nova-one-features {
+    justify-content: center;
+  }
+
+  /* Download area */
+
+  .nova-one-download {
+    max-width: 650px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nova-one-brand {
+    justify-content: center;
   }
 
   .nova-store-row {
-    display: grid;
-
-    grid-template-columns:
-      1fr;
+    justify-content: center;
   }
 
-  .nova-store-btn {
-    width: 100%;
+  .nova-one-note {
+    justify-content: center;
   }
+
+  /* Phone */
 
   .nova-one-visual {
-    min-height: 580px;
+    width: 100%;
+
+    max-width: 680px;
+
+    min-height: 620px;
+
+    margin: 0 auto;
   }
 
   .nova-phone-frame {
-    width: 290px;
+    width: 300px;
   }
 
   .nova-phone-screen {
     min-height: 565px;
   }
 
+  /* Floating cards */
+
+  .nova-floating-card--payments {
+    top: 14%;
+    left: 4%;
+  }
+
+  .nova-floating-card--service {
+    top: 42%;
+    right: 4%;
+  }
+
+  .nova-floating-card--property {
+    left: 7%;
+    bottom: 8%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   <= 767px
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .nova-one-section {
+    padding: 65px 0;
+  }
+
+  .nova-one-container {
+    width: calc(100% - 28px);
+  }
+
+  .nova-one-layout {
+    gap: 40px;
+  }
+
+  /* Content */
+
+  .nova-one-content h2 {
+    font-size: clamp(40px, 10vw, 54px);
+
+    line-height: 0.95;
+  }
+
+  .nova-one-description {
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  .nova-one-features {
+    gap: 7px;
+
+    margin-top: 22px;
+  }
+
+  .nova-one-feature {
+    padding: 8px 10px;
+
+    font-size: 9px;
+  }
+
+  /* Download */
+
+  .nova-one-download {
+    margin-top: 28px;
+
+    padding-top: 22px;
+  }
+
+  .nova-store-row {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .nova-store-btn {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+  .nova-store-btn:last-child {
+    grid-column: 1 / -1;
+
+    width: min(100%, 260px);
+
+    justify-self: center;
+  }
+
+  /* Phone */
+
+  .nova-one-visual {
+    min-height: 590px;
+  }
+
+  .nova-phone-frame {
+    width: 285px;
+  }
+
+  .nova-phone-screen {
+    min-height: 545px;
+  }
+
+  /* Floating cards */
+
   .nova-floating-card {
-    transform: scale(.85);
+    padding: 9px 10px;
+
+    border-radius: 13px;
+  }
+
+  .nova-floating-card--payments {
+    top: 10%;
+    left: 0;
+  }
+
+  .nova-floating-card--service {
+    top: 42%;
+    right: 0;
+  }
+
+  .nova-floating-card--property {
+    left: 2%;
+    bottom: 5%;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   <= 575px
+========================================================= */
+
+@media (max-width: 575px) {
+
+  .nova-one-section {
+    padding: 55px 0;
+  }
+
+  .nova-one-container {
+    width: calc(100% - 22px);
+  }
+
+  /* Heading */
+
+  .nova-one-eyebrow {
+    margin-bottom: 15px;
+
+    font-size: 9px;
+  }
+
+  .nova-one-content h2 {
+    font-size: clamp(36px, 12vw, 48px);
+  }
+
+  .nova-one-description {
+    font-size: 12.5px;
+  }
+
+  /* Features */
+
+  .nova-one-features {
+    justify-content: center;
+  }
+
+  .nova-one-feature {
+    font-size: 8.5px;
+  }
+
+  /* Store buttons */
+
+  .nova-store-row {
+    grid-template-columns: 1fr;
+  }
+
+  .nova-store-btn,
+  .nova-store-btn:last-child {
+    grid-column: auto;
+
+    width: 100%;
+
+    max-width: none;
+
+    justify-self: stretch;
+  }
+
+  /* Phone */
+
+  .nova-one-visual {
+    min-height: 555px;
+  }
+
+  .nova-phone-frame {
+    width: min(280px, 82vw);
+
+    border-radius: 38px;
+  }
+
+  .nova-phone-screen {
+    min-height: 525px;
+
+    padding:
+      40px
+      13px
+      13px;
+
+    border-radius: 31px;
+  }
+
+  .nova-phone-property {
+    height: 145px;
+  }
+
+  .nova-phone-banner {
+    grid-template-columns:
+      1fr
+      80px;
+  }
+
+  /* Smaller floating cards */
+
+  .nova-floating-card {
+    transform: scale(0.82);
   }
 
   .nova-floating-card--payments {
     top: 8%;
-    left: -7px;
+    left: -5px;
   }
 
   .nova-floating-card--service {
-    top: 44%;
-    right: -12px;
+    top: 41%;
+    right: -5px;
   }
 
   .nova-floating-card--property {
-    left: 0;
+    left: -2px;
     bottom: 4%;
   }
 }
 
+
 /* =========================================================
-   VERY SMALL
+   VERY SMALL MOBILE
+   <= 420px
 ========================================================= */
 
-@media (
-  max-width: 400px
-) {
+@media (max-width: 420px) {
+
+  .nova-one-container {
+    width: calc(100% - 20px);
+  }
+
+  .nova-one-content h2 {
+    font-size: clamp(34px, 12vw, 44px);
+  }
+
+  .nova-one-description {
+    font-size: 12px;
+  }
+
   .nova-one-visual {
-    min-height: 560px;
+    min-height: 510px;
   }
 
   .nova-phone-frame {
-    width: 270px;
+    width: min(265px, 84vw);
   }
 
   .nova-phone-screen {
-    min-height: 535px;
-
-    padding-left: 13px;
-    padding-right: 13px;
+    min-height: 500px;
   }
+
+  .nova-phone-property {
+    height: 135px;
+  }
+
+  /*
+    Hide floating cards here because
+    they become too crowded on very
+    small screens.
+  */
 
   .nova-floating-card {
     display: none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .nova-one-orb,
+  .nova-phone-modern,
+  .nova-floating-card {
+    animation: none;
   }
 }
 
@@ -1824,13 +2138,16 @@
    REDUCED MOTION
 ========================================================= */
 
-@media (
-  prefers-reduced-motion:
-  reduce
-) {
+@media (prefers-reduced-motion: reduce) {
   .nova-one-orb,
   .nova-phone-modern,
   .nova-floating-card {
     animation: none;
+  }
+
+  .nova-store-btn,
+  .nova-one-feature,
+  .nova-phone-actions button span {
+    transition: none;
   }
 }

@@ -21,6 +21,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.2.0",
     "react-fast-marquee": "^1.6.5",
+    "react-icons": "^5.7.0",
     "react-leaflet": "^5.0.0",
     "react-parallax-tilt": "^1.7.346",
     "react-router-dom": "^7.0.0",
