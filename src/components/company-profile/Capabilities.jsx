@@ -1,75 +1,83 @@
+import { motion } from "framer-motion";
+import { LuMapPinned, LuHardHat, LuLandmark, LuCheck, LuArrowUpRight } from "react-icons/lu";
+import Float, { bounce, Reveal } from "./Float";
+
+const capabilities = [
+  {
+    icon: LuMapPinned,
+    title: "Land & Master Planning",
+    text: "Intelligent acquisition, diligence, entitlements and master planning — building resilient neighborhoods and infrastructure.",
+    items: ["Land assembly & diligence", "Master planning & entitlements", "Sustainable infrastructure"],
+  },
+  {
+    icon: LuHardHat,
+    title: "Design & Delivery",
+    text: "Design excellence, engineering discipline and construction stewardship — delivered to one consistent standard.",
+    items: ["Architecture & engineering", "Construction & delivery", "Quality & governance"],
+  },
+  {
+    icon: LuLandmark,
+    title: "Capital & Stewardship",
+    text: "Disciplined capital, transparent governance and long-term stewardship — returns measured in decades.",
+    items: ["Investment & advisory", "Asset & community management", "Long-term stewardship"],
+  },
+];
+
 export default function Capabilities() {
   return (
-    <section id="capabilities" className="cp-capabilities">
-      <div className="container">
-        <div className="nova-section-label reveal">
+    <section id="capabilities" className="cpx cpx-cap">
+      <div className="cpx-orb cpx-orb--bl" />
+      <div className="cpx-gridlines" />
+
+      <div className="cpx-wrap">
+        <div className="cpx-head cpx-head--light">
+          <b>03</b>
+          <i />
           <span>Capabilities</span>
         </div>
-        <h2 className="nova-display-title reveal" style={{ "--d": ".1s" }}>
-          What we do — <span>end to end.</span>
-        </h2>
-        <p className="nova-muted-text reveal" style={{ "--d": ".2s", maxWidth: "640px", marginTop: "14px" }}>
-          Integrated development platform spanning the full lifecycle — de-risking growth for investors while
-          delivering places that perform for owners and delight residents.
-        </p>
-        <div className="cp-cap-grid">
-          <div className="cp-cap-card reveal" style={{ "--d": ".3s" }}>
-            <i className="fa-solid fa-magnifying-glass-chart" />
-            <h3>Land &amp; Master Planning</h3>
+
+        <Reveal>
+          <div className="cpx-split">
+            <h2 className="cpx-title cpx-title--light">
+              What we do —
+              <span>end to end.</span>
+            </h2>
             <p>
-              Intelligent acquisition, diligence, entitlements and master planning — building resilient
-              neighborhoods and infrastructure.
+              An integrated development platform spanning the full lifecycle, creating long-term value for
+              investors, owners and communities.
             </p>
-            <ul>
-              <li>
-                <i className="fa-solid fa-check" /> Land assembly &amp; diligence
-              </li>
-              <li>
-                <i className="fa-solid fa-check" /> Master planning &amp; entitlements
-              </li>
-              <li>
-                <i className="fa-solid fa-check" /> Sustainable infrastructure
-              </li>
-            </ul>
           </div>
-          <div className="cp-cap-card reveal" style={{ "--d": ".4s" }}>
-            <i className="fa-solid fa-helmet-safety" />
-            <h3>Design &amp; Delivery</h3>
-            <p>
-              Design excellence, engineering discipline and construction stewardship — on time, on standard,
-              every market.
-            </p>
-            <ul>
-              <li>
-                <i className="fa-solid fa-check" /> Architecture &amp; engineering
-              </li>
-              <li>
-                <i className="fa-solid fa-check" /> Construction &amp; delivery
-              </li>
-              <li>
-                <i className="fa-solid fa-check" /> Quality &amp; governance
-              </li>
-            </ul>
-          </div>
-          <div className="cp-cap-card reveal" style={{ "--d": ".5s" }}>
-            <i className="fa-solid fa-handshake" />
-            <h3>Capital &amp; Stewardship</h3>
-            <p>
-              Disciplined capital, transparent governance and long-term stewardship — returns measured in
-              decades.
-            </p>
-            <ul>
-              <li>
-                <i className="fa-solid fa-check" /> Investment &amp; advisory
-              </li>
-              <li>
-                <i className="fa-solid fa-check" /> Asset &amp; community management
-              </li>
-              <li>
-                <i className="fa-solid fa-check" /> Long-term stewardship
-              </li>
-            </ul>
-          </div>
+        </Reveal>
+
+        <div className="cpx-cap-grid">
+          {capabilities.map(({ icon: Icon, title, text, items }, index) => (
+            <Reveal key={title} delay={index * 0.1}>
+              <Float className="cpx-float" distance={9} duration={5.5 + index * 0.6} delay={index * 0.7}>
+                <motion.article
+                  className="cpx-glass cpx-card"
+                  whileHover={{ y: -14, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={bounce}
+                >
+                  <div className="cpx-card-top">
+                    <div className="cpx-card-ico"><Icon /></div>
+                    <span className="cpx-card-num">0{index + 1}</span>
+                  </div>
+
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+
+                  <ul className="cpx-checks">
+                    {items.map((item) => (
+                      <li key={item}><LuCheck aria-hidden="true" />{item}</li>
+                    ))}
+                  </ul>
+
+                  <div className="cpx-card-arrow" aria-hidden="true"><LuArrowUpRight /></div>
+                </motion.article>
+              </Float>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import Intro from "@/components/company-profile/Intro";
 import Capabilities from "@/components/company-profile/Capabilities";
 import Values from "@/components/company-profile/Values";
 import Cta from "@/components/company-profile/Cta";
+import "@/styles/company-profile.css";
 
 export default function CompanyProfile() {
   return (
