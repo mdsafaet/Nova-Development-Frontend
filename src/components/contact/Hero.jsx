@@ -22,17 +22,17 @@ const cards = [
   {
     icon: LuMail,
     title: "Group enquiries",
-    text: "enquiries@novaland.group",
+    text: "info@novadevelopmentglobal.com",
   },
   {
     icon: LuPhone,
     title: "Head office",
-    text: "+971 4 555 8800",
+    text: "+971 6 538 8233",
   },
   {
     icon: LuMapPin,
     title: "Dubai",
-    text: "Boulevard Plaza",
+    text: "Al Tallah 2 - Ajman - United Arab Emirates",
   },
 ];
 

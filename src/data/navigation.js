@@ -7,7 +7,7 @@ export const flags = [
 
 export const companyLinks = [
   ["/company-profile", "Company Profile"],
-  ["/chairman", "Chairman Message"],
+  ["/chairman", "Managing Director Message"],
   ["/vision-mission", "Corporate Vision & Mission"],
 ];
 

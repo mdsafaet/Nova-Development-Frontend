@@ -6,7 +6,7 @@ import { video } from "@/assets/images";
 
 const HEADING = "Building land into legacy — across four markets";
 const LEN = HEADING.length;
-const DURATION = 2.2; // seconds per count up / count down
+const DURATION = 4.4; // seconds per count up / count down
 
 const stack = { gridArea: "1 / 1" };
 // must be outside the component so it stays stable between renders

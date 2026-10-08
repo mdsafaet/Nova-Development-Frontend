@@ -101,7 +101,7 @@ export default function Chairman() {
             <span className="chairman-modern__eyebrow-dot" />
 
             {/* Chairman's Message */}
-            Manag
+            Managing Director's Message
           </div>
 
           <div className="chairman-modern__location">
@@ -332,7 +332,7 @@ export default function Chairman() {
 
             <div>
               <strong>
-                Chairman's Office
+                Managing Director's Office
               </strong>
 
               <span>

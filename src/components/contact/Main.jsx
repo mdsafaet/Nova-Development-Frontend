@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import {
   motion,
   useReducedMotion,
@@ -22,6 +23,7 @@ import Float, {
   bounce,
 } from "@/components/company-profile/Float";
 
+
 const trustItems = [
   {
     icon: LuLockKeyhole,
@@ -37,21 +39,24 @@ const trustItems = [
   },
 ];
 
+
 const contactItems = [
   {
     icon: LuMail,
     title: "Group enquiries",
-    href: "mailto:enquiries@novaland.group",
-    value: "enquiries@novaland.group",
+    href: "mailto:info@novadevelopmentglobal.com",
+    value: "info@novadevelopmentglobal.com",
     note: "For investment & partnership",
   },
+
   {
     icon: LuPhone,
     title: "Head office — Dubai",
-    href: "tel:+97145558800",
-    value: "+971 4 555 8800",
+    href: "tel:+97165388233",
+    value: "+971 6 538 8233",
     note: "Sun–Thu, 9am–6pm GST",
   },
+
   {
     icon: LuMessageCircle,
     title: "WhatsApp",
@@ -62,8 +67,10 @@ const contactItems = [
   },
 ];
 
+
 export default function Main() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion =
+    useReducedMotion();
 
   return (
     <section
@@ -74,14 +81,21 @@ export default function Main() {
         <Reveal>
           <div className="nvc-section-head">
             <span>01</span>
+
             <i />
+
             <strong>
               Enquiry
             </strong>
           </div>
         </Reveal>
 
+
         <div className="nvc-contact-grid">
+          {/* =========================================
+              CONTACT FORM
+          ========================================== */}
+
           <Reveal>
             <div className="nvc-form-card">
               <p className="nvc-kicker">
@@ -90,7 +104,9 @@ export default function Main() {
 
               <h2 className="nvc-title">
                 Send a
-                <span>message.</span>
+                <span>
+                  message.
+                </span>
               </h2>
 
               <p className="nvc-form-intro">
@@ -98,6 +114,9 @@ export default function Main() {
                 interest — routed to the
                 right market within hours.
               </p>
+
+
+              {/* TRUST ITEMS */}
 
               <div className="nvc-trust-row">
                 {trustItems.map(
@@ -110,6 +129,7 @@ export default function Main() {
                       className="nvc-trust-item"
                     >
                       <Icon />
+
                       <span>
                         {label}
                       </span>
@@ -118,11 +138,16 @@ export default function Main() {
                 )}
               </div>
 
+
+              {/* FORM */}
+
               <form
                 id="contactForm"
                 className="nvc-form"
                 noValidate
               >
+                {/* NAME */}
+
                 <div className="nvc-form-row">
                   <div className="nvc-field">
                     <label htmlFor="firstName">
@@ -151,6 +176,9 @@ export default function Main() {
                   </div>
                 </div>
 
+
+                {/* EMAIL / PHONE */}
+
                 <div className="nvc-form-row">
                   <div className="nvc-field">
                     <label htmlFor="email">
@@ -177,6 +205,9 @@ export default function Main() {
                     />
                   </div>
                 </div>
+
+
+                {/* COMPANY / TYPE */}
 
                 <div className="nvc-form-row">
                   <div className="nvc-field">
@@ -231,6 +262,9 @@ export default function Main() {
                   </div>
                 </div>
 
+
+                {/* MARKET */}
+
                 <div className="nvc-field">
                   <label htmlFor="market">
                     Market
@@ -263,6 +297,9 @@ export default function Main() {
                   </select>
                 </div>
 
+
+                {/* MESSAGE */}
+
                 <div className="nvc-field">
                   <label htmlFor="message">
                     Message *
@@ -274,6 +311,9 @@ export default function Main() {
                     required
                   />
                 </div>
+
+
+                {/* FORM FOOTER */}
 
                 <div className="nvc-form-footer">
                   <label className="nvc-consent">
@@ -295,11 +335,14 @@ export default function Main() {
                     whileHover={
                       reduceMotion
                         ? undefined
-                        : { y: -8 }
+                        : {
+                            y: -8,
+                          }
                     }
                     transition={bounce}
                   >
                     Send message
+
                     <LuSend />
                   </motion.button>
                 </div>
@@ -312,6 +355,11 @@ export default function Main() {
             </div>
           </Reveal>
 
+
+          {/* =========================================
+              RIGHT SIDE
+          ========================================== */}
+
           <aside className="nvc-contact-side">
             <Float delay={0.2}>
               <motion.div
@@ -319,7 +367,9 @@ export default function Main() {
                 whileHover={
                   reduceMotion
                     ? undefined
-                    : { y: -10 }
+                    : {
+                        y: -10,
+                      }
                 }
                 transition={bounce}
               >
@@ -330,6 +380,7 @@ export default function Main() {
 
                   <LuArrowUpRight />
                 </div>
+
 
                 <div className="nvc-direct-list">
                   {contactItems.map(
@@ -378,6 +429,9 @@ export default function Main() {
                     )
                   )}
 
+
+                  {/* VISIT US */}
+
                   <div className="nvc-direct-item">
                     <span className="nvc-direct-icon">
                       <LuMapPin />
@@ -389,15 +443,20 @@ export default function Main() {
                       </strong>
 
                       <p>
-                        Level 24, Boulevard
-                        Plaza, Downtown Dubai
-                        — by appointment
+                        Al Tallah 2 -
+                        Ajman - United Arab
+                        Emirates
                       </p>
                     </div>
                   </div>
                 </div>
               </motion.div>
             </Float>
+
+
+            {/* =========================================
+                QUICK ACTIONS
+            ========================================== */}
 
             <Float
               delay={0.55}
@@ -408,7 +467,9 @@ export default function Main() {
                 whileHover={
                   reduceMotion
                     ? undefined
-                    : { y: -8 }
+                    : {
+                        y: -8,
+                      }
                 }
                 transition={bounce}
               >
@@ -419,16 +480,19 @@ export default function Main() {
                 <div className="nvc-quick-links">
                   <Link to="/company-profile">
                     Company profile
+
                     <LuArrowUpRight />
                   </Link>
 
                   <Link to="/portfolio">
                     Explore portfolio
+
                     <LuArrowUpRight />
                   </Link>
 
                   <Link to="/investors">
                     Investor information
+
                     <LuArrowUpRight />
                   </Link>
 
@@ -443,6 +507,7 @@ export default function Main() {
                     }}
                   >
                     Download brochure
+
                     <LuDownload />
                   </a>
                 </div>

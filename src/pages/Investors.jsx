@@ -7,6 +7,9 @@ import Markets from "@/components/investors/Markets";
 import Cta from "@/components/investors/Cta";
 
 import "@/styles/investors.css";
+import "@/styles/contact.css";
+import Map from "@/components/contact/Map";
+import Offices from "@/components/contact/Offices";
 
 export default function Investors() {
   return (
@@ -17,7 +20,9 @@ export default function Investors() {
       <Thesis />
       <Metrics />
       <Governance />
-      <Markets />
+      {/* <Markets /> */}
+      {/* <Map/> */}
+      <Offices />
       <Cta />
     </>
   );

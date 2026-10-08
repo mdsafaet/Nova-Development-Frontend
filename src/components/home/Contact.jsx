@@ -19,11 +19,9 @@ const offices = [
     code: "AE",
     timeZone: "Asia/Dubai",
     address: [
-      "Building No: 0405, Al Tallah 2",
-      "Ajman",
-      "United Arab Emirates",
+      "Al Tallah 2 - Ajman - United Arab Emirates",
     ],
-    phone: "+09606 707 707",
+    phone: "+971 6 538 8233",
   },
   {
     id: "dhaka",
@@ -38,7 +36,7 @@ const offices = [
       "Bashundhara Residential Area, Dhaka-1229",
       "Bangladesh",
     ],
-    phone: "+",
+    phone: "+09606 707 707",
   },
   {
     id: "new-york",
@@ -47,13 +45,8 @@ const offices = [
     country: "United States",
     code: "US",
     timeZone: "America/New_York",
-    address: [
-      "",
-      "",
-      "New York, NY 10007",
-      "USA",
-    ],
-    phone: "+",
+    address: [],
+    phone: "",
   },
   {
     id: "london",
@@ -63,12 +56,10 @@ const offices = [
     code: "GB",
     timeZone: "Europe/London",
     address: [
-      "",
-      "",
-      "London E14 5AB",
-      "United Kingdom",
+      "1st Floor, 195 Vallance Road",
+      "London E1 5HS",
     ],
-    phone: "+",
+    phone: "020 3299 6900",
   },
 ];
 
