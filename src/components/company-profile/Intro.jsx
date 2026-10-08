@@ -67,7 +67,7 @@ export default function Intro() {
               </Float>
 
               <Float className="cpx-visual-card" distance={7} duration={4.5} delay={0.6}>
-                <motion.div className="cpx-glass-light cpx-project" whileHover={{ y: -8, scale: 1.02 }} transition={bounce}>
+                <motion.div className="cpx-glass-light cpx-project" whileHover={{ y: -8 }} transition={bounce}>
                   <div className="cpx-project-ico"><LuMapPin /></div>
                   <div>
                     <strong>Nova Meadows</strong>

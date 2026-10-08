@@ -70,7 +70,7 @@ export default function Hero() {
 
           <div className="cpx-hero-side">
             <Float distance={10} duration={5.5}>
-              <motion.div className="cpx-glass cpx-presence" whileHover={{ y: -8, scale: 1.02 }} transition={bounce}>
+              <motion.div className="cpx-glass cpx-presence" whileHover={{ y: -8 }} transition={bounce}>
                 <div className="cpx-presence-head">
                   <span className="cpx-ping" aria-hidden="true" />
                   Global presence
@@ -98,7 +98,7 @@ export default function Hero() {
             </Float>
 
             <Float distance={7} duration={4.5} delay={0.8}>
-              <motion.div className="cpx-glass cpx-since" whileHover={{ y: -6, scale: 1.03 }} transition={bounce}>
+              <motion.div className="cpx-glass cpx-since" whileHover={{ y: -6 }} transition={bounce}>
                 <strong>2009</strong>
                 <span>Established<br />Dhaka, Bangladesh</span>
               </motion.div>

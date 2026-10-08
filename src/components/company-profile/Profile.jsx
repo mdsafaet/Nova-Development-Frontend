@@ -68,9 +68,9 @@ export default function Profile() {
                     aria-pressed={isActive}
                     className={`cpx-stat cpx-glass-light${isActive ? " is-active" : ""}`}
                     onClick={() => setActiveCard(isActive ? null : index)}
-                    animate={{ y: isActive ? -22 : 0, scale: isActive ? 1.035 : 1 }}
+                    animate={{ y: isActive ? -22 : 0 }}
                     whileHover={isActive ? {} : { y: -10 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={{ scale: 0.97 }}
                     transition={bounce}
                   >
                     <span className="cpx-stat-top">

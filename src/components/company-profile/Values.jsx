@@ -45,7 +45,7 @@ export default function Values() {
               >
                 <motion.article
                   className="cpx-glass-light cpx-value"
-                  whileHover={{ y: -12, scale: 1.03 }}
+                  whileHover={{ y: -12 }}
                   whileTap={{ scale: 0.97 }}
                   transition={bounce}
                 >

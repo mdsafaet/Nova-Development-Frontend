@@ -55,8 +55,8 @@ export default function Capabilities() {
               <Float className="cpx-float" distance={9} duration={5.5 + index * 0.6} delay={index * 0.7}>
                 <motion.article
                   className="cpx-glass cpx-card"
-                  whileHover={{ y: -14, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ y: -14 }}
+                  whileTap={{ scale: 0.985 }}
                   transition={bounce}
                 >
                   <div className="cpx-card-top">

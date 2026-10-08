@@ -1,7 +1,8 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 
-// Springy, slightly under-damped = the "bounce" used on hover / tap.
-export const bounce = { type: "spring", stiffness: 320, damping: 12, mass: 0.7 };
+// Soft spring: one gentle overshoot, then settles (damping ratio ~0.8).
+export const bounce = { type: "spring", stiffness: 180, damping: 20, mass: 0.9 };
 
 // Fade + rise when scrolled into view.
 export function Reveal({ children, className = "", delay = 0 }) {
@@ -18,14 +19,23 @@ export function Reveal({ children, className = "", delay = 0 }) {
   );
 }
 
-// Endless gentle up/down drift. Wrap a card in this, and put the hover bounce on the card itself.
+// Endless gentle up/down drift. Only runs while on screen, so off-screen cards cost nothing.
 export default function Float({ children, className = "", distance = 8, duration = 6, delay = 0 }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { margin: "120px" });
   const reduce = useReducedMotion();
+
   return (
     <motion.div
+      ref={ref}
       className={className}
-      animate={reduce ? undefined : { y: [0, -distance, 0] }}
-      transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
+      style={{ willChange: "transform" }}
+      animate={reduce || !inView ? { y: 0 } : { y: [0, -distance, 0] }}
+      transition={
+        reduce || !inView
+          ? { duration: 0.4 }
+          : { duration, delay, repeat: Infinity, ease: "easeInOut" }
+      }
     >
       {children}
     </motion.div>
