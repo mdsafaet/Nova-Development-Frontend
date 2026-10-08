@@ -7,7 +7,7 @@ import {
   Phone,
 } from "lucide-react";
 
-import "@/styles/contact.css";
+import "@/styles/contact-home.css";
 
 const offices = [
   {

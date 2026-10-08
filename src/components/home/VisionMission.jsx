@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import { img } from "@/assets/images";
-import "@/styles/vision-mission.css";
+import "@/styles/home-vission.css";
 
 const content = {
   vision: {
