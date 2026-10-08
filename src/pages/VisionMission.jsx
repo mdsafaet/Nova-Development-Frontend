@@ -5,6 +5,7 @@ import Vision from "@/components/vision-mission/Vision";
 import Mission from "@/components/vision-mission/Mission";
 import Values from "@/components/vision-mission/Values";
 import Principles from "@/components/vision-mission/Principles";
+import "@/styles/vision-mission.css";
 
 export default function VisionMission() {
   return (

@@ -1,12 +1,13 @@
 import PortfolioHero from "@/components/portfolio/PortfolioHero";
 import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
 
+import "@/styles/portfolio.css";
+
 export default function Portfolio() {
   return (
-    <>
-      <title>Portfolio — Nova Development</title>
+    <main className="nvp-page">
       <PortfolioHero />
       <PortfolioGrid />
-    </>
+    </main>
   );
 }

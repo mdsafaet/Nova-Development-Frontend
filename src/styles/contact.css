@@ -1,1743 +1,1516 @@
-/* ======================================
-   CONTACT SECTION
-====================================== */
+/* =========================================================
+   NOVA CONTACT
+   Prefix: nvc-
+========================================================= */
 
-.contact-global {
-  position: relative;
+.nvc-page {
+  overflow: clip;
 
-  padding:
-    clamp(
-      5rem,
-      8vw,
-      8rem
-    )
-    0;
+  background: #fff;
 
-  overflow: hidden;
+  color: #0f131f;
 
-  background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(139, 180, 184, 0.12),
-      transparent 26%
-    ),
-    radial-gradient(
-      circle at 85% 15%,
-      rgba(80, 120, 255, 0.12),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at 75% 80%,
-      rgba(35, 100, 108, 0.16),
-      transparent 26%
-    ),
-    linear-gradient(
-      180deg,
-      #07111f 0%,
-      #0c1828 48%,
-      #101b2a 100%
-    );
-
-  color: #ffffff;
-
-  font-family:
-    var(--font-sans);
+  font-family: var(--font-sans);
 }
 
-/* ======================================
-   BACKGROUND
-====================================== */
-
-.contact-global__bg {
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 0;
-
-  overflow: hidden;
-
-  pointer-events: none;
+.nvc-page *,
+.nvc-page *::before,
+.nvc-page *::after {
+  box-sizing: border-box;
 }
 
-/* ======================================
-   FLOATING ORBS
-====================================== */
-
-.contact-orb {
-  position: absolute;
-
+.nvc-page img {
   display: block;
 
-  border-radius: 50%;
-
-  filter: blur(10px);
-
-  opacity: 0.65;
-
-  animation:
-    contactFloat
-    12s
-    ease-in-out
-    infinite;
+  max-width: 100%;
 }
 
-.contact-orb--1 {
-  width: 260px;
-  height: 260px;
 
-  top: 8%;
-  left: -60px;
+/* =========================================================
+   SHARED HEADER
+========================================================= */
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        139,
-        180,
-        184,
-        0.35
-      )
-      0%,
-      rgba(
-        139,
-        180,
-        184,
-        0.08
-      )
-      55%,
-      transparent
-      72%
-    );
-
-  animation-duration: 14s;
-}
-
-.contact-orb--2 {
-  width: 340px;
-  height: 340px;
-
-  right: -80px;
-  top: 18%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        93,
-        130,
-        255,
-        0.26
-      )
-      0%,
-      rgba(
-        93,
-        130,
-        255,
-        0.06
-      )
-      58%,
-      transparent
-      76%
-    );
-
-  animation-duration: 17s;
-}
-
-.contact-orb--3 {
-  width: 220px;
-  height: 220px;
-
-  bottom: 6%;
-  left: 45%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        35,
-        100,
-        108,
-        0.28
-      )
-      0%,
-      rgba(
-        35,
-        100,
-        108,
-        0.08
-      )
-      56%,
-      transparent
-      75%
-    );
-
-  animation-duration: 13s;
-}
-
-/* ======================================
-   STARS
-====================================== */
-
-.contact-star {
-  position: absolute;
-
-  width: 6px;
-  height: 6px;
-
-  border-radius: 999px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.88
-    );
-
-  box-shadow:
-    0 0 12px
-    rgba(
-      255,
-      255,
-      255,
-      0.4
-    ),
-    0 0 24px
-    rgba(
-      139,
-      180,
-      184,
-      0.2
-    );
-
-  animation:
-    contactTwinkle
-    4.8s
-    ease-in-out
-    infinite;
-}
-
-.contact-star::before,
-.contact-star::after {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  border-radius: 999px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.58
-    );
-}
-
-.contact-star::before {
-  width: 1px;
-  height: 18px;
-}
-
-.contact-star::after {
-  width: 18px;
-  height: 1px;
-}
-
-.contact-star--1 {
-  top: 14%;
-  left: 18%;
-
-  animation-delay: 0s;
-}
-
-.contact-star--2 {
-  top: 24%;
-  left: 72%;
-
-  animation-delay: 0.8s;
-}
-
-.contact-star--3 {
-  top: 40%;
-  left: 10%;
-
-  animation-delay: 1.2s;
-}
-
-.contact-star--4 {
-  top: 58%;
-  left: 84%;
-
-  animation-delay: 1.7s;
-}
-
-.contact-star--5 {
-  top: 72%;
-  left: 30%;
-
-  animation-delay: 2.1s;
-}
-
-.contact-star--6 {
-  top: 80%;
-  left: 62%;
-
-  animation-delay: 2.8s;
-}
-
-.contact-star--7 {
-  top: 32%;
-  left: 48%;
-
-  animation-delay: 3.1s;
-}
-
-.contact-star--8 {
-  top: 12%;
-  left: 90%;
-
-  animation-delay: 3.8s;
-}
-
-/* ======================================
-   CONTAINER
-====================================== */
-
-.contact-global__container {
-  position: relative;
-
-  z-index: 2;
-
-  width:
-    min(
-      1480px,
-      calc(
-        100% - 72px
-      )
-    );
-
-  margin: 0 auto;
-}
-
-/* ======================================
-   HEADER
-====================================== */
-
-.contact-global__header {
-  display: grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.15fr
-    )
-    minmax(
-      300px,
-      0.55fr
-    );
-
-  align-items: end;
-
-  gap:
-    clamp(
-      42px,
-      7vw,
-      110px
-    );
-
-  margin-bottom: 54px;
-}
-
-.contact-global__eyebrow {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  margin-bottom: 18px;
-
-  font-size: 10px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.18em;
-
-  text-transform: uppercase;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.62
-    );
-}
-
-.contact-global__eyebrow > span {
-  width: 6px;
-  height: 6px;
-
-  border-radius: 999px;
-
-  background:
-    var(--gold-soft);
-
-  box-shadow:
-    0 0 12px
-    rgba(
-      139,
-      180,
-      184,
-      0.5
-    );
-}
-
-.contact-global__header h2 {
-  max-width: 10ch;
-
-  margin: 0;
-
-  font-family:
-    var(--font-display);
-
-  font-size:
-    clamp(
-      3.7rem,
-      6vw,
-      6.8rem
-    );
-
-  font-weight: 700;
-
-  line-height: 0.92;
-
-  letter-spacing:
-    -0.045em;
-
-  color: #ffffff;
-}
-
-.contact-global__header h2 em {
-  font-family:
-    var(--font-display);
-
-  font-style: normal;
-
-  font-weight: 700;
-
-  color:
-    var(--gold-soft);
-}
-
-/* ======================================
-   HEADER RIGHT
-====================================== */
-
-.contact-global__header-right {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 26px;
-}
-
-.contact-global__header-right > p {
-  max-width: 390px;
-
-  margin: 0;
-
-  font-size: 14px;
-
-  line-height: 1.72;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.58
-    );
-}
-
-.contact-global__presence {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 16px;
-
-  align-self: flex-start;
-
-  padding:
-    14px
-    18px;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.1
-    );
-
-  border-radius: 18px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.04
-    );
-
-  backdrop-filter:
-    blur(18px);
-
-  -webkit-backdrop-filter:
-    blur(18px);
-
-  box-shadow:
-    0 16px 40px
-    rgba(
-      0,
-      0,
-      0,
-      0.16
-    );
-}
-
-.contact-global__presence > span {
-  font-family:
-    var(--font-display);
-
-  font-size: 2.6rem;
-
-  font-weight: 700;
-
-  line-height: 1;
-
-  color:
-    var(--gold-soft);
-}
-
-.contact-global__presence p {
-  max-width: 150px;
-
-  margin: 0;
-
-  font-size: 10px;
-
-  font-weight: 600;
-
-  line-height: 1.45;
-
-  letter-spacing: 0.1em;
-
-  text-transform: uppercase;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.52
-    );
-}
-
-/* ======================================
-   OFFICE GRID
-====================================== */
-
-.contact-office-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap: 24px;
-}
-
-/* ======================================
-   GLASS CARD
-====================================== */
-
-.contact-office-card {
-  position: relative;
-
-  display: flex;
-
-  flex-direction: column;
-
-  min-height: 500px;
-
-  padding:
-    clamp(
-      24px,
-      2vw,
-      30px
-    );
-
-  overflow: hidden;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.12
-    );
-
-  border-radius: 28px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(
-        255,
-        255,
-        255,
-        0.12
-      )
-      0%,
-      rgba(
-        255,
-        255,
-        255,
-        0.05
-      )
-      100%
-    );
-
-  box-shadow:
-    0 24px 70px
-    rgba(
-      0,
-      0,
-      0,
-      0.24
-    ),
-    inset
-    0
-    1px
-    0
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  backdrop-filter:
-    blur(22px);
-
-  -webkit-backdrop-filter:
-    blur(22px);
-
-  transition:
-    transform
-    350ms
-    ease,
-    box-shadow
-    350ms
-    ease,
-    border-color
-    350ms
-    ease,
-    background
-    350ms
-    ease;
-}
-
-.contact-office-card::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(
-        255,
-        255,
-        255,
-        0.16
-      ),
-      transparent 28%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(
-        255,
-        255,
-        255,
-        0.05
-      ),
-      transparent 60%
-    );
-}
-
-.contact-office-card:hover {
-  transform:
-    translateY(-10px);
-
-  border-color:
-    rgba(
-      139,
-      180,
-      184,
-      0.34
-    );
-
-  box-shadow:
-    0 32px 85px
-    rgba(
-      0,
-      0,
-      0,
-      0.28
-    ),
-    0 0 0 1px
-    rgba(
-      139,
-      180,
-      184,
-      0.08
-    );
-}
-
-/* ======================================
-   PRIMARY CARD
-====================================== */
-
-.contact-office-card--primary {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(
-        139,
-        180,
-        184,
-        0.14
-      )
-      0%,
-      rgba(
-        255,
-        255,
-        255,
-        0.06
-      )
-      100%
-    );
-
-  border-color:
-    rgba(
-      139,
-      180,
-      184,
-      0.28
-    );
-}
-
-.contact-office-card--primary::after {
-  content: "";
-
-  position: absolute;
-
-  inset:
-    auto
-    18px
-    16px
-    auto;
-
-  width: 86px;
-  height: 86px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        139,
-        180,
-        184,
-        0.18
-      ),
-      transparent 68%
-    );
-
-  filter: blur(10px);
-
-  pointer-events: none;
-}
-
-/* ======================================
-   CARD TOP
-====================================== */
-
-.contact-office-card__top {
-  position: relative;
-
-  z-index: 2;
-
+.nvc-section-head {
   display: flex;
 
   align-items: center;
 
-  justify-content:
-    space-between;
+  gap: 14px;
 
-  gap: 20px;
-
-  margin-bottom: 34px;
-}
-
-.contact-office-number {
-  font-size: 9px;
-
-  font-weight: 700;
-
-  letter-spacing: 0.18em;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.34
-    );
-}
-
-.contact-office-flag {
-  width: 42px;
-  height: 28px;
-
-  overflow: hidden;
-
-  border-radius: 8px;
-
-  box-shadow:
-    0 10px 18px
-    rgba(
-      0,
-      0,
-      0,
-      0.22
-    ),
-    0 0 0 1px
-    rgba(
-      255,
-      255,
-      255,
-      0.14
-    );
-}
-
-/* ======================================
-   OFFICE HEADING
-====================================== */
-
-.contact-office-card__heading {
-  position: relative;
-
-  z-index: 2;
-
-  margin-bottom: 24px;
-}
-
-.contact-office-label {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  margin-bottom: 12px;
-
-  padding:
-    7px
-    12px;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  border-radius: 999px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  font-size: 9px;
-
-  font-weight: 700;
-
-  letter-spacing: 0.16em;
-
-  text-transform:
-    uppercase;
-
-  color:
-    var(--gold-soft);
-}
-
-.contact-office-card__heading h3 {
-  margin: 0;
-
-  font-family:
-    var(--font-display);
-
-  font-size:
-    clamp(
-      2.3rem,
-      3vw,
-      3.5rem
-    );
-
-  font-weight: 700;
-
-  line-height: 0.95;
-
-  letter-spacing:
-    -0.03em;
-
-  color: #ffffff;
-}
-
-.contact-office-card__heading p {
-  margin:
-    8px
-    0
-    0;
-
-  font-size: 12px;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.5
-    );
-}
-
-/* ======================================
-   ADDRESS
-====================================== */
-
-.contact-office-address {
-  position: relative;
-
-  z-index: 2;
-
-  display: grid;
-
-  grid-template-columns:
-    18px
-    1fr;
-
-  gap: 10px;
-
-  align-items: start;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.7
-    );
-}
-
-.contact-office-address > svg {
-  margin-top: 2px;
-
-  color:
-    var(--gold-soft);
-}
-
-.contact-office-address address {
-  margin: 0;
-
-  font-style: normal;
-
-  font-size: 11.5px;
-
-  line-height: 1.7;
-}
-
-.contact-office-address address span {
-  display: block;
-}
-
-/* ======================================
-   CARD BOTTOM
-====================================== */
-
-.contact-office-card__bottom {
-  position: relative;
-
-  z-index: 2;
-
-  margin-top: auto;
-
-  padding-top: 26px;
-}
-
-.contact-office-meta {
-  padding:
-    13px
-    16px;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  border-radius: 16px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.05
-    );
-}
-
-.contact-office-local {
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  font-size: 9px;
-
-  font-weight: 600;
-
-  text-transform:
-    uppercase;
-
-  letter-spacing: 0.1em;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.5
-    );
-}
-
-.contact-office-local svg {
-  color:
-    var(--gold-soft);
-}
-
-.contact-office-time {
-  margin-left: auto;
+  margin-bottom: 30px;
 
   font-size: 11px;
 
   font-weight: 700;
 
-  color: #ffffff;
-
-  font-variant-numeric:
-    tabular-nums;
-}
-
-/* ======================================
-   PHONE
-====================================== */
-
-.contact-office-phone {
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  margin-top: 16px;
-
-  padding:
-    14px
-    16px;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  border-radius: 16px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.04
-    );
-
-  text-decoration: none;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  color: #ffffff;
-
-  transition:
-    background
-    250ms
-    ease,
-    color
-    250ms
-    ease,
-    border-color
-    250ms
-    ease;
-}
-
-.contact-office-phone svg {
-  color:
-    var(--gold-soft);
-}
-
-.contact-office-phone:hover {
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  color:
-    var(--gold-soft);
-
-  border-color:
-    rgba(
-      139,
-      180,
-      184,
-      0.26
-    );
-}
-
-/* ======================================
-   DIRECTIONS
-====================================== */
-
-.contact-office-directions {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  margin-top: 16px;
-
-  align-self: flex-start;
-
-  text-decoration: none;
-
-  font-size: 10px;
-
-  font-weight: 700;
+  line-height: 1;
 
   letter-spacing: 0.14em;
 
   text-transform: uppercase;
 
   color:
-    rgba(
-      255,
-      255,
-      255,
-      0.62
+    rgba(15, 19, 31, 0.58);
+}
+
+.nvc-section-head > span {
+  color: var(--gold);
+}
+
+.nvc-section-head > i {
+  display: block;
+
+  width: 52px;
+  height: 1px;
+
+  background:
+    rgba(15, 19, 31, 0.22);
+}
+
+.nvc-section-head > strong {
+  font: inherit;
+
+  color: inherit;
+}
+
+.nvc-section-head--dark {
+  color:
+    rgba(255, 255, 255, 0.62);
+}
+
+.nvc-section-head--dark > span {
+  color: var(--gold-soft);
+}
+
+.nvc-section-head--dark > i {
+  background:
+    rgba(255, 255, 255, 0.24);
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.nvc-kicker {
+  margin: 0 0 15px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  color: var(--gold);
+}
+
+.nvc-kicker--light {
+  color: var(--gold-soft);
+}
+
+.nvc-title {
+  margin: 0;
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(42px, 5.8vw, 76px);
+
+  font-weight: 700;
+
+  line-height: 0.96;
+
+  letter-spacing: -0.05em;
+
+  color: #0f131f;
+}
+
+.nvc-title > span {
+  display: block;
+
+  background:
+    linear-gradient(
+      100deg,
+      var(--gold),
+      #60969b
     );
 
-  transition:
-    color
-    250ms
-    ease;
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
 }
 
-.contact-office-directions svg {
-  transition:
-    transform
-    250ms
-    ease;
+.nvc-title--dark {
+  color: #fff;
 }
 
-.contact-office-directions:hover {
-  color: #ffffff;
-}
-
-.contact-office-directions:hover svg {
-  transform:
-    translate(
-      2px,
-      -2px
+.nvc-title--dark > span {
+  background:
+    linear-gradient(
+      100deg,
+      #fff,
+      var(--gold-soft)
     );
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
 }
 
-/* ======================================
-   FOOTER
-====================================== */
 
-.contact-global__footer {
+/* =========================================================
+   HERO
+========================================================= */
+
+.nvc-hero {
+  position: relative;
+
+  min-height: 760px;
+
   display: flex;
 
   align-items: center;
 
-  justify-content:
-    space-between;
+  overflow: hidden;
 
-  gap: 20px;
+  background-size: cover;
+
+  background-position: center 65%;
+
+  background-repeat: no-repeat;
+}
+
+.nvc-hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 11, 27, 0.96)
+        0%,
+      rgba(10, 17, 38, 0.88)
+        45%,
+      rgba(10, 17, 38, 0.42)
+        100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5, 10, 25, 0.7),
+      transparent 65%
+    );
+}
+
+.nvc-hero-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  padding-top: 65px;
+
+  padding-bottom: 70px;
+}
+
+.nvc-breadcrumb {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 45px;
+
+  font-size: 11px;
+
+  letter-spacing: 0.07em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(255, 255, 255, 0.56);
+}
+
+.nvc-breadcrumb a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+.nvc-breadcrumb a:hover {
+  color: #fff;
+}
+
+.nvc-breadcrumb strong {
+  color: #fff;
+}
+
+.nvc-hero-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.18fr)
+    minmax(350px, 0.82fr);
+
+  gap:
+    clamp(50px, 7vw, 110px);
+
+  align-items: end;
+}
+
+.nvc-hero h1 {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(56px, 7vw, 106px);
+
+  font-weight: 700;
+
+  line-height: 0.89;
+
+  letter-spacing: -0.06em;
+
+  color: #fff;
+}
+
+.nvc-hero h1 span {
+  display: block;
+
+  background:
+    linear-gradient(
+      100deg,
+      #fff,
+      var(--gold-soft)
+    );
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
+}
+
+.nvc-hero-lead {
+  max-width: 680px;
+
+  margin: 30px 0 0;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+
+  color:
+    rgba(255, 255, 255, 0.72);
+}
+
+.nvc-scroll {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+
+  place-items: center;
 
   margin-top: 34px;
 
-  padding-top: 20px;
+  padding: 0;
 
-  border-top:
+  border:
     1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.08
+    rgba(255, 255, 255, 0.27);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(12px);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   HERO CARDS
+========================================================= */
+
+.nvc-hero-cards {
+  display: grid;
+
+  gap: 13px;
+}
+
+.nvc-hero-card {
+  min-height: 145px;
+
+  padding: 20px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+
+  border-radius: 19px;
+
+  background:
+    rgba(255, 255, 255, 0.065);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  box-shadow:
+    0 20px 50px
+    rgba(0, 0, 0, 0.14);
+}
+
+.nvc-hero-card-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.nvc-hero-card-top svg {
+  font-size: 21px;
+
+  color: var(--gold-soft);
+}
+
+.nvc-hero-card-top span {
+  font-size: 11px;
+
+  color:
+    rgba(255, 255, 255, 0.36);
+}
+
+.nvc-hero-card strong {
+  display: block;
+
+  margin-top: 25px;
+
+  font-family:
+    var(--font-display);
+
+  font-size: 18px;
+
+  color: #fff;
+}
+
+.nvc-hero-card p {
+  margin: 6px 0 0;
+
+  font-size: 13px;
+
+  color:
+    rgba(255, 255, 255, 0.6);
+}
+
+
+/* =========================================================
+   CONTACT SECTION
+========================================================= */
+
+.nvc-contact {
+  padding:
+    clamp(85px, 9vw, 135px)
+    0;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(35, 100, 108, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fff,
+      #f6f4ef
     );
+}
 
-  font-size: 9px;
+.nvc-contact-grid {
+  display: grid;
 
-  font-weight: 600;
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(330px, 0.85fr);
+
+  gap:
+    clamp(35px, 6vw, 80px);
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.nvc-form-card {
+  padding:
+    clamp(26px, 4vw, 46px);
+
+  border:
+    1px solid
+    rgba(15, 19, 31, 0.07);
+
+  border-radius: 26px;
+
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 22px 60px
+    rgba(15, 19, 31, 0.07);
+}
+
+.nvc-form-intro {
+  max-width: 600px;
+
+  margin: 19px 0 0;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  color: var(--muted-body);
+}
+
+.nvc-trust-row {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 24px;
+}
+
+.nvc-trust-item {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding:
+    9px 12px;
+
+  border:
+    1px solid
+    rgba(35, 100, 108, 0.1);
+
+  border-radius: 999px;
+
+  background:
+    rgba(35, 100, 108, 0.04);
+
+  font-size: 11px;
+
+  color: #525966;
+}
+
+.nvc-trust-item svg {
+  color: var(--gold);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.nvc-form {
+  display: grid;
+
+  gap: 18px;
+
+  margin-top: 30px;
+}
+
+.nvc-form-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.nvc-field {
+  display: grid;
+
+  gap: 8px;
+}
+
+.nvc-field label {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #242a35;
+}
+
+.nvc-field input,
+.nvc-field select,
+.nvc-field textarea {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding:
+    0 15px;
+
+  border:
+    1px solid
+    rgba(15, 19, 31, 0.1);
+
+  border-radius: 13px;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  color: #0f131f;
+
+  font: inherit;
+
+  font-size: 14px;
+
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.nvc-field textarea {
+  min-height: 145px;
+
+  padding-top: 14px;
+
+  resize: vertical;
+}
+
+.nvc-field input:focus,
+.nvc-field select:focus,
+.nvc-field textarea:focus {
+  border-color: var(--gold);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(35, 100, 108, 0.1);
+}
+
+.nvc-form-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-top: 3px;
+}
+
+.nvc-consent {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 9px;
+
+  max-width: 440px;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+
+  color: var(--muted-body);
+}
+
+.nvc-consent input {
+  margin-top: 3px;
+
+  accent-color: var(--gold);
+}
+
+.nvc-button {
+  min-height: 50px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding:
+    0 24px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.nvc-button--primary {
+  border: 1px solid var(--gold);
+
+  background: var(--gold);
+
+  color: #fff;
+}
+
+.nvc-form-note {
+  min-height: 18px;
+
+  margin: 0;
+
+  font-size: 12px;
+
+  color: var(--muted-body);
+}
+
+
+/* =========================================================
+   CONTACT SIDE
+========================================================= */
+
+.nvc-contact-side {
+  display: grid;
+
+  gap: 15px;
+}
+
+.nvc-direct-card,
+.nvc-quick-card {
+  border:
+    1px solid
+    rgba(15, 19, 31, 0.08);
+
+  border-radius: 22px;
+
+  background:
+    rgba(255, 255, 255, 0.76);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 18px 48px
+    rgba(15, 19, 31, 0.06);
+}
+
+.nvc-direct-card {
+  padding: 25px;
+}
+
+.nvc-direct-head {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+
+  border-bottom:
+    1px solid
+    rgba(15, 19, 31, 0.07);
+
+  font-family:
+    var(--font-display);
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: #0f131f;
+}
+
+.nvc-direct-head svg {
+  color: var(--gold);
+}
+
+.nvc-direct-list {
+  display: grid;
+}
+
+.nvc-direct-item {
+  display: grid;
+
+  grid-template-columns:
+    42px 1fr;
+
+  gap: 13px;
+
+  padding:
+    20px 0;
+
+  border-bottom:
+    1px solid
+    rgba(15, 19, 31, 0.07);
+}
+
+.nvc-direct-item:last-child {
+  border-bottom: 0;
+}
+
+.nvc-direct-icon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 13px;
+
+  background:
+    rgba(35, 100, 108, 0.08);
+
+  color: var(--gold);
+
+  font-size: 18px;
+}
+
+.nvc-direct-item strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 13px;
+
+  color: #0f131f;
+}
+
+.nvc-direct-item a {
+  font-size: 13px;
+
+  color: var(--gold);
+
+  text-decoration: none;
+}
+
+.nvc-direct-item small,
+.nvc-direct-item p {
+  display: block;
+
+  margin: 5px 0 0;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+
+  color: var(--muted-body);
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.nvc-quick-card {
+  padding: 22px;
+}
+
+.nvc-quick-label {
+  display: block;
+
+  margin-bottom: 15px;
+
+  font-size: 11px;
+
+  font-weight: 700;
 
   letter-spacing: 0.12em;
 
   text-transform: uppercase;
 
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.34
+  color: var(--gold);
+}
+
+.nvc-quick-links {
+  display: grid;
+}
+
+.nvc-quick-links a {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding:
+    14px 0;
+
+  border-top:
+    1px solid
+    rgba(15, 19, 31, 0.07);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #343a45;
+
+  text-decoration: none;
+}
+
+.nvc-quick-links a:hover {
+  color: var(--gold);
+}
+
+
+/* =========================================================
+   OFFICES DARK
+========================================================= */
+
+.nvc-offices {
+  padding:
+    clamp(85px, 9vw, 135px)
+    0;
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(35, 100, 108, 0.25),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #0a1126,
+      #101936
     );
 }
 
-/* ======================================
-   ANIMATIONS
-====================================== */
+.nvc-offices-heading {
+  display: grid;
 
-@keyframes contactFloat {
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      translateX(0);
-  }
+  grid-template-columns:
+    1fr
+    minmax(280px, 0.55fr);
 
-  50% {
-    transform:
-      translateY(-24px)
-      translateX(10px);
-  }
+  gap: 55px;
+
+  align-items: end;
 }
 
-@keyframes contactTwinkle {
-  0%,
-  100% {
-    opacity: 0.35;
+.nvc-offices-heading > p {
+  margin: 0;
 
-    transform:
-      scale(0.92);
-  }
+  font-size: 14px;
 
-  50% {
-    opacity: 1;
+  line-height: 1.75;
 
-    transform:
-      scale(1.15);
-  }
+  color:
+    rgba(255, 255, 255, 0.64);
 }
 
-/* ======================================
-   LARGE SCREEN
-====================================== */
+.nvc-office-grid {
+  display: grid;
 
-@media (min-width: 1500px) {
-  .contact-global__container {
-    width:
-      min(
-        1560px,
-        calc(
-          100% - 80px
-        )
-      );
-  }
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
-  .contact-office-card {
-    min-height: 510px;
-  }
+  gap: 14px;
+
+  margin-top: 58px;
 }
 
-/* ======================================
-   LAPTOP
-====================================== */
+.nvc-office-card {
+  min-height: 410px;
 
-@media (max-width: 1200px) {
-  .contact-global__container {
-    width:
-      calc(
-        100% - 48px
-      );
-  }
+  padding: 23px;
 
-  .contact-office-grid {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      );
+  position: relative;
 
-    gap: 20px;
-  }
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
 
-  .contact-office-card {
-    min-height: 470px;
-  }
+  border-radius: 20px;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 20px 50px
+    rgba(0, 0, 0, 0.11);
 }
 
-/* ======================================
+.nvc-office-card--active {
+  border-color:
+    rgba(139, 180, 184, 0.32);
+
+  background:
+    rgba(139, 180, 184, 0.09);
+}
+
+.nvc-office-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.nvc-office-top > span {
+  font-size: 11px;
+
+  color:
+    rgba(255, 255, 255, 0.42);
+}
+
+.nvc-flag {
+  width: 40px;
+  height: 28px;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+
+  box-shadow:
+    0 5px 14px
+    rgba(0, 0, 0, 0.2);
+}
+
+.nvc-office-hours {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 28px;
+
+  font-size: 11px;
+
+  color:
+    rgba(255, 255, 255, 0.54);
+}
+
+.nvc-office-hours svg {
+  color: var(--gold-soft);
+}
+
+.nvc-office-label {
+  margin:
+    25px 0 5px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  color: var(--gold-soft);
+}
+
+.nvc-office-card h3 {
+  margin: 0;
+
+  font-family:
+    var(--font-display);
+
+  font-size: 30px;
+
+  letter-spacing: -0.04em;
+
+  color: #fff;
+}
+
+.nvc-office-card h3 span {
+  margin-left: 6px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  color: var(--gold-soft);
+}
+
+.nvc-office-card address {
+  display: grid;
+
+  gap: 12px;
+
+  margin-top: 24px;
+
+  font-style: normal;
+}
+
+.nvc-address-row {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 8px;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  color:
+    rgba(255, 255, 255, 0.6);
+}
+
+.nvc-address-row svg {
+  flex: 0 0 auto;
+
+  margin-top: 3px;
+
+  color: var(--gold-soft);
+}
+
+.nvc-office-card address > a {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 13px;
+
+  color: #fff;
+
+  text-decoration: none;
+}
+
+.nvc-office-card address > a svg {
+  color: var(--gold-soft);
+}
+
+.nvc-office-actions {
+  position: absolute;
+
+  left: 23px;
+  right: 23px;
+  bottom: 23px;
+
+  display: flex;
+
+  gap: 9px;
+}
+
+.nvc-office-actions a {
+  flex: 1;
+
+  min-height: 40px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.15);
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  color: #fff;
+
+  text-decoration: none;
+}
+
+.nvc-office-actions
+.nvc-office-primary {
+  border-color: var(--gold);
+
+  background: var(--gold);
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.nvc-map {
+  padding:
+    clamp(75px, 8vw, 110px)
+    0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f6f4ef,
+      #fff
+    );
+}
+
+.nvc-map-shell {
+  position: relative;
+
+  height: 520px;
+
+  overflow: hidden;
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 25px 65px
+    rgba(15, 19, 31, 0.1);
+}
+
+.nvc-map-shell iframe {
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+  filter:
+    saturate(0.7)
+    contrast(0.95);
+}
+
+.nvc-map-card {
+  position: absolute;
+
+  left: 30px;
+  bottom: 30px;
+
+  width:
+    min(460px, calc(100% - 60px));
+
+  display: grid;
+
+  grid-template-columns:
+    auto 1fr auto;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.75);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.88);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 20px 50px
+    rgba(15, 19, 31, 0.14);
+}
+
+.nvc-map-icon {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 13px;
+
+  background: var(--gold);
+
+  color: #fff;
+
+  font-size: 20px;
+}
+
+.nvc-map-card small {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  color: var(--gold);
+}
+
+.nvc-map-card strong {
+  display: block;
+
+  font-size: 14px;
+
+  color: #0f131f;
+}
+
+.nvc-map-card p {
+  margin: 4px 0 0;
+
+  font-size: 12px;
+
+  color: var(--muted-body);
+}
+
+.nvc-map-card > a {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(15, 19, 31, 0.1);
+
+  border-radius: 50%;
+
+  color: var(--gold);
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.nvc-page a:focus-visible,
+.nvc-page button:focus-visible,
+.nvc-page input:focus-visible,
+.nvc-page select:focus-visible,
+.nvc-page textarea:focus-visible {
+  outline:
+    3px solid
+    var(--gold-soft);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
    TABLET
-====================================== */
+========================================================= */
 
-@media (max-width: 850px) {
-  .contact-global {
-    padding:
-      72px
-      0;
+@media (max-width: 1100px) {
+  .nvc-hero-grid,
+  .nvc-contact-grid,
+  .nvc-offices-heading {
+    grid-template-columns: 1fr;
   }
 
-  .contact-global__header {
+  .nvc-hero-grid {
+    gap: 50px;
+  }
+
+  .nvc-hero-cards {
     grid-template-columns:
-      1fr;
-
-    gap: 30px;
+      repeat(2, minmax(0, 1fr));
   }
 
-  .contact-global__header h2 {
-    max-width: 11ch;
-
-    font-size:
-      clamp(
-        3.2rem,
-        8vw,
-        5rem
-      );
+  .nvc-office-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 
-  .contact-global__header-right {
-    display: flex;
-
-    flex-direction: column;
+  .nvc-contact-side {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 }
 
-/* ======================================
+
+/* =========================================================
    MOBILE
-====================================== */
+========================================================= */
 
-@media (max-width: 620px) {
-  .contact-global {
-    padding:
-      60px
-      0;
+@media (max-width: 767px) {
+  .nvc-section-head {
+    margin-bottom: 24px;
   }
 
-  .contact-global__container {
-    width:
-      calc(
-        100% - 28px
-      );
+  .nvc-section-head > i {
+    width: 34px;
   }
 
-  .contact-global__header {
+  .nvc-title {
+    font-size:
+      clamp(38px, 11vw, 52px);
+  }
+
+  .nvc-hero {
+    min-height: auto;
+  }
+
+  .nvc-hero-container {
+    padding-top: 55px;
+
+    padding-bottom: 65px;
+  }
+
+  .nvc-breadcrumb {
     margin-bottom: 38px;
   }
 
-  .contact-global__header h2 {
-    max-width: 100%;
-
+  .nvc-hero h1 {
     font-size:
-      clamp(
-        2.9rem,
-        14vw,
-        4.3rem
-      );
-
-    line-height: 0.95;
+      clamp(48px, 14vw, 67px);
   }
 
-  .contact-global__presence {
-    width: 100%;
-
-    justify-content:
-      flex-start;
+  .nvc-hero-lead {
+    font-size: 14px;
   }
 
-  .contact-office-grid {
-    grid-template-columns:
-      1fr;
-
-    gap: 18px;
+  .nvc-hero-cards,
+  .nvc-contact-side,
+  .nvc-office-grid {
+    grid-template-columns: 1fr;
   }
 
-  .contact-office-card {
-    min-height: auto;
-
-    padding: 22px;
-
-    border-radius: 24px;
+  .nvc-contact,
+  .nvc-offices,
+  .nvc-map {
+    padding: 75px 0;
   }
 
-  .contact-office-card__top {
-    margin-bottom: 28px;
+  .nvc-form-card {
+    padding: 23px 18px;
   }
 
-  .contact-office-card__heading h3 {
-    font-size:
-      clamp(
-        2.4rem,
-        12vw,
-        3rem
-      );
+  .nvc-form-row {
+    grid-template-columns: 1fr;
   }
 
-  .contact-global__footer {
+  .nvc-form-footer {
+    align-items: flex-start;
+
     flex-direction: column;
-
-    align-items:
-      flex-start;
-
-    gap: 8px;
   }
 
-  .contact-star::before,
-  .contact-star::after {
+  .nvc-button {
+    width: 100%;
+  }
+
+  .nvc-office-card {
+    min-height: 390px;
+  }
+
+  .nvc-map-shell {
+    height: 450px;
+
+    border-radius: 20px;
+  }
+
+  .nvc-map-card {
+    left: 15px;
+    bottom: 15px;
+
+    width:
+      calc(100% - 30px);
+  }
+}
+
+
+/* =========================================================
+   390PX
+========================================================= */
+
+@media (max-width: 420px) {
+  .nvc-hero-card {
+    min-height: 135px;
+  }
+
+  .nvc-trust-row {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .nvc-trust-item {
+    border-radius: 12px;
+  }
+
+  .nvc-office-card {
+    min-height: 410px;
+  }
+
+  .nvc-office-actions {
+    flex-direction: column;
+  }
+
+  .nvc-map-shell {
+    height: 410px;
+  }
+
+  .nvc-map-card {
+    grid-template-columns:
+      auto 1fr;
+  }
+
+  .nvc-map-card > a {
     display: none;
   }
 }
 
-/* ======================================
-   SMALL MOBILE
-====================================== */
 
-@media (max-width: 400px) {
-  .contact-global__container {
-    width:
-      calc(
-        100% - 22px
-      );
-  }
-
-  .contact-office-card {
-    padding: 18px;
-  }
-
-  .contact-office-address address {
-    font-size: 10.5px;
-  }
-
-  .contact-office-phone {
-    font-size: 11px;
-  }
-}
-
-/* ======================================
+/* =========================================================
    REDUCED MOTION
-====================================== */
+========================================================= */
 
 @media (
-  prefers-reduced-motion:
-  reduce
+  prefers-reduced-motion: reduce
 ) {
-  .contact-orb,
-  .contact-star {
-    animation: none;
-  }
+  .nvc-page *,
+  .nvc-page *::before,
+  .nvc-page *::after {
+    scroll-behavior:
+      auto !important;
 
-  .contact-office-card {
-    transition: none;
-  }
+    animation-duration:
+      0.001ms !important;
 
-  .contact-office-card:hover {
-    transform: none;
-  }
-}
-.contact-star {
-  position: absolute;
+    animation-iteration-count:
+      1 !important;
 
-  width: 5px;
-  height: 5px;
-
-  border-radius: 999px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.88
-    );
-
-  box-shadow:
-    0 0 10px
-    rgba(
-      255,
-      255,
-      255,
-      0.42
-    ),
-    0 0 22px
-    rgba(
-      139,
-      180,
-      184,
-      0.22
-    );
-
-  animation:
-    contactTwinkle
-    4.8s
-    ease-in-out
-    infinite;
-}
-
-.contact-star::before,
-.contact-star::after {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  border-radius: 999px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.42
-    );
-}
-
-.contact-star::before {
-  width: 1px;
-  height: 14px;
-}
-
-.contact-star::after {
-  width: 14px;
-  height: 1px;
-}
-/* ======================================
-   MOVING STARS
-====================================== */
-
-.contact-star {
-  position: absolute;
-
-  width: 5px;
-  height: 5px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.9);
-
-  box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.45),
-    0 0 22px rgba(139, 180, 184, 0.22);
-
-  animation:
-    contactStarMove 12s linear infinite,
-    contactTwinkle 3.8s ease-in-out infinite;
-
-  will-change: transform, opacity;
-}
-
-/* different sizes */
-
-.contact-star:nth-child(3n) {
-  width: 3px;
-  height: 3px;
-}
-
-.contact-star:nth-child(4n) {
-  width: 7px;
-  height: 7px;
-}
-
-/* cross glow */
-
-.contact-star::before,
-.contact-star::after {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  transform:
-    translate(-50%, -50%);
-
-  background:
-    rgba(255, 255, 255, 0.42);
-
-  border-radius: 999px;
-}
-
-.contact-star::before {
-  width: 1px;
-  height: 14px;
-}
-
-.contact-star::after {
-  width: 14px;
-  height: 1px;
-}
-
-/* ======================================
-   DIFFERENT MOVEMENT SPEED
-====================================== */
-
-.contact-star:nth-child(2n) {
-  animation-duration:
-    14s,
-    4s;
-}
-
-.contact-star:nth-child(3n) {
-  animation-duration:
-    18s,
-    5s;
-}
-
-.contact-star:nth-child(4n) {
-  animation-duration:
-    10s,
-    3.5s;
-}
-
-.contact-star:nth-child(5n) {
-  animation-duration:
-    22s,
-    4.5s;
-}
-
-/* ======================================
-   MOVEMENT
-====================================== */
-
-@keyframes contactStarMove {
-  0% {
-    transform:
-      translate3d(0, 0, 0)
-      scale(1);
-  }
-
-  25% {
-    transform:
-      translate3d(18px, -18px, 0)
-      scale(1.05);
-  }
-
-  50% {
-    transform:
-      translate3d(34px, 6px, 0)
-      scale(1);
-  }
-
-  75% {
-    transform:
-      translate3d(14px, 24px, 0)
-      scale(0.95);
-  }
-
-  100% {
-    transform:
-      translate3d(0, 0, 0)
-      scale(1);
-  }
-}
-
-/* ======================================
-   TWINKLE
-====================================== */
-
-@keyframes contactTwinkle {
-  0%,
-  100% {
-    opacity: 0.22;
-  }
-
-  50% {
-    opacity: 1;
+    transition-duration:
+      0.001ms !important;
   }
 }

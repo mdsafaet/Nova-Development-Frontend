@@ -1,39 +1,81 @@
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuArrowUpRight,
+  LuMapPin,
+} from "react-icons/lu";
+
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
 export default function Map() {
+  const reduceMotion =
+    useReducedMotion();
+
   return (
-    <section className="contact-map">
-      <div className="map-wrap fade-reveal" style={{ "--d": ".3s" }}>
-        <iframe
-          src="https://maps.google.com/maps?q=Boulevard%20Plaza%20Downtown%20Dubai&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-          loading="lazy"
-          title="Map"
-        />
-        <div className="map-overlay reveal" style={{ "--d": ".4s" }}>
-          <i
-            className="fa-solid fa-location-dot"
-            style={{
-              width: "36px",
-              height: "36px",
-              borderRadius: "50%",
-              display: "grid",
-              placeItems: "center",
-              background: "var(--gold)",
-              color: "#fff",
-              flex: "0 0 36px",
-            }}
+    <section className="nvc-map">
+      <div className="container">
+        <Reveal>
+          <div className="nvc-section-head">
+            <span>03</span>
+            <i />
+            <strong>
+              Head Office
+            </strong>
+          </div>
+        </Reveal>
+
+        <div className="nvc-map-shell">
+          <iframe
+            src="https://maps.google.com/maps?q=Boulevard%20Plaza%20Downtown%20Dubai&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            title="Boulevard Plaza Downtown Dubai map"
           />
-          <div>
-            <strong>Boulevard Plaza · Downtown Dubai</strong>
-            <span>
-              Head Office · Level 24 ·{" "}
+
+          <Float delay={0.3}>
+            <motion.div
+              className="nvc-map-card"
+              whileHover={
+                reduceMotion
+                  ? undefined
+                  : { y: -10 }
+              }
+              transition={bounce}
+            >
+              <span className="nvc-map-icon">
+                <LuMapPin />
+              </span>
+
+              <div>
+                <small>
+                  Nova Development
+                </small>
+
+                <strong>
+                  Boulevard Plaza ·
+                  Downtown Dubai
+                </strong>
+
+                <p>
+                  Head Office · Level 24
+                </p>
+              </div>
+
               <a
                 href="https://maps.google.com/?q=Boulevard+Plaza+Downtown+Dubai"
                 target="_blank"
-                style={{ color: "var(--gold)", fontWeight: "600", textDecoration: "none" }}
+                rel="noreferrer"
+                aria-label="Open Boulevard Plaza in Google Maps"
               >
-                Open in Maps ↗
+                <LuArrowUpRight />
               </a>
-            </span>
-          </div>
+            </motion.div>
+          </Float>
         </div>
       </div>
     </section>

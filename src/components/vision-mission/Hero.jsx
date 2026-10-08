@@ -1,57 +1,166 @@
 import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
+
+import {
+  LuArrowDown,
+  LuEye,
+  LuTarget,
+  LuGem,
+} from "react-icons/lu";
+
 import { img } from "@/assets/images";
 
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const heroCards = [
+  {
+    number: "01",
+    title: "Vision",
+    description: "What we believe",
+    icon: LuEye,
+  },
+  {
+    number: "02",
+    title: "Mission",
+    description: "How we deliver",
+    icon: LuTarget,
+  },
+  {
+    number: "04",
+    title: "Values",
+    description: "What guides us",
+    icon: LuGem,
+  },
+];
+
 export default function Hero() {
+  const reduceMotion = useReducedMotion();
+
+  const scrollToVision = () => {
+    document
+      .getElementById("vision")
+      ?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+  };
+
   return (
     <section
-      className="inner-hero"
-      style={{ background: `#0D1833 url('${img.missionBg}') center 60%/cover no-repeat` }}
+      className="nvv-hero"
+      style={{
+        backgroundImage: `url('${img.missionBg}')`,
+      }}
     >
-      <div className="container">
-        <div
-          className="inner-breadcrumb animate__animated animate__fadeInUp"
-          style={{ "--animate-duration": "1s", animationDelay: "0s" }}
-        >
-          <Link to="/">Home</Link> /&nbsp; Company &nbsp;/{" "}
-          <span style={{ color: "#fff" }}>Corporate Vision &amp; Mission</span>
-        </div>
-        <h1
-          className="animate__animated animate__fadeInUp"
-          style={{ "--animate-duration": "1s", animationDelay: ".15s" }}
-        >
-          Corporate Vision <span>&amp; Mission</span>
-        </h1>
-        <p
-          className="animate__animated animate__fadeInUp"
-          style={{ "--animate-duration": "1s", animationDelay: ".3s" }}
-        >
-          To become a trusted global development platform known for places of lasting value — commercially
-          sound, thoughtfully designed and meaningful to the people who inherit them.
-        </p>
-        <div className="vm-hero-stats">
-          <div
-            className="animate__animated animate__fadeIn"
-            style={{ "--animate-duration": "1s", animationDelay: ".6s" }}
+      <div className="nvv-hero-overlay" />
+
+      <div className="container nvv-hero-container">
+        <Reveal>
+          <nav
+            className="nvv-breadcrumb"
+            aria-label="Breadcrumb"
           >
-            <strong>01</strong>
-            <span>Vision</span>
-            <em>What we believe</em>
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <span>Company</span>
+            <span>/</span>
+
+            <strong>
+              Corporate Vision &amp; Mission
+            </strong>
+          </nav>
+        </Reveal>
+
+        <div className="nvv-hero-grid">
+          <div className="nvv-hero-copy">
+            <Reveal>
+              <div className="nvv-section-head nvv-section-head--dark">
+                <span>00</span>
+                <i />
+                <strong>
+                  Corporate Direction
+                </strong>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <p className="nvv-kicker nvv-kicker--light">
+                Purpose &amp; direction
+              </p>
+            </Reveal>
+
+            <Reveal>
+              <h1>
+                Corporate Vision
+                <span>&amp; Mission</span>
+              </h1>
+            </Reveal>
+
+            <Reveal>
+              <p className="nvv-hero-lead">
+                To become a trusted global development
+                platform known for places of lasting
+                value — commercially sound,
+                thoughtfully designed and meaningful
+                to the people who inherit them.
+              </p>
+            </Reveal>
+
+            <motion.button
+              type="button"
+              className="nvv-scroll"
+              onClick={scrollToVision}
+              whileHover={
+                reduceMotion
+                  ? undefined
+                  : { y: -8 }
+              }
+              whileTap={{ y: 1 }}
+              transition={bounce}
+              aria-label="Scroll to vision"
+            >
+              <LuArrowDown />
+            </motion.button>
           </div>
-          <div
-            className="animate__animated animate__fadeIn"
-            style={{ "--animate-duration": "1s", animationDelay: ".75s" }}
-          >
-            <strong>02</strong>
-            <span>Mission</span>
-            <em>How we deliver</em>
-          </div>
-          <div
-            className="animate__animated animate__fadeIn"
-            style={{ "--animate-duration": "1s", animationDelay: ".9s" }}
-          >
-            <strong>04</strong>
-            <span>Values</span>
-            <em>What guides us</em>
+
+          <div className="nvv-hero-cards">
+            {heroCards.map(
+              (
+                {
+                  number,
+                  title,
+                  description,
+                  icon: Icon,
+                },
+                index
+              ) => (
+                <Float
+                  key={title}
+                  delay={index * 0.4}
+                >
+                  <motion.article
+                    className="nvv-hero-card"
+                    whileHover={
+                      reduceMotion
+                        ? undefined
+                        : { y: -10 }
+                    }
+                    transition={bounce}
+                  >
+                    <div className="nvv-hero-card-top">
+                      <Icon />
+                      <span>{number}</span>
+                    </div>
+
+                    <strong>{title}</strong>
+
+                    <p>{description}</p>
+                  </motion.article>
+                </Float>
+              )
+            )}
           </div>
         </div>
       </div>

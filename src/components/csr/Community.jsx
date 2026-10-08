@@ -1,61 +1,86 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { LuArrowUpRight } from "react-icons/lu";
+import ReactCountryFlag from "react-country-flag";
 import { img } from "@/assets/images";
+import Float, { bounce, Reveal } from "@/components/company-profile/Float";
+
+const cities = [
+  { code: "AE", city: "Dubai", country: "United Arab Emirates" },
+  { code: "BD", city: "Dhaka", country: "Bangladesh" },
+  { code: "US", city: "New York", country: "United States" },
+  { code: "GB", city: "London", country: "United Kingdom" },
+];
 
 export default function Community() {
   return (
-    <section id="community" className="vm-split vm-split--alt">
-      <div className="container">
-        <div className="vm-split-grid">
-          <div className="vm-split-media fade-reveal" style={{ "--d": ".3s" }}>
-            <img src={img.projectFeatured} alt="Places that outlive us" loading="lazy" />
-            <div className="vm-media-cap">
-              <span>Stewardship · Legacy</span>
-              <strong>Places that outlive us</strong>
+    <section id="community" className="csx csx-community">
+      <div className="csx-orb csx-orb--tr" />
+
+      <div className="csx-wrap">
+        <div className="csx-head">
+          <b>04</b>
+          <i />
+          <span>Our Promise</span>
+        </div>
+
+        <div className="csx-split-grid csx-split-grid--alt">
+          <Reveal>
+            <div className="csx-media">
+              <div className="csx-media-img">
+                <img src={img.projectFeatured} alt="Places that outlive us" loading="lazy" decoding="async" />
+              </div>
+              <Float className="csx-media-cap" distance={7} duration={5}>
+                <motion.div className="csx-glass csx-cap" whileHover={{ y: -8 }} transition={bounce}>
+                  <span>Stewardship · Legacy</span>
+                  <strong>Places that outlive us</strong>
+                </motion.div>
+              </Float>
             </div>
-          </div>
-          <div className="vm-split-text">
-            <span className="vm-num reveal">02 — Our Promise</span>{" "}
-            <span className="eyebrow text-gold reveal">Why it matters</span>
-            <h2 className="reveal" style={{ "--d": ".1s" }}>
-              We build for <span>those who come next.</span>
-            </h2>
-            <div
-              className="nova-gold-line reveal"
-              style={{ "--d": ".2s", margin: "18px 0 22px", width: "56px" }}
-            />
-            <p className="vm-lead reveal" style={{ "--d": ".2s" }}>
-              Every master plan is a promise to future residents, neighbours and ecosystems.
-            </p>
-            <p className="reveal" style={{ "--d": ".25s" }}>
-              That promise is what makes a development endure — not just commercially, but socially and
-              environmentally. It’s the same standard across Dubai, Dhaka, New York and London.
-            </p>
-            <div className="d-flex gap-3 mt-4 flex-wrap reveal" style={{ "--d": ".3s" }}>
-              <Link to="/contact" className="btn btn-gold text-uppercase reveal" style={{ "--d": ".3s" }}>
-                Partner with us <span>↗</span>
-              </Link>{" "}
-              <Link
-                to="/portfolio"
-                className="btn text-uppercase reveal"
-                style={{
-                  "--d": ".4s",
-                  padding: "14px 28px",
-                  borderRadius: "0",
-                  background: "#fff",
-                  color: "#0F131F",
-                  border: "1px solid var(--border-c)",
-                  fontSize: "11px",
-                  fontWeight: "700",
-                  letterSpacing: ".08em",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "6px",
-                }}
-              >
-                See our places <span>↗</span>
-              </Link>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div className="csx-copy">
+              <p className="csx-kicker">Why it matters</p>
+              <h2 className="csx-title">
+                We build for
+                <span>those who come next.</span>
+              </h2>
+              <p className="csx-lead">
+                Every master plan is a promise to future residents, neighbours and ecosystems.
+              </p>
+              <p className="csx-text">
+                That promise is what makes a development endure — not just commercially, but socially and
+                environmentally. It&apos;s the same standard across Dubai, Dhaka, New York and London.
+              </p>
+
+              <ul className="csx-cities" aria-label="Our markets">
+                {cities.map((c) => (
+                  <li key={c.code}>
+                    <span className="csx-flag">
+                      <ReactCountryFlag
+                        svg
+                        countryCode={c.code}
+                        title={c.country}
+                        aria-label={c.country}
+                        style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    </span>
+                    {c.city}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="csx-actions">
+                <Link to="/contact" className="csx-btn csx-btn--primary">
+                  Partner with us <LuArrowUpRight />
+                </Link>
+                <Link to="/portfolio" className="csx-btn csx-btn--outline">
+                  See our places <LuArrowUpRight />
+                </Link>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

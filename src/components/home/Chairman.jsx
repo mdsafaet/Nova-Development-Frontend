@@ -100,7 +100,8 @@ export default function Chairman() {
           <div className="chairman-modern__eyebrow">
             <span className="chairman-modern__eyebrow-dot" />
 
-            Chairman's Message
+            {/* Chairman's Message */}
+            Manag
           </div>
 
           <div className="chairman-modern__location">

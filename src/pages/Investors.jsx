@@ -6,6 +6,8 @@ import Governance from "@/components/investors/Governance";
 import Markets from "@/components/investors/Markets";
 import Cta from "@/components/investors/Cta";
 
+import "@/styles/investors.css";
+
 export default function Investors() {
   return (
     <>

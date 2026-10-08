@@ -1,12 +1,13 @@
 import ProjectHero from "@/components/portfolio/ProjectHero";
 import ProjectDetails from "@/components/portfolio/ProjectDetails";
 
+import "@/styles/portfolio.css";
+
 export default function PortfolioSingle() {
   return (
-    <>
-      <title>Gulshan Reserve — Portfolio Single | Nova Development</title>
+    <main className="nvp-page">
       <ProjectHero />
       <ProjectDetails />
-    </>
+    </main>
   );
 }

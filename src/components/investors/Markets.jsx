@@ -1,52 +1,195 @@
+import ReactCountryFlag from "react-country-flag";
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuBuilding2,
+  LuMapPin,
+  LuArrowUpRight,
+} from "react-icons/lu";
+
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const markets = [
+  {
+    code: "AE",
+    country: "UAE",
+    city: "Dubai",
+    address:
+      "Head office · Boulevard Plaza 24F · Operating",
+    focus:
+      "Luxury residential & commercial",
+  },
+  {
+    code: "BD",
+    country: "Bangladesh",
+    city: "Dhaka",
+    address:
+      "Gulshan 2 · Nova Land Tower · Operating",
+    focus:
+      "Land estates & master-planning",
+  },
+  {
+    code: "US",
+    country: "USA",
+    city: "New York",
+    address:
+      "One World Trade Center 62F · Expanding",
+    focus:
+      "Commercial & capital advisory",
+  },
+  {
+    code: "GB",
+    country: "UK",
+    city: "London",
+    address:
+      "Canary Wharf · Entering",
+    focus:
+      "Residential & mixed-use",
+  },
+];
+
 export default function Markets() {
+  const reduceMotion =
+    useReducedMotion();
+
   return (
-    <section id="markets" className="inv-markets">
+    <section
+      id="markets"
+      className="nvi-markets"
+    >
       <div className="container">
-        <div className="nova-section-label reveal">
-          <span>Global Platform</span>
+        <Reveal>
+          <div className="nvi-section-head nvi-section-head--dark">
+            <span>04</span>
+            <i />
+            <strong>
+              Global Platform
+            </strong>
+          </div>
+        </Reveal>
+
+        <div className="nvi-markets-heading">
+          <div>
+            <Reveal>
+              <p className="nvi-kicker nvi-kicker--light">
+                Four markets
+              </p>
+            </Reveal>
+
+            <Reveal>
+              <h2 className="nvi-title nvi-title--dark">
+                Four markets.
+                <span>
+                  One standard.
+                </span>
+              </h2>
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <p>
+              Local expertise, global
+              discipline — design,
+              engineering, governance and
+              stewardship held to one Nova
+              standard.
+            </p>
+          </Reveal>
         </div>
-        <h2 className="reveal" style={{ "--d": ".1s" }}>
-          Four markets. <span>One standard.</span>
-        </h2>
-        <p
-          className="reveal"
-          style={{
-            "--d": ".2s",
-            maxWidth: "640px",
-            color: "var(--muted-body)",
-            marginTop: "12px",
-            lineHeight: "1.7",
-            fontSize: "14px",
-          }}
-        >
-          Local expertise, global discipline — design, engineering, governance and stewardship held to one
-          Nova standard.
-        </p>
-        <div className="inv-markets-grid">
-          <div className="inv-market reveal" style={{ "--d": ".3s" }}>
-            <img src="https://flagcdn.com/w40/ae.png" alt="UAE" />
-            <strong>UAE — Dubai</strong>
-            <span>Head office · Boulevard Plaza 24F · Operating</span>
-            <small>Luxury residential &amp; commercial</small>
-          </div>
-          <div className="inv-market reveal" style={{ "--d": ".4s" }}>
-            <img src="https://flagcdn.com/w40/bd.png" alt="Bangladesh" />
-            <strong>Bangladesh — Dhaka</strong>
-            <span>Gulshan 2 · Nova Land Tower · Operating</span>
-            <small>Land estates &amp; master-planning</small>
-          </div>
-          <div className="inv-market reveal" style={{ "--d": ".5s" }}>
-            <img src="https://flagcdn.com/w40/us.png" alt="USA" />
-            <strong>USA — New York</strong>
-            <span>One World Trade Center 62F · Expanding</span>
-            <small>Commercial &amp; capital advisory</small>
-          </div>
-          <div className="inv-market reveal" style={{ "--d": ".6s" }}>
-            <img src="https://flagcdn.com/w40/gb.png" alt="UK" />
-            <strong>UK — London</strong>
-            <span>Canary Wharf · Entering</span>
-            <small>Residential &amp; mixed-use</small>
-          </div>
+
+        <div className="nvi-market-grid">
+          {markets.map(
+            (
+              {
+                code,
+                country,
+                city,
+                address,
+                focus,
+              },
+              index
+            ) => (
+              <Float
+                key={city}
+                delay={index * 0.4}
+              >
+                <motion.article
+                  className="nvi-market-card"
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : { y: -10 }
+                  }
+                  transition={{
+                    type: "spring",
+                    stiffness: 180,
+                    damping: 20,
+                  }}
+                >
+                  <div className="nvi-market-top">
+                    <div
+                      className="nvi-flag"
+                      aria-label={`${country} flag`}
+                    >
+                      <ReactCountryFlag
+                        countryCode={
+                          code
+                        }
+                        svg
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                        }}
+                        aria-label={
+                          country
+                        }
+                      />
+                    </div>
+
+                    <span>
+                      0{index + 1}
+                    </span>
+                  </div>
+
+                  <div className="nvi-market-location">
+                    <LuMapPin />
+
+                    <div>
+                      <small>
+                        {country}
+                      </small>
+
+                      <h3>
+                        {city}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="nvi-market-details">
+                    <p>{address}</p>
+
+                    <span>
+                      <LuBuilding2 />
+                      {focus}
+                    </span>
+                  </div>
+
+                  <div
+                    className="nvi-market-arrow"
+                    aria-hidden="true"
+                  >
+                    <LuArrowUpRight />
+                  </div>
+                </motion.article>
+              </Float>
+            )
+          )}
         </div>
       </div>
     </section>

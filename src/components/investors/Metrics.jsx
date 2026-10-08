@@ -1,58 +1,208 @@
+import CountUp from "react-countup";
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuChartNoAxesCombined,
+  LuTrendingUp,
+  LuHandshake,
+  LuShieldCheck,
+  LuLandmark,
+  LuClock3,
+  LuEarth,
+} from "react-icons/lu";
+
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const metrics = [
+  {
+    number: "01",
+    category: "Portfolio",
+    icon: LuChartNoAxesCombined,
+    prefix: "$",
+    value: 1.2,
+    decimals: 1,
+    suffix: "B",
+    description:
+      "Gross development value across land, residential and commercial",
+  },
+  {
+    number: "02",
+    category: "Returns",
+    icon: LuTrendingUp,
+    value: 18,
+    suffix: "%",
+    description:
+      "Target net IRR — risk-adjusted, phased exits",
+  },
+  {
+    number: "03",
+    category: "Partners",
+    icon: LuHandshake,
+    value: 120,
+    suffix: "+",
+    description:
+      "Institutional, private and family offices across 4 markets",
+  },
+  {
+    number: "04",
+    category: "Governance",
+    icon: LuShieldCheck,
+    value: 100,
+    suffix: "%",
+    description:
+      "Audited, board-governed, escrow-protected delivery",
+  },
+];
+
 export default function Metrics() {
+  const reduceMotion =
+    useReducedMotion();
+
   return (
-    <section id="metrics" className="inv-metrics-section">
+    <section
+      id="metrics"
+      className="nvi-metrics"
+    >
       <div className="container">
-        <div className="nova-section-label nova-section-label-light reveal" style={{ marginBottom: "16px" }}>
-          <span>Performance</span>
-        </div>
-        <h2 className="reveal" style={{ "--d": ".1s" }}>
-          Built for <span>resilient returns.</span>
-        </h2>
-        <p className="inv-metrics-lead reveal" style={{ "--d": ".2s" }}>
-          Investor-focused metrics — distinct from operating profile, audited and transparent.
-        </p>
-        <div className="inv-metrics-grid">
-          <div className="inv-metric-card reveal" style={{ "--d": ".3s" }}>
-            <i className="fa-solid fa-chart-simple" />
-            <span className="num">01 — Portfolio</span>
+        <Reveal>
+          <div className="nvi-section-head nvi-section-head--dark">
+            <span>02</span>
+            <i />
             <strong>
-              <sup>$</sup>
-              1.2B
+              Performance
             </strong>
-            <p>Gross development value across land, residential and commercial</p>
           </div>
-          <div className="inv-metric-card reveal" style={{ "--d": ".4s" }}>
-            <i className="fa-solid fa-arrow-trend-up" />
-            <span className="num">02 — Returns</span>
-            <strong>18%</strong>
-            <p>Target net IRR — risk-adjusted, phased exits</p>
+        </Reveal>
+
+        <div className="nvi-metrics-heading">
+          <div>
+            <Reveal>
+              <p className="nvi-kicker nvi-kicker--light">
+                Investor metrics
+              </p>
+            </Reveal>
+
+            <Reveal>
+              <h2 className="nvi-title nvi-title--dark">
+                Built for
+                <span>
+                  resilient returns.
+                </span>
+              </h2>
+            </Reveal>
           </div>
-          <div className="inv-metric-card reveal" style={{ "--d": ".5s" }}>
-            <i className="fa-solid fa-handshake" />
-            <span className="num">03 — Partners</span>
-            <strong>120+</strong>
-            <p>Institutional, private and family offices across 4 markets</p>
-          </div>
-          <div className="inv-metric-card reveal" style={{ "--d": ".6s" }}>
-            <i className="fa-solid fa-shield-halved" />
-            <span className="num">04 — Governance</span>
-            <strong>100%</strong>
-            <p>Audited, board-governed, escrow-protected delivery</p>
-          </div>
+
+          <Reveal>
+            <p className="nvi-metrics-intro">
+              Investor-focused metrics —
+              distinct from operating
+              profile, audited and
+              transparent.
+            </p>
+          </Reveal>
         </div>
-        <div className="inv-extra-bar reveal" style={{ "--d": ".7s" }}>
-          <span>
-            <i className="fa-solid fa-building-columns" /> Escrow protected
-          </span>{" "}
-          <span className="sep">•</span>
-          <span>
-            <i className="fa-solid fa-clock-rotate-left" /> 32+ on-time exits
-          </span>{" "}
-          <span className="sep">•</span>
-          <span>
-            <i className="fa-solid fa-earth-asia" /> Dubai · Dhaka · New York · London
-          </span>
+
+        <div className="nvi-metric-grid">
+          {metrics.map(
+            (
+              {
+                number,
+                category,
+                icon: Icon,
+                prefix,
+                value,
+                decimals,
+                suffix,
+                description,
+              },
+              index
+            ) => (
+              <Float
+                key={category}
+                delay={index * 0.4}
+              >
+                <motion.article
+                  className="nvi-metric-card"
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : { y: -10 }
+                  }
+                  transition={{
+                    type: "spring",
+                    stiffness: 180,
+                    damping: 20,
+                  }}
+                >
+                  <div className="nvi-metric-top">
+                    <span>
+                      <Icon />
+                    </span>
+
+                    <small>
+                      {number} —{" "}
+                      {category}
+                    </small>
+                  </div>
+
+                  <strong className="nvi-metric-value">
+                    {prefix}
+
+                    <CountUp
+                      end={value}
+                      decimals={
+                        decimals || 0
+                      }
+                      duration={2}
+                      enableScrollSpy
+                      scrollSpyOnce
+                    />
+
+                    {suffix}
+                  </strong>
+
+                  <p>
+                    {description}
+                  </p>
+
+                  <div className="nvi-metric-line" />
+                </motion.article>
+              </Float>
+            )
+          )}
         </div>
+
+        <Reveal>
+          <div className="nvi-proof-bar">
+            <div>
+              <LuLandmark />
+              <span>
+                Escrow protected
+              </span>
+            </div>
+
+            <div>
+              <LuClock3 />
+              <span>
+                32+ on-time exits
+              </span>
+            </div>
+
+            <div>
+              <LuEarth />
+              <span>
+                Dubai · Dhaka · New York
+                · London
+              </span>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

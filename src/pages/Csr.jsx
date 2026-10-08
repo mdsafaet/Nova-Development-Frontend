@@ -5,6 +5,7 @@ import Pillars from "@/components/csr/Pillars";
 import Stewardship from "@/components/csr/Stewardship";
 import Community from "@/components/csr/Community";
 import Cta from "@/components/csr/Cta";
+import "@/styles/csr.css";
 
 export default function Csr() {
   return (

@@ -1,167 +1,454 @@
 import { Link } from "react-router-dom";
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuArrowUpRight,
+  LuClock3,
+  LuDownload,
+  LuLockKeyhole,
+  LuMail,
+  LuMapPin,
+  LuMessageCircle,
+  LuPhone,
+  LuSend,
+  LuShieldCheck,
+} from "react-icons/lu";
+
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const trustItems = [
+  {
+    icon: LuLockKeyhole,
+    label: "Encrypted & confidential",
+  },
+  {
+    icon: LuClock3,
+    label: "Response in 24h",
+  },
+  {
+    icon: LuShieldCheck,
+    label: "Governance-first",
+  },
+];
+
+const contactItems = [
+  {
+    icon: LuMail,
+    title: "Group enquiries",
+    href: "mailto:enquiries@novaland.group",
+    value: "enquiries@novaland.group",
+    note: "For investment & partnership",
+  },
+  {
+    icon: LuPhone,
+    title: "Head office — Dubai",
+    href: "tel:+97145558800",
+    value: "+971 4 555 8800",
+    note: "Sun–Thu, 9am–6pm GST",
+  },
+  {
+    icon: LuMessageCircle,
+    title: "WhatsApp",
+    href: "https://wa.me/97145558800",
+    value: "Chat on WhatsApp",
+    note: "Fastest for site visits",
+    external: true,
+  },
+];
 
 export default function Main() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="contact-main">
+    <section
+      id="contact-enquiry"
+      className="nvc-contact"
+    >
       <div className="container">
-        <div className="contact-grid">
-          <div className="contact-form-card fade-reveal" style={{ "--d": ".3s" }}>
-            <div className="nova-section-label" style={{ marginBottom: "14px" }}>
-              <span>Enquiry</span>
-            </div>
-            <h2>Send a message</h2>
-            <p className="sub">
-              Tell us a little about your interest — routed to the right market within hours.
-            </p>
-            <div className="form-trust">
-              <span>
-                <i className="fa-solid fa-lock" /> Encrypted &amp; confidential
-              </span>
-              <span>
-                <i className="fa-solid fa-clock" /> Response in 24h
-              </span>
-              <span>
-                <i className="fa-solid fa-shield-halved" /> Governance-first
-              </span>
-            </div>
-            <form id="contactForm" noValidate>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>First name *</label>
-                  <input type="text" placeholder="Ali" required />
-                </div>
-                <div className="form-group">
-                  <label>Last name *</label>
-                  <input type="text" placeholder="Ahmed" required />
-                </div>
+        <Reveal>
+          <div className="nvc-section-head">
+            <span>01</span>
+            <i />
+            <strong>
+              Enquiry
+            </strong>
+          </div>
+        </Reveal>
+
+        <div className="nvc-contact-grid">
+          <Reveal>
+            <div className="nvc-form-card">
+              <p className="nvc-kicker">
+                Start a conversation
+              </p>
+
+              <h2 className="nvc-title">
+                Send a
+                <span>message.</span>
+              </h2>
+
+              <p className="nvc-form-intro">
+                Tell us a little about your
+                interest — routed to the
+                right market within hours.
+              </p>
+
+              <div className="nvc-trust-row">
+                {trustItems.map(
+                  ({
+                    icon: Icon,
+                    label,
+                  }) => (
+                    <div
+                      key={label}
+                      className="nvc-trust-item"
+                    >
+                      <Icon />
+                      <span>
+                        {label}
+                      </span>
+                    </div>
+                  )
+                )}
               </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Work email *</label>
-                  <input type="email" placeholder="you@company.com" required />
+
+              <form
+                id="contactForm"
+                className="nvc-form"
+                noValidate
+              >
+                <div className="nvc-form-row">
+                  <div className="nvc-field">
+                    <label htmlFor="firstName">
+                      First name *
+                    </label>
+
+                    <input
+                      id="firstName"
+                      type="text"
+                      placeholder="Ali"
+                      required
+                    />
+                  </div>
+
+                  <div className="nvc-field">
+                    <label htmlFor="lastName">
+                      Last name *
+                    </label>
+
+                    <input
+                      id="lastName"
+                      type="text"
+                      placeholder="Ahmed"
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="form-group">
-                  <label>Phone</label>
-                  <input type="tel" placeholder="+971 50 000 0000" />
+
+                <div className="nvc-form-row">
+                  <div className="nvc-field">
+                    <label htmlFor="email">
+                      Work email *
+                    </label>
+
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="you@company.com"
+                      required
+                    />
+                  </div>
+
+                  <div className="nvc-field">
+                    <label htmlFor="phone">
+                      Phone
+                    </label>
+
+                    <input
+                      id="phone"
+                      type="tel"
+                      placeholder="+971 50 000 0000"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Company</label>
-                  <input type="text" placeholder="Company name" />
+
+                <div className="nvc-form-row">
+                  <div className="nvc-field">
+                    <label htmlFor="company">
+                      Company
+                    </label>
+
+                    <input
+                      id="company"
+                      type="text"
+                      placeholder="Company name"
+                    />
+                  </div>
+
+                  <div className="nvc-field">
+                    <label htmlFor="type">
+                      Enquiry type *
+                    </label>
+
+                    <select
+                      id="type"
+                      required
+                    >
+                      <option value="">
+                        Select a topic
+                      </option>
+
+                      <option>
+                        Investment
+                      </option>
+
+                      <option>
+                        Partnership
+                      </option>
+
+                      <option>
+                        Portfolio / Projects
+                      </option>
+
+                      <option>
+                        Media &amp; Press
+                      </option>
+
+                      <option>
+                        Careers
+                      </option>
+
+                      <option>
+                        General
+                      </option>
+                    </select>
+                  </div>
                 </div>
-                <div className="form-group">
-                  <label>Enquiry type *</label>
-                  <select required>
-                    <option value="">Select a topic</option>
-                    <option>Investment</option>
-                    <option>Partnership</option>
-                    <option>Portfolio / Projects</option>
-                    <option>Media &amp; Press</option>
-                    <option>Careers</option>
-                    <option>General</option>
+
+                <div className="nvc-field">
+                  <label htmlFor="market">
+                    Market
+                  </label>
+
+                  <select id="market">
+                    <option value="">
+                      Select market
+                    </option>
+
+                    <option>
+                      UAE — Dubai
+                    </option>
+
+                    <option>
+                      Bangladesh — Dhaka
+                    </option>
+
+                    <option>
+                      USA — New York
+                    </option>
+
+                    <option>
+                      UK — London
+                    </option>
+
+                    <option>
+                      Multiple markets
+                    </option>
                   </select>
                 </div>
-              </div>
-              <div className="form-group">
-                <label>Market</label>
-                <select>
-                  <option value="">Select market</option>
-                  <option>UAE — Dubai</option>
-                  <option>Bangladesh — Dhaka</option>
-                  <option>USA — New York</option>
-                  <option>UK — London</option>
-                  <option>Multiple markets</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label>Message *</label>
-                <textarea placeholder="How can we help?" required />
-              </div>
-              <div className="form-foot">
-                <label>
-                  <input type="checkbox" required /> I agree to Privacy Policy and consent to being contacted.
-                </label>{" "}
-                <button type="submit" className="btn btn-gold text-uppercase">
-                  Send message <span>↗</span>
-                </button>
-              </div>
-              <p
-                id="formNote"
-                style={{ marginTop: "10px", fontSize: "12px", color: "var(--muted-body)", minHeight: "18px" }}
-              />
-            </form>
-          </div>
-          <div className="contact-side">
-            <div className="contact-info-card reveal" style={{ "--d": ".3s" }}>
-              <h3 className="reveal" style={{ "--d": ".1s" }}>
-                Contact directly
-              </h3>
-              <div className="contact-info-list">
-                <div className="contact-info-item reveal" style={{ "--d": ".3s" }}>
-                  <i className="fa-solid fa-envelope" />
-                  <div>
-                    <strong>Group enquiries</strong>
-                    <a href="mailto:enquiries@novaland.group">enquiries@novaland.group</a>
-                    <br />
-                    <span>For investment &amp; partnership</span>
-                  </div>
+
+                <div className="nvc-field">
+                  <label htmlFor="message">
+                    Message *
+                  </label>
+
+                  <textarea
+                    id="message"
+                    placeholder="How can we help?"
+                    required
+                  />
                 </div>
-                <div className="contact-info-item reveal" style={{ "--d": ".4s" }}>
-                  <i className="fa-solid fa-phone" />
-                  <div>
-                    <strong>Head office — Dubai</strong>
-                    <a href="tel:+97145558800">+971 4 555 8800</a>
-                    <br />
-                    <span>Sun–Thu, 9am–6pm GST</span>
-                  </div>
+
+                <div className="nvc-form-footer">
+                  <label className="nvc-consent">
+                    <input
+                      type="checkbox"
+                      required
+                    />
+
+                    <span>
+                      I agree to Privacy
+                      Policy and consent to
+                      being contacted.
+                    </span>
+                  </label>
+
+                  <motion.button
+                    type="submit"
+                    className="nvc-button nvc-button--primary"
+                    whileHover={
+                      reduceMotion
+                        ? undefined
+                        : { y: -8 }
+                    }
+                    transition={bounce}
+                  >
+                    Send message
+                    <LuSend />
+                  </motion.button>
                 </div>
-                <div className="contact-info-item reveal" style={{ "--d": ".5s" }}>
-                  <i className="fa-brands fa-whatsapp" />
-                  <div>
-                    <strong>WhatsApp</strong>
-                    <a href="https://wa.me/97145558800" target="_blank">
-                      Chat on WhatsApp
-                    </a>
-                    <br />
-                    <span>Fastest for site visits</span>
-                  </div>
-                </div>
-                <div className="contact-info-item reveal" style={{ "--d": ".6s" }}>
-                  <i className="fa-solid fa-location-dot" />
-                  <div>
-                    <strong>Visit us</strong>
-                    <span>Level 24, Boulevard Plaza, Downtown Dubai — by appointment</span>
-                  </div>
-                </div>
-              </div>
+
+                <p
+                  id="formNote"
+                  className="nvc-form-note"
+                />
+              </form>
             </div>
-            <div className="contact-quick reveal" style={{ "--d": ".4s" }}>
-              <h4 className="reveal" style={{ "--d": ".1s" }}>
-                Quick actions
-              </h4>
-              <div className="q-links">
-                <Link to="/company-profile">
-                  Company profile <i className="fa-solid fa-arrow-up-right-from-square" />
-                </Link>{" "}
-                <Link to="/portfolio">
-                  Explore portfolio <i className="fa-solid fa-arrow-up-right-from-square" />
-                </Link>{" "}
-                <Link to="/investors">
-                  Investor information <i className="fa-solid fa-arrow-up-right-from-square" />
-                </Link>{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert("Brochure download coming soon");
-                  }}
-                >
-                  Download brochure <i className="fa-solid fa-download" />
-                </a>
-              </div>
-            </div>
-          </div>
+          </Reveal>
+
+          <aside className="nvc-contact-side">
+            <Float delay={0.2}>
+              <motion.div
+                className="nvc-direct-card"
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : { y: -10 }
+                }
+                transition={bounce}
+              >
+                <div className="nvc-direct-head">
+                  <span>
+                    Contact directly
+                  </span>
+
+                  <LuArrowUpRight />
+                </div>
+
+                <div className="nvc-direct-list">
+                  {contactItems.map(
+                    ({
+                      icon: Icon,
+                      title,
+                      href,
+                      value,
+                      note,
+                      external,
+                    }) => (
+                      <div
+                        key={title}
+                        className="nvc-direct-item"
+                      >
+                        <span className="nvc-direct-icon">
+                          <Icon />
+                        </span>
+
+                        <div>
+                          <strong>
+                            {title}
+                          </strong>
+
+                          <a
+                            href={href}
+                            target={
+                              external
+                                ? "_blank"
+                                : undefined
+                            }
+                            rel={
+                              external
+                                ? "noreferrer"
+                                : undefined
+                            }
+                          >
+                            {value}
+                          </a>
+
+                          <small>
+                            {note}
+                          </small>
+                        </div>
+                      </div>
+                    )
+                  )}
+
+                  <div className="nvc-direct-item">
+                    <span className="nvc-direct-icon">
+                      <LuMapPin />
+                    </span>
+
+                    <div>
+                      <strong>
+                        Visit us
+                      </strong>
+
+                      <p>
+                        Level 24, Boulevard
+                        Plaza, Downtown Dubai
+                        — by appointment
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </Float>
+
+            <Float
+              delay={0.55}
+              duration={6.6}
+            >
+              <motion.div
+                className="nvc-quick-card"
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : { y: -8 }
+                }
+                transition={bounce}
+              >
+                <span className="nvc-quick-label">
+                  Quick actions
+                </span>
+
+                <div className="nvc-quick-links">
+                  <Link to="/company-profile">
+                    Company profile
+                    <LuArrowUpRight />
+                  </Link>
+
+                  <Link to="/portfolio">
+                    Explore portfolio
+                    <LuArrowUpRight />
+                  </Link>
+
+                  <Link to="/investors">
+                    Investor information
+                    <LuArrowUpRight />
+                  </Link>
+
+                  <a
+                    href="#"
+                    onClick={(event) => {
+                      event.preventDefault();
+
+                      alert(
+                        "Brochure download coming soon"
+                      );
+                    }}
+                  >
+                    Download brochure
+                    <LuDownload />
+                  </a>
+                </div>
+              </motion.div>
+            </Float>
+          </aside>
         </div>
       </div>
     </section>

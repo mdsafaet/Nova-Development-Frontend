@@ -1,22 +1,33 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { LuArrowUpRight } from "react-icons/lu";
+import { bounce, Reveal } from "@/components/company-profile/Float";
 
 export default function Cta() {
   return (
-    <section className="vm-cta">
-      <div className="container d-flex flex-wrap justify-content-between align-items-center gap-4">
-        <div>
-          <h3 className="reveal" style={{ "--d": ".1s" }}>
-            Responsibility is <span>a design choice.</span>
-          </h3>
-          <p className="reveal" style={{ "--d": ".2s" }}>
-            Speak with us about community partnerships, sponsorships or stewardship.
-          </p>
-        </div>
-        <div className="d-flex gap-3 flex-wrap reveal" style={{ "--d": ".3s" }}>
-          <Link to="/contact" className="btn btn-gold text-uppercase reveal" style={{ "--d": ".3s" }}>
-            Contact CSR team <span>↗</span>
-          </Link>
-        </div>
+    <section className="csx csx-cta">
+      <div className="csx-orb csx-orb--tr" />
+
+      <div className="csx-wrap">
+        <Reveal>
+          <motion.div className="csx-glass csx-cta-card" whileHover={{ y: -6 }} transition={bounce}>
+            <div className="csx-cta-rings" aria-hidden="true" />
+
+            <div className="csx-cta-body">
+              <h3>
+                Responsibility is
+                <span>a design choice.</span>
+              </h3>
+              <p>Speak with us about community partnerships, sponsorships or stewardship.</p>
+            </div>
+
+            <div className="csx-cta-actions">
+              <Link to="/contact" className="csx-btn csx-btn--primary">
+                Contact CSR team <LuArrowUpRight />
+              </Link>
+            </div>
+          </motion.div>
+        </Reveal>
       </div>
     </section>
   );

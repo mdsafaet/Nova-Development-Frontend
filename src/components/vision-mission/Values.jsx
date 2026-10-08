@@ -1,52 +1,140 @@
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuShieldCheck,
+  LuAward,
+  LuLeaf,
+  LuHandshake,
+} from "react-icons/lu";
+
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const values = [
+  {
+    number: "01",
+    icon: LuShieldCheck,
+    title: "Integrity",
+    description:
+      "Do the right thing at every stage — transparent governance, audited delivery, accountable partnerships.",
+  },
+  {
+    number: "02",
+    icon: LuAward,
+    title: "Excellence",
+    description:
+      "Set a higher standard for design, engineering and delivery in every market — one Nova standard.",
+  },
+  {
+    number: "03",
+    icon: LuLeaf,
+    title: "Stewardship",
+    description:
+      "Think beyond today’s development — resilient, sustainable, community-first places that age well.",
+  },
+  {
+    number: "04",
+    icon: LuHandshake,
+    title: "Partnership",
+    description:
+      "Build lasting relationships with investors, partners and communities — returns measured in decades.",
+  },
+];
+
 export default function Values() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section id="values" className="vm-values">
+    <section
+      id="values"
+      className="nvv-values"
+    >
       <div className="container">
-        <div className="nova-section-label nova-section-label-light reveal" style={{ marginBottom: "16px" }}>
-          <span>Core Values</span>
+        <Reveal>
+          <div className="nvv-section-head nvv-section-head--dark">
+            <span>04</span>
+            <i />
+            <strong>Core Values</strong>
+          </div>
+        </Reveal>
+
+        <div className="nvv-values-heading">
+          <div>
+            <Reveal>
+              <p className="nvv-kicker nvv-kicker--light">
+                What guides us
+              </p>
+            </Reveal>
+
+            <Reveal>
+              <h2 className="nvv-title nvv-title--dark">
+                Guided by
+                <span>
+                  what endures.
+                </span>
+              </h2>
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <p>
+              Four principles inherited from the
+              Chairman’s office — filter every
+              decision, every acre, every
+              partnership.
+            </p>
+          </Reveal>
         </div>
-        <h2 className="reveal" style={{ "--d": ".1s" }}>
-          Guided by <span>what endures.</span>
-        </h2>
-        <p className="vm-values-lead reveal" style={{ "--d": ".2s" }}>
-          Four principles inherited from the Chairman’s office — filter every decision, every acre, every
-          partnership.
-        </p>
-        <div className="vm-values-grid">
-          <div className="vm-value-card reveal" style={{ "--d": ".3s" }}>
-            <span className="num">01</span>
-            <i className="fa-solid fa-shield-halved" />
-            <strong>Integrity</strong>
-            <p>
-              Do the right thing at every stage — transparent governance, audited delivery, accountable
-              partnerships.
-            </p>
-          </div>
-          <div className="vm-value-card reveal" style={{ "--d": ".4s" }}>
-            <span className="num">02</span>
-            <i className="fa-solid fa-award" />
-            <strong>Excellence</strong>
-            <p>
-              Set a higher standard for design, engineering and delivery in every market — one Nova standard.
-            </p>
-          </div>
-          <div className="vm-value-card reveal" style={{ "--d": ".5s" }}>
-            <span className="num">03</span>
-            <i className="fa-solid fa-leaf" />
-            <strong>Stewardship</strong>
-            <p>
-              Think beyond today’s development — resilient, sustainable, community-first places that age well.
-            </p>
-          </div>
-          <div className="vm-value-card reveal" style={{ "--d": ".6s" }}>
-            <span className="num">04</span>
-            <i className="fa-solid fa-handshake" />
-            <strong>Partnership</strong>
-            <p>
-              Build lasting relationships with investors, partners and communities — returns measured in
-              decades.
-            </p>
-          </div>
+
+        <div className="nvv-values-grid">
+          {values.map(
+            (
+              {
+                number,
+                icon: Icon,
+                title,
+                description,
+              },
+              index
+            ) => (
+              <Float
+                key={title}
+                delay={index * 0.4}
+              >
+                <motion.article
+                  className="nvv-value-card"
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : { y: -10 }
+                  }
+                  transition={bounce}
+                >
+                  <div className="nvv-value-top">
+                    <Icon />
+                    <span>
+                      {number}
+                    </span>
+                  </div>
+
+                  <strong>
+                    {title}
+                  </strong>
+
+                  <p>
+                    {description}
+                  </p>
+
+                  <div className="nvv-value-line" />
+                </motion.article>
+              </Float>
+            )
+          )}
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ export default function SocialLinks() {
   return (
     <div className="social-curve-wrap">
       <a
-        href="#"
+        href="/https://www.youtube.com/@NovaDevelopmentofficial"
         className="social-curve-icon social-curve-icon--youtube"
         aria-label="YouTube"
       >
@@ -19,7 +19,7 @@ export default function SocialLinks() {
       </a>
 
       <a
-        href="#"
+        href="/https://www.instagram.com/novadevelopmentbd/"
         className="social-curve-icon social-curve-icon--instagram"
         aria-label="Instagram"
       >
@@ -35,7 +35,7 @@ export default function SocialLinks() {
       </a>
 
       <a
-        href="#"
+        href="/https://www.facebook.com/novadevelopmentbd"
         className="social-curve-icon social-curve-icon--facebook"
         aria-label="Facebook"
       >

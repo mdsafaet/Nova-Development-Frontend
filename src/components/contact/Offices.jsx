@@ -1,158 +1,248 @@
+import ReactCountryFlag from "react-country-flag";
+
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuArrowUpRight,
+  LuClock3,
+  LuMail,
+  LuMapPin,
+  LuPhone,
+} from "react-icons/lu";
+
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const offices = [
+  {
+    number: "01",
+    code: "AE",
+    city: "Dubai",
+    label: "Head Office",
+    suffix: "— HQ",
+    hours:
+      "Sun–Thu 9am–6pm · GST",
+    address:
+      "Level 24, Boulevard Plaza, Downtown Dubai, UAE",
+    phone: "+971 4 555 8800",
+    phoneHref: "tel:+97145558800",
+    directions:
+      "https://maps.google.com/?q=Boulevard+Plaza+Downtown+Dubai",
+    email:
+      "mailto:dubai@novaland.group",
+  },
+  {
+    number: "02",
+    code: "BD",
+    city: "Dhaka",
+    label: "Bangladesh Office",
+    hours:
+      "Sun–Thu 9am–6pm · BST",
+    address:
+      "Nova Land Tower, Gulshan Avenue, Gulshan 2, Dhaka 1212",
+    phone: "+880 2 5566 1200",
+    phoneHref: "tel:+880255661200",
+    directions:
+      "https://maps.google.com/?q=Gulshan+Avenue+Dhaka",
+    email:
+      "mailto:dhaka@novaland.group",
+  },
+  {
+    number: "03",
+    code: "US",
+    city: "New York",
+    label: "Americas Office",
+    hours:
+      "Mon–Fri 9am–5pm · ET",
+    address:
+      "One World Trade Center, Floor 62, New York, NY 10007, USA",
+    phone: "+1 212 555 0198",
+    phoneHref: "tel:+12125550198",
+    directions:
+      "https://maps.google.com/?q=One+World+Trade+Center+New+York",
+    email:
+      "mailto:newyork@novaland.group",
+  },
+  {
+    number: "04",
+    code: "GB",
+    city: "London",
+    label: "UK Office",
+    hours:
+      "Mon–Fri 9am–5pm · GMT",
+    address:
+      "One Canada Square, Canary Wharf, London E14 5AB, UK",
+    phone: "+44 20 7946 0958",
+    phoneHref: "tel:+442079460958",
+    directions:
+      "https://maps.google.com/?q=One+Canada+Square+London",
+    email:
+      "mailto:london@novaland.group",
+  },
+];
+
 export default function Offices() {
+  const reduceMotion =
+    useReducedMotion();
+
   return (
-    <section className="contact-offices">
+    <section className="nvc-offices">
       <div className="container">
-        <div className="offices-head">
+        <Reveal>
+          <div className="nvc-section-head nvc-section-head--dark">
+            <span>02</span>
+            <i />
+            <strong>
+              Corporate Offices
+            </strong>
+          </div>
+        </Reveal>
+
+        <div className="nvc-offices-heading">
           <div>
-            <div className="nova-section-label reveal" style={{ marginBottom: "14px" }}>
-              <span>Corporate Offices</span>
-            </div>
-            <h2 className="reveal" style={{ "--d": ".1s" }}>
-              Four markets. <span>One standard.</span>
-            </h2>
-          </div>
-          <p className="reveal" style={{ "--d": ".2s" }}>
-            Visit, call or get directions — same governance and response standards.
-          </p>
-        </div>
-        <div className="office-grid">
-          <div className="office-card active reveal" style={{ "--d": ".3s" }}>
-            <div className="office-body">
-              <div className="office-top">
-                <span className="num">01 — Dubai</span>
-                <img src="https://flagcdn.com/w40/ae.png" alt="AE" />
-              </div>
-              <div className="office-hours">
-                <i className="fa-solid fa-clock" /> Sun–Thu 9am–6pm · GST
-              </div>
-              <p className="eyebrow" style={{ marginTop: "10px" }}>
-                Head Office
+            <Reveal>
+              <p className="nvc-kicker nvc-kicker--light">
+                Global presence
               </p>
-              <h3>
-                Dubai{" "}
-                <span
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
-                    fontWeight: "400",
-                    color: "var(--gold)",
-                    fontSize: "13px",
-                  }}
-                >
-                  — HQ
+            </Reveal>
+
+            <Reveal>
+              <h2 className="nvc-title nvc-title--dark">
+                Four markets.
+                <span>
+                  One standard.
                 </span>
-              </h3>
-              <address>
-                Level 24, Boulevard Plaza, Downtown Dubai, UAE
-                <br />
-                <a href="tel:+97145558800" className="tel">
-                  <i className="fa-solid fa-phone" style={{ color: "var(--gold)" }} /> +971 4 555 8800
-                </a>
-              </address>
-              <div className="actions">
-                <a
-                  href="https://maps.google.com/?q=Boulevard+Plaza+Downtown+Dubai"
-                  className="primary"
-                  target="_blank"
+              </h2>
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <p>
+              Visit, call or get
+              directions — same governance
+              and response standards.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="nvc-office-grid">
+          {offices.map(
+            (
+              office,
+              index
+            ) => (
+              <Float
+                key={office.city}
+                delay={index * 0.4}
+              >
+                <motion.article
+                  className={`nvc-office-card ${
+                    index === 0
+                      ? "nvc-office-card--active"
+                      : ""
+                  }`}
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : { y: -10 }
+                  }
+                  transition={bounce}
                 >
-                  Directions ↗
-                </a>
-                <a href="mailto:dubai@novaland.group">Email</a>
-              </div>
-            </div>
-          </div>
-          <div className="office-card reveal" style={{ "--d": ".4s" }}>
-            <div className="office-body">
-              <div className="office-top">
-                <span className="num">02 — Dhaka</span>
-                <img src="https://flagcdn.com/w40/bd.png" alt="BD" />
-              </div>
-              <div className="office-hours">
-                <i className="fa-solid fa-clock" /> Sun–Thu 9am–6pm · BST
-              </div>
-              <p className="eyebrow" style={{ marginTop: "10px" }}>
-                Bangladesh Office
-              </p>
-              <h3>Dhaka</h3>
-              <address>
-                Nova Land Tower, Gulshan Avenue, Gulshan 2, Dhaka 1212
-                <br />
-                <a href="tel:+880255661200" className="tel">
-                  <i className="fa-solid fa-phone" style={{ color: "var(--gold)" }} /> +880 2 5566 1200
-                </a>
-              </address>
-              <div className="actions">
-                <a href="https://maps.google.com/?q=Gulshan+Avenue+Dhaka" className="primary" target="_blank">
-                  Directions ↗
-                </a>
-                <a href="mailto:dhaka@novaland.group">Email</a>
-              </div>
-            </div>
-          </div>
-          <div className="office-card reveal" style={{ "--d": ".5s" }}>
-            <div className="office-body">
-              <div className="office-top">
-                <span className="num">03 — New York</span>
-                <img src="https://flagcdn.com/w40/us.png" alt="US" />
-              </div>
-              <div className="office-hours">
-                <i className="fa-solid fa-clock" /> Mon–Fri 9am–5pm · ET
-              </div>
-              <p className="eyebrow" style={{ marginTop: "10px" }}>
-                Americas Office
-              </p>
-              <h3>New York</h3>
-              <address>
-                One World Trade Center, Floor 62, New York, NY 10007, USA
-                <br />
-                <a href="tel:+12125550198" className="tel">
-                  <i className="fa-solid fa-phone" style={{ color: "var(--gold)" }} /> +1 212 555 0198
-                </a>
-              </address>
-              <div className="actions">
-                <a
-                  href="https://maps.google.com/?q=One+World+Trade+Center+New+York"
-                  className="primary"
-                  target="_blank"
-                >
-                  Directions ↗
-                </a>
-                <a href="mailto:newyork@novaland.group">Email</a>
-              </div>
-            </div>
-          </div>
-          <div className="office-card reveal" style={{ "--d": ".6s" }}>
-            <div className="office-body">
-              <div className="office-top">
-                <span className="num">04 — London</span>
-                <img src="https://flagcdn.com/w40/gb.png" alt="UK" />
-              </div>
-              <div className="office-hours">
-                <i className="fa-solid fa-clock" /> Mon–Fri 9am–5pm · GMT
-              </div>
-              <p className="eyebrow" style={{ marginTop: "10px" }}>
-                UK Office
-              </p>
-              <h3>London</h3>
-              <address>
-                One Canada Square, Canary Wharf, London E14 5AB, UK
-                <br />
-                <a href="tel:+442079460958" className="tel">
-                  <i className="fa-solid fa-phone" style={{ color: "var(--gold)" }} /> +44 20 7946 0958
-                </a>
-              </address>
-              <div className="actions">
-                <a
-                  href="https://maps.google.com/?q=One+Canada+Square+London"
-                  className="primary"
-                  target="_blank"
-                >
-                  Directions ↗
-                </a>
-                <a href="mailto:london@novaland.group">Email</a>
-              </div>
-            </div>
-          </div>
+                  <div className="nvc-office-top">
+                    <span>
+                      {office.number}
+                    </span>
+
+                    <div
+                      className="nvc-flag"
+                      aria-label={`${office.city} flag`}
+                    >
+                      <ReactCountryFlag
+                        countryCode={
+                          office.code
+                        }
+                        svg
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="nvc-office-hours">
+                    <LuClock3 />
+
+                    <span>
+                      {office.hours}
+                    </span>
+                  </div>
+
+                  <p className="nvc-office-label">
+                    {office.label}
+                  </p>
+
+                  <h3>
+                    {office.city}
+
+                    {office.suffix && (
+                      <span>
+                        {office.suffix}
+                      </span>
+                    )}
+                  </h3>
+
+                  <address>
+                    <div className="nvc-address-row">
+                      <LuMapPin />
+
+                      <span>
+                        {office.address}
+                      </span>
+                    </div>
+
+                    <a
+                      href={
+                        office.phoneHref
+                      }
+                    >
+                      <LuPhone />
+
+                      {office.phone}
+                    </a>
+                  </address>
+
+                  <div className="nvc-office-actions">
+                    <a
+                      href={
+                        office.directions
+                      }
+                      target="_blank"
+                      rel="noreferrer"
+                      className="nvc-office-primary"
+                    >
+                      Directions
+                      <LuArrowUpRight />
+                    </a>
+
+                    <a
+                      href={
+                        office.email
+                      }
+                    >
+                      <LuMail />
+                      Email
+                    </a>
+                  </div>
+                </motion.article>
+              </Float>
+            )
+          )}
         </div>
       </div>
     </section>

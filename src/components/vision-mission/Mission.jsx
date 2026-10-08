@@ -1,61 +1,182 @@
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuSearch,
+  LuPenTool,
+  LuHardHat,
+  LuLeaf,
+  LuTarget,
+} from "react-icons/lu";
+
 import { img } from "@/assets/images";
 
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const missionItems = [
+  {
+    icon: LuSearch,
+    title: "Acquire",
+    description:
+      "Diligence & master planning",
+  },
+  {
+    icon: LuPenTool,
+    title: "Design",
+    description:
+      "Architecture & engineering",
+  },
+  {
+    icon: LuHardHat,
+    title: "Deliver",
+    description:
+      "Build & govern",
+  },
+  {
+    icon: LuLeaf,
+    title: "Steward",
+    description:
+      "Operate & care",
+  },
+];
+
 export default function Mission() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section id="mission" className="vm-split vm-split--alt">
+    <section
+      id="mission"
+      className="nvv-mission"
+    >
       <div className="container">
-        <div className="vm-split-grid">
-          <div className="vm-split-media fade-reveal" style={{ "--d": ".3s" }}>
-            <img
-              src={img.investor}
-              alt="Mission — discipline to delivery, governance and execution"
-              loading="lazy"
-            />
-            <div className="vm-media-cap reveal" style={{ "--d": ".4s" }}>
-              <span>Mission · Delivery</span>
-              <strong>Discipline from land to stewardship</strong>
-            </div>
+        <Reveal>
+          <div className="nvv-section-head">
+            <span>03</span>
+            <i />
+            <strong>Mission</strong>
           </div>
-          <div className="vm-split-text">
-            <span className="vm-num reveal">02 — Mission</span>{" "}
-            <span className="eyebrow text-gold reveal">How we deliver</span>
-            <h2 className="reveal" style={{ "--d": ".1s" }}>
-              Turn opportunity <span>into enduring value.</span>
-            </h2>
-            <div
-              className="nova-gold-line reveal"
-              style={{ "--d": ".2s", margin: "18px 0 22px", width: "56px" }}
-            />
-            <p className="vm-lead reveal" style={{ "--d": ".2s" }}>
-              We acquire intelligently, design responsibly and deliver with discipline — bringing together
-              land, capital, people and expertise.
-            </p>
-            <p className="reveal" style={{ "--d": ".2s" }}>
-              Operationalized through rigorous diligence, transparent governance and engineering excellence:
-              from land assembly and entitlements to construction and long-term stewardship. We de-risk growth
-              for investors while delivering places that perform for owners and delight residents.
-            </p>
-            <div className="vm-mission-cards">
-              <div className="reveal" style={{ "--d": ".3s" }}>
-                <i className="fa-solid fa-magnifying-glass-chart" />
-                <strong>Acquire</strong>
-                <span>Diligence &amp; master planning</span>
+        </Reveal>
+
+        <div className="nvv-mission-grid">
+          <div className="nvv-mission-visual">
+            <Reveal>
+              <div className="nvv-mission-image">
+                <img
+                  src={img.investor}
+                  alt="Mission — discipline to delivery, governance and execution"
+                  loading="lazy"
+                />
               </div>
-              <div className="reveal" style={{ "--d": ".4s" }}>
-                <i className="fa-solid fa-pen-ruler" />
-                <strong>Design</strong>
-                <span>Architecture &amp; engineering</span>
-              </div>
-              <div className="reveal" style={{ "--d": ".5s" }}>
-                <i className="fa-solid fa-helmet-safety" />
-                <strong>Deliver</strong>
-                <span>Build &amp; govern</span>
-              </div>
-              <div className="reveal" style={{ "--d": ".6s" }}>
-                <i className="fa-solid fa-leaf" />
-                <strong>Steward</strong>
-                <span>Operate &amp; care</span>
-              </div>
+            </Reveal>
+
+            <Float delay={0.35}>
+              <motion.aside
+                className="nvv-image-card"
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : { y: -10 }
+                }
+                transition={bounce}
+              >
+                <span className="nvv-image-card-icon">
+                  <LuTarget />
+                </span>
+
+                <div>
+                  <small>
+                    Mission · Delivery
+                  </small>
+
+                  <strong>
+                    Discipline from land to
+                    stewardship
+                  </strong>
+                </div>
+              </motion.aside>
+            </Float>
+          </div>
+
+          <div className="nvv-mission-copy">
+            <Reveal>
+              <p className="nvv-kicker">
+                How we deliver
+              </p>
+            </Reveal>
+
+            <Reveal>
+              <h2 className="nvv-title">
+                Turn opportunity
+                <span>
+                  into enduring value.
+                </span>
+              </h2>
+            </Reveal>
+
+            <Reveal>
+              <p className="nvv-lead">
+                We acquire intelligently, design
+                responsibly and deliver with
+                discipline — bringing together
+                land, capital, people and expertise.
+              </p>
+            </Reveal>
+
+            <Reveal>
+              <p className="nvv-body">
+                Operationalized through rigorous
+                diligence, transparent governance
+                and engineering excellence: from
+                land assembly and entitlements to
+                construction and long-term
+                stewardship. We de-risk growth for
+                investors while delivering places
+                that perform for owners and delight
+                residents.
+              </p>
+            </Reveal>
+
+            <div className="nvv-mission-cards">
+              {missionItems.map(
+                (
+                  {
+                    icon: Icon,
+                    title,
+                    description,
+                  },
+                  index
+                ) => (
+                  <Float
+                    key={title}
+                    delay={index * 0.35}
+                  >
+                    <motion.article
+                      className="nvv-mission-card"
+                      whileHover={
+                        reduceMotion
+                          ? undefined
+                          : { y: -8 }
+                      }
+                      transition={bounce}
+                    >
+                      <Icon />
+
+                      <strong>
+                        {title}
+                      </strong>
+
+                      <span>
+                        {description}
+                      </span>
+                    </motion.article>
+                  </Float>
+                )
+              )}
             </div>
           </div>
         </div>
