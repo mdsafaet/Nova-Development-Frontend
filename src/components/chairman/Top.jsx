@@ -1,38 +1,124 @@
-import React from 'react';
-import { img } from "@/assets/images";
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+import {
+  LuBuilding2,
+  LuGlobe,
+  LuShieldCheck,
+} from "react-icons/lu";
+
+import Float, {
+  Reveal,
+  bounce,
+} from "@/components/company-profile/Float";
+
+const leadershipValues = [
+  {
+    icon: LuBuilding2,
+    label: "Design-led development",
+  },
+  {
+    icon: LuShieldCheck,
+    label: "Long-term stewardship",
+  },
+  {
+    icon: LuGlobe,
+    label: "One global standard",
+  },
+];
 
 export default function Top() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="stg-top" style={{ background: '#F8F7F4', padding: '90px 0 40px' }}>
-      <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        
-        {/* Architectural Image Container */}
-        <div 
-          className="stg-image fade-reveal" 
-          style={{ 
-            position: 'relative', 
-            maxWidth: '420px', 
-            width: '100%',
-            borderRadius: '4px',
-            overflow: 'hidden',
-            boxShadow: '0 30px 60px rgba(13, 24, 51, 0.08)'
-          }}
-        >
+    <section className="nvm-office">
+      <div className="nvm-shell">
+        <Reveal>
+          <div className="nvm-section-head">
+            <span>
+              02
+            </span>
 
-          {/* Subtle architectural border frame accent */}
-          <div style={{ position: 'absolute', inset: '16px', border: '1px solid rgba(255, 255, 255, 0.25)', pointerEvents: 'none' }} />
+            <i />
+
+            <strong>
+              Leadership
+            </strong>
+          </div>
+        </Reveal>
+
+        <div className="nvm-office-grid">
+          <div className="nvm-office-heading">
+            <Reveal>
+              <p className="nvm-kicker">
+                Managing Director&apos;s Office
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <h2>
+                Leadership with
+                <span>
+                  a long view.
+                </span>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <p>
+                Managing Director&apos;s Office —
+                Nova Development
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="nvm-leadership-stack">
+            {leadershipValues.map(
+              (item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <Float
+                    key={item.label}
+                    distance={6}
+                    duration={
+                      6 + index * 0.35
+                    }
+                    delay={
+                      index * 0.22
+                    }
+                  >
+                    <motion.article
+                      className="nvm-leadership-card"
+                      whileHover={
+                        reduceMotion
+                          ? undefined
+                          : {
+                              y: -8,
+                            }
+                      }
+                      transition={bounce}
+                    >
+                      <span className="nvm-leadership-icon">
+                        <Icon />
+                      </span>
+
+                      <span className="nvm-leadership-number">
+                        0{index + 1}
+                      </span>
+
+                      <strong>
+                        {item.label}
+                      </strong>
+                    </motion.article>
+                  </Float>
+                );
+              }
+            )}
+          </div>
         </div>
-
-        {/* Minimalist Corporate Label */}
-        <div className="stg-name" style={{ textAlign: 'center', marginTop: '32px' }}>
-          <h2 className="reveal" style={{ fontSize: '32px', fontWeight: 800, color: '#0D1833', letterSpacing: '-0.02em', margin: '0 0 8px 0' }}>
-            Managing Director's Office
-          </h2>
-          <span className="reveal" style={{ fontSize: '12px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#23646C', fontWeight: 700 }}>
-            Managing Director's Office — Nova Development
-          </span>
-        </div>
-
       </div>
     </section>
   );
