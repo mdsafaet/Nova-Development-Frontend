@@ -15,19 +15,13 @@ export default function Header() {
   const navRef = useRef(null);
   const { pathname } = useLocation();
 
-  /* =========================================================
-     CLOSE MENU AFTER NAVIGATION
-  ========================================================= */
-
+  /* Close menu after route change */
   useEffect(() => {
     setOpen(false);
     setDropdown(null);
   }, [pathname]);
 
-  /* =========================================================
-     LOCK BODY SCROLL WHEN MOBILE MENU IS OPEN
-  ========================================================= */
-
+  /* Lock page scroll only when mobile menu is open */
   useEffect(() => {
     if (open) {
       document.body.classList.add("nova-menu-open");
@@ -40,34 +34,12 @@ export default function Header() {
     };
   }, [open]);
 
-  /* =========================================================
-     ESCAPE KEY
-  ========================================================= */
-
+  /* Close dropdown when clicking outside */
   useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-        setDropdown(null);
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, []);
-
-  /* =========================================================
-     OUTSIDE CLICK
-  ========================================================= */
-
-  useEffect(() => {
-    const onDoc = (event) => {
+    const onDoc = (e) => {
       if (
         navRef.current &&
-        !navRef.current.contains(event.target)
+        !navRef.current.contains(e.target)
       ) {
         setDropdown(null);
       }
@@ -80,10 +52,7 @@ export default function Header() {
     };
   }, []);
 
-  /* =========================================================
-     DESKTOP HOVER
-  ========================================================= */
-
+  /* Desktop hover only */
   const hover = (name) => ({
     onMouseEnter: () => {
       if (window.innerWidth > 1199) {
@@ -98,19 +67,14 @@ export default function Header() {
     },
   });
 
-  const toggle = (event, name) => {
-    event.preventDefault();
+  const toggle = (e, name) => {
+    e.preventDefault();
 
     setDropdown(
       dropdown === name
         ? null
         : name
     );
-  };
-
-  const closeMobileMenu = () => {
-    setOpen(false);
-    setDropdown(null);
   };
 
   return (
@@ -120,28 +84,24 @@ export default function Header() {
       ====================================================== */}
 
       <div className="topbar">
-        <div className="container nova-topbar-inner">
+        <div className="container d-flex justify-content-between align-items-center">
           <div className="contact-info">
             <a
               href="mailto:info@novadevelopmentglobal.com"
-              className="nova-top-contact"
+              className="d-inline-flex align-items-center gap-2 text-decoration-none small-tracking"
             >
               <i className="fa-solid fa-envelope text-gold" />
 
-              <span>
-                info@novadevelopmentglobal.com
-              </span>
+              info@novadevelopmentglobal.com
             </a>
 
             <a
               href="tel:+09606707707"
-              className="nova-top-contact"
+              className="d-inline-flex align-items-center gap-2 text-decoration-none small-tracking"
             >
               <i className="fa-solid fa-phone text-gold" />
 
-              <span>
-                +09606 707 707
-              </span>
+              +09606 707 707
             </a>
           </div>
 
@@ -155,20 +115,19 @@ export default function Header() {
       </div>
 
       {/* =====================================================
-          MAIN NAVIGATION
+          MAIN NAV
       ====================================================== */}
 
       <nav
         className="navbar navbar-expand-xl main-nav"
         ref={navRef}
       >
-        <div className="container nova-navbar-inner">
+        <div className="container d-flex justify-content-between">
           {/* LOGO */}
 
           <Link
-            className="navbar-brand"
+            className="navbar-brand d-flex align-items-center"
             to="/"
-            onClick={closeMobileMenu}
           >
             <img
               src={img.logo}
@@ -177,216 +136,179 @@ export default function Header() {
             />
           </Link>
 
-          {/* MOBILE TOGGLE */}
+          {/* MOBILE TOGGLER */}
 
           <button
-            className={`navbar-toggler ${
-              open ? "is-open" : ""
+            className={`navbar-toggler${
+              open ? "" : " collapsed"
             }`}
             type="button"
             aria-controls="mainNav"
             aria-expanded={open}
-            aria-label={
-              open
-                ? "Close navigation"
-                : "Open navigation"
-            }
+            aria-label="Toggle navigation"
             onClick={() => {
-              setOpen((current) => !current);
-              setDropdown(null);
+              setOpen((prev) => !prev);
+
+              if (open) {
+                setDropdown(null);
+              }
             }}
           >
             <i
-              className={
+              className={`fa-solid ${
                 open
-                  ? "fa-solid fa-xmark"
-                  : "fa-solid fa-bars"
-              }
+                  ? "fa-xmark"
+                  : "fa-bars"
+              } text-white`}
             />
           </button>
 
-          {/* NAVIGATION */}
+          {/* =================================================
+              MENU
+          ================================================== */}
 
           <div
-            className={`navbar-collapse nova-mobile-nav ${
-              open ? "show" : ""
+            className={`collapse navbar-collapse${
+              open ? " show" : ""
             }`}
             id="mainNav"
           >
-            <div className="nova-mobile-nav-inner">
-              <ul className="navbar-nav">
-                {/* COMPANY */}
+            <ul className="navbar-nav ms-auto gap-xl-3">
+              {/* COMPANY */}
 
-                <li
-                  className={`nav-item dropdown ${
+              <li
+                className={`nav-item dropdown${
+                  dropdown === "company"
+                    ? " show"
+                    : ""
+                }`}
+                {...hover("company")}
+              >
+                <a
+                  className={`nav-link dropdown-toggle${
                     dropdown === "company"
-                      ? "show"
+                      ? " show"
                       : ""
                   }`}
-                  {...hover("company")}
+                  href="#"
+                  id="companyDropdown"
+                  role="button"
+                  aria-expanded={
+                    dropdown === "company"
+                  }
+                  onClick={(e) =>
+                    toggle(e, "company")
+                  }
                 >
-                  <button
-                    type="button"
-                    className={`nav-link dropdown-toggle ${
-                      dropdown === "company"
-                        ? "show"
-                        : ""
-                    }`}
-                    aria-expanded={
-                      dropdown === "company"
-                    }
-                    onClick={(event) =>
-                      toggle(
-                        event,
-                        "company"
-                      )
-                    }
-                  >
-                    <span>
-                      Company
-                    </span>
-
-                    <i className="fa-solid fa-chevron-down" />
-                  </button>
-
-                  <ul
-                    className={`dropdown-menu ${
-                      dropdown === "company"
-                        ? "show"
-                        : ""
-                    }`}
-                  >
-                    {companyLinks.map(
-                      ([to, label]) => (
-                        <li key={to}>
-                          <Link
-                            className="dropdown-item"
-                            to={to}
-                            onClick={
-                              closeMobileMenu
-                            }
-                          >
-                            {label}
-                          </Link>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </li>
-
-                {/* PRESENCE */}
-
-                <li
-                  className={`nav-item dropdown ${
-                    dropdown === "presence"
-                      ? "show"
-                      : ""
-                  }`}
-                  {...hover("presence")}
-                >
-                  <button
-                    type="button"
-                    className={`nav-link dropdown-toggle ${
-                      dropdown === "presence"
-                        ? "show"
-                        : ""
-                    }`}
-                    aria-expanded={
-                      dropdown === "presence"
-                    }
-                    onClick={(event) =>
-                      toggle(
-                        event,
-                        "presence"
-                      )
-                    }
-                  >
-                    <span>
-                      Presence
-                    </span>
-
-                    <i className="fa-solid fa-chevron-down" />
-                  </button>
-
-                  <ul
-                    className={`dropdown-menu market-menu ${
-                      dropdown === "presence"
-                        ? "show"
-                        : ""
-                    }`}
-                  >
-                    {flags.map(
-                      ([
-                        code,
-                        alt,
-                        label,
-                      ]) => (
-                        <li key={code}>
-                          <a
-                            className="dropdown-item nova-market-item"
-                            href="#"
-                            onClick={(event) => {
-                              event.preventDefault();
-                            }}
-                          >
-                            <img
-                              src={`https://flagcdn.com/w40/${code}.png`}
-                              alt={alt}
-                              className="flag-icon"
-                            />
-
-                            <span>
-                              {label}
-                            </span>
-                          </a>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </li>
-
-                {/* NORMAL LINKS */}
-
-                {plainLinks.map(
-                  ([to, label]) => (
-                    <li
-                      className="nav-item"
-                      key={to}
-                    >
-                      <Link
-                        className="nav-link"
-                        to={to}
-                        onClick={
-                          closeMobileMenu
-                        }
-                      >
-                        {label}
-                      </Link>
-                    </li>
-                  )
-                )}
-              </ul>
-
-              {/* MOBILE CONTACT */}
-
-              <div className="nova-mobile-footer">
-                <span>
-                  Nova Development
-                </span>
-
-                <a href="tel:+09606707707">
-                  +09606 707 707
+                  Company
                 </a>
 
-                <Link
-                  to="/contact"
-                  onClick={closeMobileMenu}
+                <ul
+                  className={`dropdown-menu${
+                    dropdown === "company"
+                      ? " show"
+                      : ""
+                  }`}
+                  aria-labelledby="companyDropdown"
                 >
-                  Enquire
-                  <i className="fa-solid fa-arrow-up-right-from-square" />
-                </Link>
-              </div>
-            </div>
+                  {companyLinks.map(
+                    ([to, label]) => (
+                      <li key={to}>
+                        <Link
+                          className="dropdown-item"
+                          to={to}
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </li>
+
+              {/* PRESENCE */}
+
+              <li
+                className={`nav-item dropdown${
+                  dropdown === "presence"
+                    ? " show"
+                    : ""
+                }`}
+                {...hover("presence")}
+              >
+                <a
+                  className={`nav-link dropdown-toggle${
+                    dropdown === "presence"
+                      ? " show"
+                      : ""
+                  }`}
+                  href="#"
+                  id="presenceDropdown"
+                  role="button"
+                  aria-expanded={
+                    dropdown === "presence"
+                  }
+                  onClick={(e) =>
+                    toggle(e, "presence")
+                  }
+                >
+                  Presence
+                </a>
+
+                <ul
+                  className={`dropdown-menu market-menu${
+                    dropdown === "presence"
+                      ? " show"
+                      : ""
+                  }`}
+                  aria-labelledby="presenceDropdown"
+                >
+                  {flags.map(
+                    ([
+                      code,
+                      alt,
+                      label,
+                    ]) => (
+                      <li key={code}>
+                        <a
+                          className="dropdown-item d-flex align-items-center gap-2"
+                          href="#"
+                          onClick={(e) =>
+                            e.preventDefault()
+                          }
+                        >
+                          <img
+                            src={`https://flagcdn.com/w40/${code}.png`}
+                            alt={alt}
+                            className="flag-icon"
+                          />
+
+                          {label}
+                        </a>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </li>
+
+              {/* NORMAL NAVIGATION LINKS */}
+
+              {plainLinks.map(
+                ([to, label]) => (
+                  <li
+                    className="nav-item"
+                    key={to}
+                  >
+                    <Link
+                      className="nav-link"
+                      to={to}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
           </div>
         </div>
       </nav>

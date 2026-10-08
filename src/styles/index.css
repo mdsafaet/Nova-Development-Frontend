@@ -10166,15 +10166,7 @@ span.reveal {
     rgba(255, 255, 255, 0.08);
 }
 
-.nova-navbar-inner {
-  position: relative;
 
-  min-height: 78px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .navbar-brand {
   position: relative;
@@ -10202,126 +10194,7 @@ span.reveal {
    DESKTOP NAVIGATION
 ========================================================= */
 
-@media (min-width: 1200px) {
-  .nova-mobile-nav {
-    display: flex !important;
-    align-items: center;
 
-    width: auto;
-  }
-
-  .nova-mobile-nav-inner {
-    width: 100%;
-  }
-
-  .navbar-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    gap: 12px;
-  }
-
-  .main-nav .nav-link {
-    min-height: 46px;
-
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-
-    padding: 0 12px;
-
-    border: 0;
-    background: transparent;
-
-    color:
-      rgba(255, 255, 255, 0.8);
-
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 600;
-
-    text-decoration: none;
-
-    cursor: pointer;
-  }
-
-  .main-nav .nav-link:hover {
-    color: #fff;
-  }
-
-  .main-nav
-    .dropdown-toggle::after {
-    display: none;
-  }
-
-  .main-nav
-    .dropdown-toggle
-    > i {
-    font-size: 9px;
-
-    transition:
-      transform 180ms ease;
-  }
-
-  .main-nav
-    .dropdown-toggle.show
-    > i {
-    transform: rotate(180deg);
-  }
-
-  .main-nav .dropdown-menu {
-    top: calc(100% + 4px);
-
-    min-width: 230px;
-
-    padding: 9px;
-
-    border:
-      1px solid
-      rgba(15, 19, 31, 0.09);
-
-    border-radius: 14px;
-
-    background:
-      rgba(255, 255, 255, 0.97);
-
-    box-shadow:
-      0 20px 50px
-      rgba(7, 12, 27, 0.14);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .main-nav .dropdown-item {
-    display: flex;
-    align-items: center;
-
-    min-height: 42px;
-
-    padding: 8px 12px;
-
-    border-radius: 9px;
-
-    color: #303746;
-
-    font-size: 13px;
-
-    text-decoration: none;
-  }
-
-  .main-nav .dropdown-item:hover {
-    background:
-      rgba(35, 100, 108, 0.08);
-
-    color: var(--gold);
-  }
-
-  .nova-mobile-footer {
-    display: none;
-  }
-}
 
 
 /* =========================================================
@@ -10455,16 +10328,7 @@ span.reveal {
       translateY(0);
   }
 
-  .nova-mobile-nav-inner {
-    width: min(100%, 620px);
-    min-height:
-      calc(100dvh - 175px);
 
-    margin-inline: auto;
-
-    display: flex;
-    flex-direction: column;
-  }
 
 
   /* -----------------------------------------
@@ -10648,59 +10512,6 @@ span.reveal {
      MOBILE FOOTER
   ------------------------------------------ */
 
-  .nova-mobile-footer {
-    margin-top: auto;
-    padding-top: 36px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-
-    color:
-      rgba(255, 255, 255, 0.5);
-
-    font-size: 11px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-  }
-
-  .nova-mobile-footer > span {
-    color:
-      rgba(255, 255, 255, 0.4);
-  }
-
-  .nova-mobile-footer > a {
-    color: #fff;
-
-    text-decoration: none;
-  }
-
-  .nova-mobile-footer
-    > a:last-child {
-    min-height: 44px;
-
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-
-    margin-top: 4px;
-    padding: 0 17px;
-
-    border:
-      1px solid
-      rgba(139, 180, 184, 0.45);
-
-    border-radius: 999px;
-
-    background:
-      rgba(139, 180, 184, 0.08);
-
-    color: #fff;
-
-    font-weight: 700;
-  }
-}
 
 
 /* =========================================================
@@ -10712,9 +10523,7 @@ span.reveal {
 ) and (
   max-width: 1199px
 ) {
-  .nova-topbar-inner {
-    min-height: 44px;
-  }
+
 
   .contact-info {
     gap: 18px;
@@ -10754,13 +10563,7 @@ span.reveal {
     gap: 5px;
   }
 
-  .nova-top-contact {
-    max-width: 100%;
 
-    gap: 7px;
-
-    font-size: 10px;
-  }
 
   .nova-top-contact span {
     display: block;
@@ -10869,4 +10672,106 @@ span.reveal {
   .nova-top-contact {
     transition: none !important;
   }
+}
+
+/* =========================================================
+   MOBILE FULL SCREEN MENU FIX
+   ONLY BELOW XL / 1200PX
+   DESKTOP HEADER IS NOT TOUCHED
+========================================================= */
+
+@media (max-width: 1199.98px) {
+    body.nova-menu-open {
+        overflow: hidden;
+    }
+
+    .main-nav {
+        position: relative;
+    }
+
+    #mainNav:not(.show) {
+        display: none !important;
+    }
+
+    #mainNav.show {
+        position: fixed !important;
+
+        left: 0;
+        right: 0;
+
+        /*
+           Topbar + navbar remain visible.
+           Menu starts underneath the navbar.
+        */
+        top: 113px;
+
+        width: 100%;
+        height: calc(100dvh - 113px);
+        max-height: calc(100dvh - 113px);
+
+        display: block !important;
+
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        padding: 20px 24px 40px;
+
+        background: #0D1833;
+
+        z-index: 999;
+    }
+
+    #mainNav .navbar-nav {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    #mainNav .nav-item {
+        width: 100%;
+    }
+
+    #mainNav .nav-link {
+        width: 100%;
+    }
+
+    .main-nav .dropdown-menu:not(.market-menu),
+    .main-nav .market-menu {
+        position: static !important;
+
+        width: 100%;
+
+        transform: none !important;
+
+        box-shadow: none !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    #mainNav.show {
+        top: 109px;
+
+        height: calc(100dvh - 109px);
+        max-height: calc(100dvh - 109px);
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   Topbar becomes taller below 370px
+========================================================= */
+
+@media (max-width: 370px) {
+    #mainNav.show {
+        top: 132px;
+
+        height: calc(100dvh - 132px);
+        max-height: calc(100dvh - 132px);
+    }
+}
 }

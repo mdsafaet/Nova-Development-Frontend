@@ -84,8 +84,10 @@ export default function Footer() {
             <p className="small text-on-navy-muted mt-3">
               Group enquiries
               <br />{" "}
-              <a href="mailto:enquiries@novaland.group" className="text-on-navy footer-link">
-                enquiries@novaland.group
+              <a href="mailto:
+info@novadevelopmentglobal.com" className="text-on-navy footer-link">
+                
+info@novadevelopmentglobal.com
               </a>
             </p>
             <Link to="/contact" className="btn btn-outline-gold btn-sm text-uppercase mt-3">
