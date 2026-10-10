@@ -87,7 +87,7 @@ export default function Footer() {
                   Company Profile
                 </Link>
               </li>
-
+{/* 
               <li className="mb-2">
                 <Link
                   to="/chairman"
@@ -95,7 +95,7 @@ export default function Footer() {
                 >
                   Managing Director Message
                 </Link>
-              </li>
+              </li> */}
 
               <li className="mb-2">
                 <Link
