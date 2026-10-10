@@ -93,7 +93,7 @@ export default function Footer() {
                   to="/chairman"
                   className="footer-link"
                 >
-                  Chairman Message
+                  Managing Director Message
                 </Link>
               </li>
 
